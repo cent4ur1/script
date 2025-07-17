@@ -10,4 +10,5 @@ echo "Rofi [x]"
 cp -R /etc/xdg/waybar/ ./
 echo "waybar [x]"
 cp -R /etc/xdg/swaync/ ./
+cp -R ~/.config/waybar/ ./waybarconfig
 echo "Swaync [x]"
