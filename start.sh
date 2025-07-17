@@ -1,4 +1,6 @@
 echo "Importing files"
+sudo mkdir -p /etc/xdg/waybar/
+sudo mkdir -p /etc/xdg/swaync/
 sudo pacman -S hyprland kitty rofi waybar swaync thunar
 cp -R ./hypr/ /home/$USER/.config
 cp -R ./kitty/ /home/$USER/.config
