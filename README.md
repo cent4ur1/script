@@ -1,6 +1,6 @@
-# linux
-My personal arch setup
+# script 
+Installer for macOS or Arch Linux
 
 ```shell
-git clone https://github.com/lucaspapadam/linux && cd linux && chmod +x start.sh && ./start.sh
+git clone https://github.com/lucaspapadam/script && cd script && chmod +x start.sh && ./start.sh
 ```

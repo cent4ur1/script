@@ -1,29 +1,36 @@
-clear
-# Add repos
-sudo pacman -Sy
-
-echo "Creating Directories"
-sudo mkdir -p /etc/xdg/waybar/
-sudo mkdir -p /etc/xdg/swaync/
-clear
-echo "Installing dependencies"
-sleep 1 
-sudo pacman -S hyprland hyprpaper ark neovim obs-studio qbittorrent dolphin kitty pavucontrol rofi waybar swaync flatpak github-cli zsh kdenlive blender mpv feh qemu-full
-flatpak install flathub io.gitlab.librewolf-community lutris steam dolphin-emu
-flatpak install flathub com.discordapp.Discord
-flatpak install flathub org.prismlauncher.PrismLauncher
-flatpak install flathub net.kuribo64.melonDS
-flatpak install flathub info.cemu.Cemu
-
-clear
-echo "Installing NvChad"
-
-# Install NvChad
-git clone https://github.com/NvChad/starter ~/.config/nvim
-clear
-echo "install custom config y/n"
+echo "macOS(1) or Arch?(2)"
 read x
-if [ "$x" == "y" ]; then
+if [ "$x" == "1" ]; then
+  clear
+  echo "macos"
+  clear
+  echo "installing brew"
+  sleep 1
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  clear
+  brew install firefox discord neovim iina ghostty monitorcontroll obs
+fi
+
+if [ "$x" == "2" ]; then
+  sudo cp -r pacman.conf /etc/
+  sudo pacman -Sy
+  echo "Creating Directories"
+  sudo mkdir -p /etc/xdg/waybar/
+  sudo mkdir -p /etc/xdg/swaync/
+  clear
+  echo "Installing dependencies"
+  sleep 1 
+  sudo pacman -S hyprland hyprpaper ark neovim obs-studio qbittorrent dolphin kitty pavucontrol rofi waybar swaync flatpak github-cli zsh kdenlive blender mpv feh qemu-full
+  flatpak install flathub io.gitlab.librewolf-community lutris steam dolphin-emu
+  flatpak install flathub com.discordapp.Discord
+  flatpak install flathub org.prismlauncher.PrismLauncher
+  flatpak install flathub net.kuribo64.melonDS
+  flatpak install flathub info.cemu.Cemu
+  clear
+  echo "Installing NvChad"
+# Install NvChad
+  git clone https://github.com/NvChad/starter ~/.config/nvim
+
   git clone https://github.com/lucaspapadam/centauri.git
   cd /home/$USER/centauri/stuff/
   cp -R ./hypr/ /home/$USER/.config
@@ -35,6 +42,4 @@ if [ "$x" == "y" ]; then
   rm -rf /home/$USER/centauri/
 fi
 
-echo "Script will close after zsh install"
-sleep 3
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
