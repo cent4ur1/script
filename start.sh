@@ -10,11 +10,11 @@ if [ "$x" == "1" ]; then
   clear
   brew install firefox discord neovim iina ghostty monitorcontroll obs
   yes
+  rm -rf /home/$USER/script/
 fi
 
 if [ "$x" == "2" ]; then
-  #sudo cp -r pacman.conf /etc/
-  #yes
+  yes | sudo cp -r pacman.conf /etc/
   yes | sudo pacman -Sy
   echo "Creating Directories"
   sudo mkdir -p /etc/xdg/waybar/
@@ -22,17 +22,19 @@ if [ "$x" == "2" ]; then
   clear
   echo "Installing dependencies"
   sleep 1 
-  yes | sudo pacman -S hyprland hyprpaper ark neovim obs-studio qbittorrent dolphin kitty pavucontrol rofi waybar swaync flatpak github-cli zsh kdenlive blender mpv feh qemu-full
-  yes | flatpak install flathub io.gitlab.librewolf-community lutris steam dolphin-emu
-  yes | flatpak install flathub com.discordapp.Discord
-  yes | flatpak install flathub org.prismlauncher.PrismLauncher
-  yes | flatpak install flathub net.kuribo64.melonDS
-  yes | flatpak install flathub info.cemu.Cemu
+  sudo pacman -S hyprland hyprpaper ark neovim obs-studio qbittorrent dolphin kitty pavucontrol rofi waybar swaync flatpak github-cli zsh kdenlive blender mpv feh qemu-full lutris steam dolphin-emu ttf-hack-nerd 
+  flatpak install flathub io.gitlab.librewolf-community -y
+  flatpak install flathub com.discordapp.Discord -y
+  flatpak install flathub org.prismlauncher.PrismLauncher -y
+  flatpak install flathub net.kuribo64.melonDS -y
+  flatpak install flathub info.cemu.Cemu -y
+  flatpak install flathub io.github.gopher64.gopher64 -y
+  flatpak install flathub io.github.ungoogled_software.ungoogled_chromium -y
   clear
   echo "Installing NvChad"
 # Install NvChad
   git clone https://github.com/NvChad/starter ~/.config/nvim
-
+  cd /home/$USER/
   git clone https://github.com/lucaspapadam/centauri.git
   cd /home/$USER/centauri/stuff/
   cp -R ./hypr/ /home/$USER/.config
