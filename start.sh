@@ -4,73 +4,13 @@ sudo mkdir -p /etc/xdg/waybar/
 sudo mkdir -p /etc/xdg/swaync/
 clear
 echo "Installing dependencies"
-sleep 3
-echo "3"
-sleep 1
-echo "2"
-sleep 1
-echo "1"
-sleep 1
-sudo pacman -S hyprland hyprpaper ark neovim obs-studio qbittorrent dolphin kitty pavucontrol rofi waybar swaync flatpak github-cli zsh
-flatpak install flathub io.gitlab.librewolf-community
+sleep 1 
+sudo pacman -S hyprland hyprpaper ark neovim obs-studio qbittorrent dolphin kitty pavucontrol rofi waybar swaync flatpak github-cli zsh kdenlive blender mpv feh qemu-full
+flatpak install flathub io.gitlab.librewolf-community lutris steam dolphin-emu
 flatpak install flathub com.discordapp.Discord
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-
-# Game stuff proprietary and open source
-clear
-
-echo "Install Qemu y/n"
-read x
-if [ "$a" == "y" ]; then
-	clear
-	echo "Installing Qemu Packages"
-  sudo pacman -S qemu-full
-  sudo systemctl enable --now libvirtd
-  sudo usermod -a -G libvirt $(whoami)
-	clear
-	"Sucessfully Installed the Qemu Packages"
-fi
-
-if [ "$a" == "n" ]; then
-	clear
-  echo "Skipping"
-fi
-
-clear
-
-echo "Install Gaming Packages y/n"
-read x
-if [ "$x" == "y" ]; then
-	clear
-	echo "Installing Gaming Packages"
-	sudo pacman -S lutris steam dolphin-emu
-	flatpak install flathub org.prismlauncher.PrismLauncher
-	flatpak install flathub net.kuribo64.melonDS
-	flatpak install flathub info.cemu.Cemu
-	clear
-	"Sucessfully Installed the Multimedia Packages"
-fi
-
-if [ "$x" == "n" ]; then
-  echo "Skipping"
-fi
-
-# Multimedia Tools & Software
-clear
-echo "Install Multimedia Packages y/n"
-read y 
-if [ "$y" == "y" ]; then
-	clear
-	echo "Installing Multimedia Packages"
-	sudo pacman -S kdenlive blender mpv feh
-	clear
-	"Sucessfully Installed the Multimedia Packages"
-fi
-
-if [ "$y" == "n" ]; then
-  echo "Skipping"
-fi
+flatpak install flathub org.prismlauncher.PrismLauncher
+flatpak install flathub net.kuribo64.melonDS
+flatpak install flathub info.cemu.Cemu
 
 clear
 # Copy Config files
@@ -80,7 +20,12 @@ cp -R ./rofi/ /home/$USER/.config
 cp -R ./waybarconfig /home/$USER/.config/waybar
 sudo cp -R ./swaync /etc/xdg/
 sudo cp -R ./waybar/ /etc/xdg/
+sudo systemctl enable --now libvirtd
+sudo usermod -a -G libvirt $(whoami)
+
 # Install NvChad
 git clone https://github.com/NvChad/starter ~/.config/nvim
-chsh -s /bin/zsh
-echo "done"
+clear
+echo "Script will close after zsh install"
+sleep 3
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
