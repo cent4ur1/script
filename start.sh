@@ -23,6 +23,9 @@ read x
 if [ "$a" == "y" ]; then
 	clear
 	echo "Installing Qemu Packages"
+  sudo pacman -S qemu-full
+  sudo systemctl enable --now libvirtd
+  sudo usermod -a -G libvirt $(whoami)
 	clear
 	"Sucessfully Installed the Qemu Packages"
 fi
