@@ -18,7 +18,7 @@ echo "Installing NvChad"
 # Install NvChad
 git clone https://github.com/NvChad/starter ~/.config/nvim
 clear
-echo "install custom config"
+echo "install custom config y/n"
 read x
 if [ "$x" == "y" ]; then
   cp -R ./hypr/ /home/$USER/.config
