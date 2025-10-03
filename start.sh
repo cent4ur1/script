@@ -1,8 +1,6 @@
 clear
 # Add repos
-sudo sed -i -e 's/^#$$extra$$/$$extra$$/; s/^#$$multilib$$/$$multilib$$/; s/^#Include = /Include = /' /etc/pacman.conf
 sudo pacman -Sy
-
 
 echo "Creating Directories"
 sudo mkdir -p /etc/xdg/waybar/
