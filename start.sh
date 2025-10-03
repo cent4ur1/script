@@ -1,4 +1,3 @@
-1
 clear
 echo "Creating Directories"
 sudo mkdir -p /etc/xdg/waybar/
