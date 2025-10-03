@@ -11,9 +11,11 @@ echo "2"
 sleep 1
 echo "1"
 sleep 1
-sudo pacman -S hyprland hyprpaper ark neovim obs-studio qbittorrent dolphin kitty pavucontrol rofi waybar swaync flatpak
+sudo pacman -S hyprland hyprpaper ark neovim obs-studio qbittorrent dolphin kitty pavucontrol rofi waybar swaync flatpak github-cli zsh
 flatpak install flathub io.gitlab.librewolf-community
 flatpak install flathub com.discordapp.Discord
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 
 # Game stuff proprietary and open source
 clear
@@ -80,4 +82,5 @@ sudo cp -R ./swaync /etc/xdg/
 sudo cp -R ./waybar/ /etc/xdg/
 # Install NvChad
 git clone https://github.com/NvChad/starter ~/.config/nvim
+chsh -s /bin/zsh
 echo "done"
