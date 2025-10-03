@@ -17,6 +17,23 @@ flatpak install flathub com.discordapp.Discord
 
 # Game stuff proprietary and open source
 clear
+
+echo "Install Qemu y/n"
+read x
+if [ "$a" == "y" ]; then
+	clear
+	echo "Installing Qemu Packages"
+	clear
+	"Sucessfully Installed the Qemu Packages"
+fi
+
+if [ "$a" == "n" ]; then
+	clear
+  echo "Skipping"
+fi
+
+clear
+
 echo "Install Gaming Packages y/n"
 read x
 if [ "$x" == "y" ]; then
