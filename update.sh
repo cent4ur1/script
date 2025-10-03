@@ -3,8 +3,6 @@ cp -R ~/.config/hypr/ ./
 echo "Hyprland [x]"
 cp -R ~/.config/kitty/ ./
 echo "Kitty [x]"
-cp -R ~/.config/Thunar/ ./ 
-echo "Thunar [x]"
 cp -R ~/.config/rofi/ ./
 echo "Rofi [x]"
 cp -R /etc/xdg/waybar/ ./
