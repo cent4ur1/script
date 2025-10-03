@@ -3,13 +3,30 @@ read x
 if [ "$x" == "1" ]; then
   clear
   echo "macos"
-  clear
-  echo "installing brew"
+  echo "1 installing brew"
   sleep 1
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  echo "2 installing packages"
+  yes | brew install firefox discord neovim iina ghostty monitorcontroll obs kdenlive
   clear
-  brew install firefox discord neovim iina ghostty monitorcontroll obs
-  yes
+  echo "3 setting defaults"
+  defaults write com.apple.universalaccess reduceMotion -bool true
+  defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
+  defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+  defaults write NSGlobalDomain NSScrollAnimationEnabled -bool false
+  defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
+  defaults write -g QLPanelAnimationDuration -float 0
+  defaults write com.apple.finder DisableAllAnimations -bool true
+  defaults write com.apple.dock springboard-show-duration -float 0.1
+  defaults write com.apple.dock springboard-hide-duration -float 0.1
+  defaults write com.apple.dock autohide-time-modifier -float 0
+  defaults write com.apple.dock autohide-delay -float 0
+  defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true
+  killall Dock
+
+
+  echo "4 Done"
+  clear
   rm -rf /home/$USER/script/
 fi
 
