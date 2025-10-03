@@ -9,6 +9,7 @@ if [ "$x" == "1" ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   clear
   brew install firefox discord neovim iina ghostty monitorcontroll obs
+  yes
 fi
 
 if [ "$x" == "2" ]; then
@@ -21,11 +22,17 @@ if [ "$x" == "2" ]; then
   echo "Installing dependencies"
   sleep 1 
   sudo pacman -S hyprland hyprpaper ark neovim obs-studio qbittorrent dolphin kitty pavucontrol rofi waybar swaync flatpak github-cli zsh kdenlive blender mpv feh qemu-full
+  yes
   flatpak install flathub io.gitlab.librewolf-community lutris steam dolphin-emu
+  yes
   flatpak install flathub com.discordapp.Discord
+  yes
   flatpak install flathub org.prismlauncher.PrismLauncher
+  yes
   flatpak install flathub net.kuribo64.melonDS
+  yes
   flatpak install flathub info.cemu.Cemu
+  yes
   clear
   echo "Installing NvChad"
 # Install NvChad
