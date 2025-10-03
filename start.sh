@@ -21,19 +21,16 @@ clear
 echo "install custom config y/n"
 read x
 if [ "$x" == "y" ]; then
+  git clone https://github.com/lucaspapadam/centauri.git
+  cd /home/$USER/centauri/stuff/
   cp -R ./hypr/ /home/$USER/.config
   cp -R ./kitty/ /home/$USER/.config
   cp -R ./rofi/ /home/$USER/.config
   cp -R ./waybarconfig /home/$USER/.config/waybar
   sudo cp -R ./swaync /etc/xdg/
   sudo cp -R ./waybar/ /etc/xdg/
+  rm -rf /home/$USER/centauri/
 fi
-
-if [ "$x" == "no" ]; then
-  clear
-  echo "Skipping"
-fi
-
 
 echo "Script will close after zsh install"
 sleep 3
