@@ -28,7 +28,8 @@ if [ "$x" == "1" ]; then
   echo "4 Done"
   sleep 2 
   clear
-  rm -rf /Users//$USER/script/
+  cd /Users/$USER/
+  rm -rf /Users/$USER/script/
 fi
 
 if [ "$x" == "2" ]; then
