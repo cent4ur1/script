@@ -1,4 +1,4 @@
-echo "macOS(1) or Arch?(2)"
+echo "macOS(1) or Arch[outdated]?(2)"
 read x
 if [ "$x" == "1" ]; then
   clear
