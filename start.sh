@@ -7,9 +7,19 @@ if [ "$x" == "1" ]; then
   sleep 1
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   echo "2 installing packages"
-  yes | brew install firefox discord neovim iina ghostty monitorcontroll obs kdenlive
+  yes | brew install firefox neovim iina ghostty monitorcontroll obs kdenlive
   clear
-  echo "3 setting defaults"
+  echo "3 Install extra packages? 1[yes] 2[no]"
+  read a
+  if [ "$a" == "1" ]; then
+    yes | brew install discord prismlauncher dolphin ares 
+  fi
+  clear
+  echo "4 setting defaults"
+  mv ./files/.aerospace.toml /Users/$USER/
+  mv ./files/.zshrc /Users/$USER/
+  mkdir /Users/$USER/.config
+  mv ./files /Users/$USER/.config/
   defaults write com.apple.universalaccess reduceMotion -bool true
   defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
   defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
@@ -23,9 +33,7 @@ if [ "$x" == "1" ]; then
   defaults write com.apple.dock autohide-delay -float 0
   defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true
   killall Dock
-
-
-  echo "4 Done"
+  echo "Done"
   sleep 2 
   clear
   cd /Users/$USER/
