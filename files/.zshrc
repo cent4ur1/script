@@ -105,3 +105,4 @@ source $ZSH/oh-my-zsh.sh
 alias prev="open -a Preview"
 alias fs="clear;fastfetch"
 alias y="yazi"
+alias 64brew='arch -x86_64 /usr/local/bin/brew'

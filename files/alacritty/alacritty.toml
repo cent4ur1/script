@@ -9,10 +9,10 @@ decorations = "Buttonless"
 
 
 #opacity = 0.30
-opacity = 0.4
+#opacity = 0.4
 #opacity = 0.5
 
-blur = true 
+blur = false 
 
 #option_as_alt = "Both"
 
@@ -30,7 +30,7 @@ regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:
 history = 100000
 
 [font]
-normal.family = "Menlo"
+normal.family = "Hack Nerd Font"
 
 size=18
 
