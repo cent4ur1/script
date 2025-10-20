@@ -7,7 +7,7 @@ if [ "$x" == "1" ]; then
   sleep 1
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   echo "2 installing packages"
-  yes | brew install firefox neovim iina ghostty monitorcontroll obs kdenlive
+  yes | brew install neovim iina alacritty monitorcontroll obs kdenlive
   clear
   echo "3 Install extra packages? 1[yes] 2[no]"
   read a
@@ -16,10 +16,10 @@ if [ "$x" == "1" ]; then
   fi
   clear
   echo "4 setting defaults"
-  mv ./files/.aerospace.toml /Users/$USER/
-  mv ./files/.zshrc /Users/$USER/
-  mkdir /Users/$USER/.config
-  mv ./files /Users/$USER/.config/
+  mv ./files/.aerospace.toml $HOME/ 
+  mv ./files/.zshrc $HOME/ 
+  mkdir $HOME/.config
+  mv ./files $HOME/.config/
   defaults write com.apple.universalaccess reduceMotion -bool true
   defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
   defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
