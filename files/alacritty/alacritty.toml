@@ -9,10 +9,10 @@ decorations = "Buttonless"
 
 
 #opacity = 0.30
-#opacity = 0.4
+opacity = 0.4
 #opacity = 0.5
 
-blur = false 
+blur = true 
 
 #option_as_alt = "Both"
 
