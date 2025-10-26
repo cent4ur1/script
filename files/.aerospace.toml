@@ -115,7 +115,8 @@ automatically-unhide-macos-hidden-apps = true
     alt-slash = 'layout tiles horizontal vertical'
     alt-comma = 'layout accordion horizontal vertical'
 # Fullscreens application
-    alt-f = 'macos-native-fullscreen'
+    alt-f = 'fullscreen'
+    alt-shift-f = 'macos-native-fullscreen'
 # Floating
     alt-v = ['layout floating tiling', 'mode main']
 
