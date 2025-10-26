@@ -16,7 +16,7 @@ if [ "$x" == "1" ]; then
   sleep 1
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   echo "2 installing packages"
-  yes | brew install neovim iina alacritty monitorcontroll obs kdenlive
+  yes | brew install neovim iina alacritty monitorcontroll obs kdenlive jankyborders sketchybar aerospace mac-mouse-fix
   clear
   echo "3 Install extra packages? 1[yes] 2[no]"
   read a
@@ -43,6 +43,9 @@ if [ "$x" == "1" ]; then
   defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true
   killall Dock
   echo "Done"
+  open /Applications/AeroSpace.app/
+  open /Applications/MonitorControl.app/
+  open /Applications/Mac Mouse Fix.app/
   sleep 2 
   clear
   cd /Users/$USER/
