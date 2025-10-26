@@ -6,15 +6,14 @@ for sid in $(aerospace list-workspaces --all); do
         --set space.$sid \
         background.color=0xff7d00ff \
         background.corner_radius=0 \
-        background.height=20 \
-        background.padding_left=10 \
+        background.height=29 \
+        background.padding_left=0 \
         background.drawing=off \
-        label.font="Hack Nerd Font:Bold:18.0" \
+        label.font="Hack Nerd Font:Bold:20.0" \
         label="$sid" \
         click_script="aerospace workspace $sid" \
         script="$CONFIG_DIR/plugins/aerospace.sh $sid"
 done
-
 
 # PURPLE COLOUR
 #0xff7d00ff
@@ -36,7 +35,7 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 # If you are looking for other colors, see the color picker:
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 #0x40000000
-sketchybar --bar position=top height=20 blur_radius=0 color=0xff000000
+sketchybar --bar position=top height=29 blur_radius=0 color=0xff414141 padding_left=0 padding_right=0
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
@@ -44,9 +43,9 @@ sketchybar --bar position=top height=20 blur_radius=0 color=0xff000000
 # https://felixkratz.github.io/SketchyBar/config/items
 
 default=(
-  padding_left=5
-  padding_right=5
-  icon.font="Hack Nerd Font:Bold:17.0"
+  padding_left=4
+  padding_right=4
+  icon.font="Hack Nerd Font:Bold:18.0"
   label.font="Hack Nerd Font:Bold:18.0"
   icon.color=0xffffffff
   label.color=0xffffffff
