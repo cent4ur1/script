@@ -60,15 +60,13 @@ fi
 #
 #
 if [ "$x" == "2" ]; then
-  yes | sudo cp -r pacman.conf /etc/
-  yes | sudo pacman -Sy
   echo "Creating Directories"
   sudo mkdir -p /etc/xdg/waybar/
   sudo mkdir -p /etc/xdg/swaync/
   clear
   echo "Installing dependencies"
   sleep 1 
-  sudo pacman -S hyprland hyprpaper ark neovim obs-studio qbittorrent dolphin alacritty pavucontrol rofi waybar swaync flatpak github-cli zsh kdenlive blender mpv feh qemu-full lutris ttf-hack-nerd 
+  #sudo pacman -S hyprland hyprpaper ark neovim obs-studio qbittorrent dolphin alacritty pavucontrol rofi waybar swaync flatpak github-cli zsh kdenlive blender mpv feh qemu-full lutris ttf-hack-nerd 
   clear
   echo "Installing Yay"
   yes | sudo pacman -S --needed git base-devel
