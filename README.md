@@ -1,10 +1,8 @@
 # script 
-Installer for macOS or Arch Linux
+Install script for macOS
 
 ```shell
-git clone https://github.com/lucaspapadam/script && cd script && chmod +x start.sh && ./start.sh
+git clone https://github.com/lucaspapadam/script;cd script;chmod +x start.sh;./start.sh
 ```
-⚠️ Arch linux out of date (won't update for a while)
-
 # Neovim
 I use the "chocolate" theme, (ESC + T + H, then type "chocolate")

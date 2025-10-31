@@ -1,4 +1,11 @@
 
+[audgui]
+filesel_path=/Users/macintosh/Music/mp3rips
+
+[coreaudio]
+vol_left=80
+vol_right=80
+
 [qtui]
 player_height=999
-player_width=942
+player_width=1896
