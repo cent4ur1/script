@@ -21,7 +21,7 @@ binding = { key = "U", mods = "Control|Shift" }
 command = "xdg-open"
 hyperlinks = false
 mouse.enabled = true
-mouse.mods = "Control"
+#mouse.mods = "Control"
 post_processing = true
 persist = false
 regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩‘]+"

@@ -16,12 +16,13 @@ if [ "$x" == "1" ]; then
   sleep 1
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   echo "2 installing packages"
-  yes | brew install neovim iina alacritty monitorcontroll obs kdenlive jankyborders sketchybar aerospace mac-mouse-fix
+  yes | brew install neovim mpv audacious alacritty monitorcontroll obs kdenlive jankyborders sketchybar aerospace mac-mouse-fix ffmpeg yt-dlp fprobe
   clear
   echo "3 Install extra packages? 1[yes] 2[no]"
+  echo "Discord, PrismLauncher, Dolphin, Ares-emulator"
   read a
   if [ "$a" == "1" ]; then
-    yes | brew install discord prismlauncher dolphin ares 
+    yes | brew install discord prismlauncher dolphin ares-emulator
   fi
   clear
   echo "4 setting defaults"

@@ -106,3 +106,5 @@ alias prev="open -a Preview"
 alias fs="clear;fastfetch"
 alias y="yazi"
 alias 64brew='arch -x86_64 /usr/local/bin/brew'
+# Download youtube videos as mp3
+alias ytmp3='yt-dlp -x --audio-format mp3 --audio-quality 320k'
