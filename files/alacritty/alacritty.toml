@@ -17,7 +17,7 @@ blur = false
 #option_as_alt = "Both"
 
 [[hints.enabled]]
-binding = { key = "U", mods = "Control|Shift" }
+#binding = { key = "U", mods = "Control|Shift" }
 command = "xdg-open"
 hyperlinks = false
 mouse.enabled = true

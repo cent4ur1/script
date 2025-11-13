@@ -108,3 +108,14 @@ alias y="yazi"
 alias 64brew='arch -x86_64 /usr/local/bin/brew'
 # Download youtube videos as mp3
 alias ytmp3='yt-dlp -x --audio-format mp3 --audio-quality 320k'
+# Download youtube videos as mp4
+alias ytmp4='yt-dlp -x -t mp4'
+# Download youtube videos in mkv
+alias ytmp4='yt-dlp -x -t mkv'
+# Download youtube videos as opus
+alias ytopus='yt-dlp -x --audio-format opus'
+# Download youtube videos with subtitles and sponsor block api, as mp4
+alias ytfull='yt-dlp --sponsorblock-mark poi_highlight --sponsorblock-remove sponsor --write-auto-subs -t mp4'
+# Download youtube videos with subtitles and sponsor block api, as mkv
+alias ytfull='yt-dlp --sponsorblock-mark poi_highlight --sponsorblock-remove sponsor --write-auto-subs -t mkv'
+

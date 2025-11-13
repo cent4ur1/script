@@ -1,7 +1,11 @@
 active 0
-playing -1
+playing 0
 playlist 0
+position 3
+shuffle 2,3
+resume-state 1
+resume-time 213544
+playlist 1
 position -1
-shuffle 0,1
 resume-state 1
 resume-time 0

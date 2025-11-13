@@ -1,5 +1,5 @@
 format 11
-transport /usr/local/lib/audacious/Transport/gio.dylib
+transport /usr/local/Cellar/audacious/4.5.1/lib/audacious/Transport/gio.dylib
 stamp 1761923724
 version 48
 flags 0
@@ -13,7 +13,7 @@ scheme ftp
 scheme sftp
 scheme smb
 scheme mtp
-transport /usr/local/lib/audacious/Transport/neon.dylib
+transport /usr/local/Cellar/audacious/4.5.1/lib/audacious/Transport/neon.dylib
 stamp 1761923724
 version 48
 flags 0
@@ -25,7 +25,7 @@ config 0
 enabled 1
 scheme http
 scheme https
-playlist /usr/local/lib/audacious/Container/asx.dylib
+playlist /usr/local/Cellar/audacious/4.5.1/lib/audacious/Container/asx.dylib
 stamp 1761923721
 version 48
 flags 0
@@ -37,7 +37,7 @@ config 0
 enabled 1
 ext asx
 saves 0
-playlist /usr/local/lib/audacious/Container/asx3.dylib
+playlist /usr/local/Cellar/audacious/4.5.1/lib/audacious/Container/asx3.dylib
 stamp 1761923721
 version 48
 flags 0
@@ -49,7 +49,7 @@ config 0
 enabled 1
 ext asx
 saves 1
-playlist /usr/local/lib/audacious/Container/audpl.dylib
+playlist /usr/local/Cellar/audacious/4.5.1/lib/audacious/Container/audpl.dylib
 stamp 1761923722
 version 48
 flags 0
@@ -61,7 +61,7 @@ config 0
 enabled 1
 ext audpl
 saves 1
-playlist /usr/local/lib/audacious/Container/cue.dylib
+playlist /usr/local/Cellar/audacious/4.5.1/lib/audacious/Container/cue.dylib
 stamp 1761923722
 version 48
 flags 0
@@ -73,7 +73,7 @@ config 0
 enabled 1
 ext cue
 saves 0
-playlist /usr/local/lib/audacious/Container/m3u.dylib
+playlist /usr/local/Cellar/audacious/4.5.1/lib/audacious/Container/m3u.dylib
 stamp 1761923722
 version 48
 flags 0
@@ -86,7 +86,7 @@ enabled 1
 ext m3u
 ext m3u8
 saves 1
-playlist /usr/local/lib/audacious/Container/pls.dylib
+playlist /usr/local/Cellar/audacious/4.5.1/lib/audacious/Container/pls.dylib
 stamp 1761923722
 version 48
 flags 0
@@ -98,7 +98,7 @@ config 0
 enabled 1
 ext pls
 saves 1
-playlist /usr/local/lib/audacious/Container/xspf.dylib
+playlist /usr/local/Cellar/audacious/4.5.1/lib/audacious/Container/xspf.dylib
 stamp 1761923722
 version 48
 flags 0
@@ -110,7 +110,7 @@ config 0
 enabled 1
 ext xspf
 saves 1
-input /usr/local/lib/audacious/Input/xsf.dylib
+input /usr/local/Cellar/audacious/4.5.1/lib/audacious/Input/xsf.dylib
 stamp 1761923724
 version 48
 flags 0
@@ -124,7 +124,7 @@ scheme 2sf
 scheme mini2sf
 subtunes 0
 writes 0
-input /usr/local/lib/audacious/Input/aac-raw.dylib
+input /usr/local/Cellar/audacious/4.5.1/lib/audacious/Input/aac-raw.dylib
 stamp 1761923723
 version 48
 flags 0
@@ -138,7 +138,7 @@ scheme aac
 ext audio/aac
 subtunes 0
 writes 0
-input /usr/local/lib/audacious/Input/amidi-plug.dylib
+input /usr/local/Cellar/audacious/4.5.1/lib/audacious/Input/amidi-plug.dylib
 stamp 1761923723
 version 48
 flags 0
@@ -155,7 +155,7 @@ scheme rmid
 ext audio/midi
 subtunes 0
 writes 0
-input /usr/local/lib/audacious/Input/console.dylib
+input /usr/local/Cellar/audacious/4.5.1/lib/audacious/Input/console.dylib
 stamp 1761923723
 version 48
 flags 0
@@ -178,7 +178,7 @@ scheme vgm
 scheme vgz
 subtunes 2
 writes 0
-input /usr/local/lib/audacious/Input/madplug.dylib
+input /usr/local/Cellar/audacious/4.5.1/lib/audacious/Input/madplug.dylib
 stamp 1761923723
 version 48
 flags 0
@@ -198,7 +198,7 @@ ext audio/x-mp3
 ext audio/x-mpeg
 subtunes 0
 writes 1
-input /usr/local/lib/audacious/Input/openmpt.dylib
+input /usr/local/Cellar/audacious/4.5.1/lib/audacious/Input/openmpt.dylib
 stamp 1761923723
 version 48
 flags 0
@@ -251,7 +251,7 @@ scheme xm
 scheme xpk
 subtunes 0
 writes 0
-input /usr/local/lib/audacious/Input/psf2.dylib
+input /usr/local/Cellar/audacious/4.5.1/lib/audacious/Input/psf2.dylib
 stamp 1761923724
 version 48
 flags 0
@@ -269,7 +269,7 @@ scheme spu
 scheme spx
 subtunes 0
 writes 0
-input /usr/local/lib/audacious/Input/opus.dylib
+input /usr/local/Cellar/audacious/4.5.1/lib/audacious/Input/opus.dylib
 stamp 1761923724
 version 48
 flags 0
@@ -286,7 +286,7 @@ ext audio/opus
 ext audio/x-opus+ogg
 subtunes 0
 writes 0
-input /usr/local/lib/audacious/Input/sid.dylib
+input /usr/local/Cellar/audacious/4.5.1/lib/audacious/Input/sid.dylib
 stamp 1761923724
 version 48
 flags 0
@@ -301,7 +301,7 @@ scheme psid
 ext audio/prs.sid
 subtunes 2
 writes 0
-input /usr/local/lib/audacious/Input/metronom.dylib
+input /usr/local/Cellar/audacious/4.5.1/lib/audacious/Input/metronom.dylib
 stamp 1761923723
 version 48
 flags 0
@@ -314,7 +314,7 @@ enabled 1
 mime tact
 subtunes 0
 writes 0
-input /usr/local/lib/audacious/Input/tonegen.dylib
+input /usr/local/Cellar/audacious/4.5.1/lib/audacious/Input/tonegen.dylib
 stamp 1761923724
 version 48
 flags 0
@@ -327,7 +327,7 @@ enabled 1
 mime tone
 subtunes 0
 writes 0
-input /usr/local/lib/audacious/Input/vtx.dylib
+input /usr/local/Cellar/audacious/4.5.1/lib/audacious/Input/vtx.dylib
 stamp 1761923724
 version 48
 flags 0
@@ -340,7 +340,7 @@ enabled 1
 scheme vtx
 subtunes 0
 writes 0
-input /usr/local/lib/audacious/Input/wavpack.dylib
+input /usr/local/Cellar/audacious/4.5.1/lib/audacious/Input/wavpack.dylib
 stamp 1761923724
 version 48
 flags 0
@@ -354,7 +354,7 @@ scheme wv
 ext audio/x-wavpack
 subtunes 0
 writes 1
-input /usr/local/lib/audacious/Input/flacng.dylib
+input /usr/local/Cellar/audacious/4.5.1/lib/audacious/Input/flacng.dylib
 stamp 1761923723
 version 48
 flags 0
@@ -372,7 +372,7 @@ ext audio/ogg
 ext application/ogg
 subtunes 0
 writes 1
-input /usr/local/lib/audacious/Input/modplug.dylib
+input /usr/local/Cellar/audacious/4.5.1/lib/audacious/Input/modplug.dylib
 stamp 1761923723
 version 48
 flags 0
@@ -404,7 +404,7 @@ scheme psm
 scheme ft2
 subtunes 2
 writes 0
-input /usr/local/lib/audacious/Input/vorbis.dylib
+input /usr/local/Cellar/audacious/4.5.1/lib/audacious/Input/vorbis.dylib
 stamp 1761923724
 version 48
 flags 0
@@ -423,7 +423,7 @@ ext audio/ogg
 ext audio/x-vorbis+ogg
 subtunes 0
 writes 1
-input /usr/local/lib/audacious/Input/sndfile.dylib
+input /usr/local/Cellar/audacious/4.5.1/lib/audacious/Input/sndfile.dylib
 stamp 1761923724
 version 48
 flags 0
@@ -441,7 +441,7 @@ ext audio/wav
 ext audio/x-wav
 subtunes 0
 writes 0
-input /usr/local/lib/audacious/Input/ffaudio.dylib
+input /usr/local/Cellar/audacious/4.5.1/lib/audacious/Input/ffaudio.dylib
 stamp 1761923723
 version 48
 flags 0
@@ -480,7 +480,7 @@ ext audio/mp4
 ext audio/ogg
 subtunes 0
 writes 1
-effect /usr/local/lib/audacious/Effect/bs2b.dylib
+effect /usr/local/Cellar/audacious/4.5.1/lib/audacious/Effect/bs2b.dylib
 stamp 1761923722
 version 48
 flags 0
@@ -490,7 +490,7 @@ priority 0
 about 0
 config 1
 enabled 0
-effect /usr/local/lib/audacious/Effect/bitcrusher.dylib
+effect /usr/local/Cellar/audacious/4.5.1/lib/audacious/Effect/bitcrusher.dylib
 stamp 1761923722
 version 48
 flags 0
@@ -500,7 +500,7 @@ priority 0
 about 0
 config 1
 enabled 0
-effect /usr/local/lib/audacious/Effect/crystalizer.dylib
+effect /usr/local/Cellar/audacious/4.5.1/lib/audacious/Effect/crystalizer.dylib
 stamp 1761923722
 version 48
 flags 0
@@ -510,7 +510,7 @@ priority 0
 about 0
 config 1
 enabled 0
-effect /usr/local/lib/audacious/Effect/compressor.dylib
+effect /usr/local/Cellar/audacious/4.5.1/lib/audacious/Effect/compressor.dylib
 stamp 1761923722
 version 48
 flags 0
@@ -520,7 +520,7 @@ priority 0
 about 1
 config 1
 enabled 0
-effect /usr/local/lib/audacious/Effect/echo.dylib
+effect /usr/local/Cellar/audacious/4.5.1/lib/audacious/Effect/echo.dylib
 stamp 1761923722
 version 48
 flags 0
@@ -530,7 +530,7 @@ priority 0
 about 1
 config 1
 enabled 0
-effect /usr/local/lib/audacious/Effect/stereo.dylib
+effect /usr/local/Cellar/audacious/4.5.1/lib/audacious/Effect/stereo.dylib
 stamp 1761923722
 version 48
 flags 0
@@ -540,7 +540,7 @@ priority 0
 about 1
 config 1
 enabled 0
-effect /usr/local/lib/audacious/Effect/silence-removal.dylib
+effect /usr/local/Cellar/audacious/4.5.1/lib/audacious/Effect/silence-removal.dylib
 stamp 1761923722
 version 48
 flags 0
@@ -550,7 +550,7 @@ priority 0
 about 1
 config 1
 enabled 0
-effect /usr/local/lib/audacious/Effect/speed-pitch.dylib
+effect /usr/local/Cellar/audacious/4.5.1/lib/audacious/Effect/speed-pitch.dylib
 stamp 1761923722
 version 48
 flags 0
@@ -560,7 +560,7 @@ priority 0
 about 0
 config 1
 enabled 0
-effect /usr/local/lib/audacious/Effect/voice_removal.dylib
+effect /usr/local/Cellar/audacious/4.5.1/lib/audacious/Effect/voice_removal.dylib
 stamp 1757270702
 version 48
 flags 0
@@ -570,7 +570,7 @@ priority 0
 about 0
 config 0
 enabled 0
-effect /usr/local/lib/audacious/Effect/mixer.dylib
+effect /usr/local/Cellar/audacious/4.5.1/lib/audacious/Effect/mixer.dylib
 stamp 1761923722
 version 48
 flags 0
@@ -580,7 +580,7 @@ priority 2
 about 1
 config 1
 enabled 0
-effect /usr/local/lib/audacious/Effect/resample.dylib
+effect /usr/local/Cellar/audacious/4.5.1/lib/audacious/Effect/resample.dylib
 stamp 1761923722
 version 48
 flags 0
@@ -590,7 +590,7 @@ priority 2
 about 1
 config 1
 enabled 0
-effect /usr/local/lib/audacious/Effect/sox-resampler.dylib
+effect /usr/local/Cellar/audacious/4.5.1/lib/audacious/Effect/sox-resampler.dylib
 stamp 1761923722
 version 48
 flags 0
@@ -600,7 +600,7 @@ priority 2
 about 1
 config 1
 enabled 0
-effect /usr/local/lib/audacious/Effect/crossfade.dylib
+effect /usr/local/Cellar/audacious/4.5.1/lib/audacious/Effect/crossfade.dylib
 stamp 1761923722
 version 48
 flags 0
@@ -610,7 +610,7 @@ priority 5
 about 1
 config 1
 enabled 0
-effect /usr/local/lib/audacious/Effect/background_music.dylib
+effect /usr/local/Cellar/audacious/4.5.1/lib/audacious/Effect/background_music.dylib
 stamp 1761923722
 version 48
 flags 0
@@ -620,7 +620,7 @@ priority 10
 about 1
 config 1
 enabled 0
-output /usr/local/lib/audacious/Output/coreaudio.dylib
+output /usr/local/Cellar/audacious/4.5.1/lib/audacious/Output/coreaudio.dylib
 stamp 1761923724
 version 48
 flags 0
@@ -630,7 +630,7 @@ priority 5
 about 1
 config 1
 enabled 1
-output /usr/local/lib/audacious/Output/qtaudio.dylib
+output /usr/local/Cellar/audacious/4.5.1/lib/audacious/Output/qtaudio.dylib
 stamp 1761923724
 version 48
 flags 0
@@ -640,7 +640,7 @@ priority 9
 about 1
 config 0
 enabled 0
-output /usr/local/lib/audacious/Output/sdlout.dylib
+output /usr/local/Cellar/audacious/4.5.1/lib/audacious/Output/sdlout.dylib
 stamp 1761923724
 version 48
 flags 0
@@ -650,7 +650,7 @@ priority 9
 about 1
 config 0
 enabled 0
-output /usr/local/lib/audacious/Output/filewriter.dylib
+output /usr/local/Cellar/audacious/4.5.1/lib/audacious/Output/filewriter.dylib
 stamp 1761923724
 version 48
 flags 0
@@ -660,7 +660,7 @@ priority 10
 about 1
 config 1
 enabled 0
-vis /usr/local/lib/audacious/Visualization/blur_scope-qt.dylib
+vis /usr/local/Cellar/audacious/4.5.1/lib/audacious/Visualization/blur_scope-qt.dylib
 stamp 1761923724
 version 48
 flags 2
@@ -670,7 +670,7 @@ priority 0
 about 0
 config 1
 enabled 0
-vis /usr/local/lib/audacious/Visualization/gl-spectrum-qt.dylib
+vis /usr/local/Cellar/audacious/4.5.1/lib/audacious/Visualization/gl-spectrum-qt.dylib
 stamp 1761923724
 version 48
 flags 2
@@ -680,7 +680,7 @@ priority 0
 about 1
 config 0
 enabled 0
-vis /usr/local/lib/audacious/Visualization/qt-spectrum.dylib
+vis /usr/local/Cellar/audacious/4.5.1/lib/audacious/Visualization/qt-spectrum.dylib
 stamp 1761923724
 version 48
 flags 2
@@ -690,7 +690,7 @@ priority 0
 about 0
 config 0
 enabled 0
-vis /usr/local/lib/audacious/Visualization/vumeter-qt.dylib
+vis /usr/local/Cellar/audacious/4.5.1/lib/audacious/Visualization/vumeter-qt.dylib
 stamp 1761923724
 version 48
 flags 2
@@ -700,7 +700,7 @@ priority 0
 about 1
 config 1
 enabled 0
-general /usr/local/lib/audacious/General/albumart-qt.dylib
+general /usr/local/Cellar/audacious/4.5.1/lib/audacious/General/albumart-qt.dylib
 stamp 1761923722
 version 48
 flags 2
@@ -710,7 +710,7 @@ priority 0
 about 0
 config 0
 enabled 0
-general /usr/local/lib/audacious/General/delete-files.dylib
+general /usr/local/Cellar/audacious/4.5.1/lib/audacious/General/delete-files.dylib
 stamp 1761923722
 version 48
 flags 0
@@ -720,7 +720,7 @@ priority 0
 about 0
 config 1
 enabled 0
-general /usr/local/lib/audacious/General/notify.dylib
+general /usr/local/Cellar/audacious/4.5.1/lib/audacious/General/notify.dylib
 stamp 1761923723
 version 48
 flags 0
@@ -730,7 +730,7 @@ priority 0
 about 1
 config 1
 enabled 0
-general /usr/local/lib/audacious/General/lyrics-qt.dylib
+general /usr/local/Cellar/audacious/4.5.1/lib/audacious/General/lyrics-qt.dylib
 stamp 1761923723
 version 48
 flags 2
@@ -740,7 +740,7 @@ priority 0
 about 0
 config 1
 enabled 0
-general /usr/local/lib/audacious/General/mac-media-keys.dylib
+general /usr/local/Cellar/audacious/4.5.1/lib/audacious/General/mac-media-keys.dylib
 stamp 1761923723
 version 48
 flags 0
@@ -750,7 +750,7 @@ priority 0
 about 0
 config 0
 enabled 0
-general /usr/local/lib/audacious/General/playback-history-qt.dylib
+general /usr/local/Cellar/audacious/4.5.1/lib/audacious/General/playback-history-qt.dylib
 stamp 1761923723
 version 48
 flags 2
@@ -760,7 +760,7 @@ priority 0
 about 1
 config 1
 enabled 0
-general /usr/local/lib/audacious/General/playlist-manager-qt.dylib
+general /usr/local/Cellar/audacious/4.5.1/lib/audacious/General/playlist-manager-qt.dylib
 stamp 1761923723
 version 48
 flags 2
@@ -770,7 +770,7 @@ priority 0
 about 0
 config 0
 enabled 0
-general /usr/local/lib/audacious/General/scrobbler.dylib
+general /usr/local/Cellar/audacious/4.5.1/lib/audacious/General/scrobbler.dylib
 stamp 1761923723
 version 48
 flags 0
@@ -780,7 +780,7 @@ priority 0
 about 1
 config 1
 enabled 0
-general /usr/local/lib/audacious/General/search-tool-qt.dylib
+general /usr/local/Cellar/audacious/4.5.1/lib/audacious/General/search-tool-qt.dylib
 stamp 1761923723
 version 48
 flags 2
@@ -789,8 +789,8 @@ domain audacious-plugins
 priority 0
 about 0
 config 1
-enabled 0
-general /usr/local/lib/audacious/General/song_change.dylib
+enabled 1
+general /usr/local/Cellar/audacious/4.5.1/lib/audacious/General/song_change.dylib
 stamp 1761923723
 version 48
 flags 0
@@ -800,7 +800,7 @@ priority 0
 about 0
 config 1
 enabled 0
-general /usr/local/lib/audacious/General/song-info-qt.dylib
+general /usr/local/Cellar/audacious/4.5.1/lib/audacious/General/song-info-qt.dylib
 stamp 1761923723
 version 48
 flags 2
@@ -810,7 +810,7 @@ priority 0
 about 0
 config 0
 enabled 0
-general /usr/local/lib/audacious/General/statusicon-qt.dylib
+general /usr/local/Cellar/audacious/4.5.1/lib/audacious/General/statusicon-qt.dylib
 stamp 1761923723
 version 48
 flags 2
@@ -820,7 +820,7 @@ priority 0
 about 1
 config 1
 enabled 0
-iface /usr/local/lib/audacious/General/qtui.dylib
+iface /usr/local/Cellar/audacious/4.5.1/lib/audacious/General/qtui.dylib
 stamp 1761923723
 version 48
 flags 2
@@ -830,7 +830,7 @@ priority 0
 about 0
 config 1
 enabled 1
-iface /usr/local/lib/audacious/General/skins-qt.dylib
+iface /usr/local/Cellar/audacious/4.5.1/lib/audacious/General/skins-qt.dylib
 stamp 1761923723
 version 48
 flags 2
