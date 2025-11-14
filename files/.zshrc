@@ -120,9 +120,9 @@ ytopus() {
 }
 
 # Download youtube videos as mp4
-alias ytmp4='yt-dlp -x -t mp4'
+alias ytmp4='yt-dlp -t mp4'
 # Download youtube videos in mkv
-alias ytmkv='yt-dlp -x -t mkv'
+alias ytmkv='yt-dlp -t mkv'
 # Download youtube videos with subtitles and sponsor block api, defaults as mp4
 alias ytfull='yt-dlp --sponsorblock-mark poi_highlight --sponsorblock-remove sponsor --write-auto-subs -t mp4'
 # Download youtube videos with subtitles and sponsor block api, as mkv
