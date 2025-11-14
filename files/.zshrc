@@ -128,3 +128,7 @@ alias ytfull='yt-dlp --sponsorblock-mark poi_highlight --sponsorblock-remove spo
 # Download youtube videos with subtitles and sponsor block api, as mkv
 alias ytfullmkv='yt-dlp --sponsorblock-mark poi_highlight --sponsorblock-remove sponsor --write-auto-subs -t mkv'
 
+# General mp4 download 
+alias gmp4='yt-dlp -t mp4'
+# General mkv download
+alias gmkv='yt-dlp -t mkv'
