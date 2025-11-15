@@ -120,13 +120,12 @@ ytopus() {
 }
 
 ytmp4() {
-    yt-dlp -t mp4 --audio-quality 320k "ytsearch:$*"
+    yt-dlp -t mp4 "ytsearch:$*"
 }
 
 ytmkv() {
-    yt-dlp -t mkv --audio-quality 320k "ytsearch:$*"
+    yt-dlp -t mkv "ytsearch:$*"
 }
-
 
 # Download youtube videos as mp4
 #alias ytmp4='yt-dlp -t mp4'
