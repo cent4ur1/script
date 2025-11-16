@@ -140,3 +140,6 @@ alias ytfullmkv='yt-dlp --sponsorblock-mark poi_highlight --sponsorblock-remove 
 alias gmp4='yt-dlp -t mp4'
 # General mkv download
 alias gmkv='yt-dlp -t mkv'
+
+# 'm' for music
+alias m='ncmpcpp'

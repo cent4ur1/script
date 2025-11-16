@@ -5,10 +5,6 @@ recurse_for_cover=TRUE
 [audgui]
 filesel_path=/Users/macintosh/Music/mp3rips
 
-[coreaudio]
-vol_left=74
-vol_right=74
-
 [qtui]
 player_height=999
 player_width=942
