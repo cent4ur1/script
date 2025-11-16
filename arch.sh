@@ -4,5 +4,5 @@ rm -rf $HOME/.config/sketchybar/
 rm -rf $HOME/.config/borders/
 cp ./files/.zshrc $HOME
 
-sudo pacman -S alacritty qbittorrent 
+yes | sudo pacman -S alacritty qbittorrent zsh thunar yazi mpv obs-studio ffpmeg fprobe
 
