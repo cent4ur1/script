@@ -110,7 +110,7 @@ alias 64brew='arch -x86_64 /usr/local/bin/brew'
 #alias ytmp3='yt-dlp -x --audio-format mp3 --audio-quality 320k "ytsearch:$*"'
 
 ytmp3() {
-    yt-dlp -x --audio-format mp3 --audio-quality 320k "ytsearch:$*"
+    yt-dlp -x --audio-format mp3 --audio-quality 320k --embed-metadata "ytsearch:$*"
 }
 
 # Download youtube videos as opus
