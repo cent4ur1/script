@@ -1,7 +1,7 @@
 [server]
 server = ('server.slsknet.org', 2242)
 login = macosuser1
-passw = IloveLinuxfeb12
+passw = Fortnite1
 interface = 
 ctcpmsgs = False
 autosearch = []
@@ -191,7 +191,7 @@ speechenabled = False
 speechprivate = User %(user)s told you: %(message)s
 speechrooms = In room %(room)s, user %(user)s said: %(message)s
 speechcommand = flite -t $
-width = 942
+width = 1896
 height = 1027
 xposition = -1
 yposition = -1
