@@ -144,5 +144,6 @@ alias gmp4='yt-dlp -t mp4'
 # General mkv download
 alias gmkv='yt-dlp -t mkv'
 
-# 'm' for music
+alias dup='$HOME/dotfilesupdate.sh'
+
 alias m='ncmpcpp'
