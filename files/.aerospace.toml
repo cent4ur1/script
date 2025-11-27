@@ -170,7 +170,7 @@ automatically-unhide-macos-hidden-apps = true
     alt-shift-semicolon = 'mode service'
 
     # Close window
-    cmd-w = ['close']
+    alt-w = ['close']
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
