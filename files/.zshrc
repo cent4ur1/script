@@ -127,6 +127,9 @@ ytmkv() {
     yt-dlp -t mkv "ytsearch:$*"
 }
 
+#Xash 3D half life with console
+alias hl='/Applications/Xash3D-FWGS.app/Contents/MacOS/xash3d -console'
+
 # Download youtube videos as mp4
 #alias ytmp4='yt-dlp -t mp4'
 # Download youtube videos in mkv

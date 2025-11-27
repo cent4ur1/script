@@ -169,9 +169,8 @@ automatically-unhide-macos-hidden-apps = true
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
     alt-shift-semicolon = 'mode service'
 
-
-#audacious
-    alt-i = ['/bin/bash','audacious']
+    # Close window
+    cmd-w = ['close']
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
