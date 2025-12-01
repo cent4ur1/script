@@ -18,7 +18,10 @@ echo "4 setting defaults"
 mv ./files/.aerospace.toml $HOME/ 
 mv ./files/.zshrc $HOME/ 
 mkdir $HOME/.config
-mv ./files $HOME/.config/
+mv ./files/nvim/ $HOME/.config/ 
+mv ./files/btop/ $HOME/.config/
+mv ./files/sketchybar/ $HOME/.config
+
 ./macosdefaults.sh
 echo "Done"
 open /Applications/AeroSpace.app/
