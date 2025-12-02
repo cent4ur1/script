@@ -7,6 +7,8 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 ### AEROSPACE SPACES CONFIG (FIXED + CLEAN) ###
 ##############################################
 
+#!/bin/bash
+
 sketchybar --add event aerospace_workspace_change
 
 for sid in $(aerospace list-workspaces --all); do
@@ -25,7 +27,7 @@ for sid in $(aerospace list-workspaces --all); do
         background.color=0xff7d00ff \
         background.corner_radius=0 \
         background.height=29 \
-        label.font="Hack Nerd Font:Bold:20.0" \
+        label.font="Hack Nerd Font:Regular:20.0" \
         label="$sid" \
         click_script="aerospace workspace $sid" \
         script="$CONFIG_DIR/plugins/aerospace.sh $sid"
@@ -38,7 +40,7 @@ done
 
 sketchybar --bar \
   position=top \
-  height=29 \
+  height=26 \
   blur_radius=0 \
   color=0xff414141 \
   padding_left=0 \
@@ -52,8 +54,8 @@ sketchybar --bar \
 default=(
   padding_left=4
   padding_right=4
-  icon.font="Hack Nerd Font:Bold:18.0"
-  label.font="Hack Nerd Font:Bold:18.0"
+  icon.font="Hack Nerd Font:Regular:20.0"
+  label.font="Hack Nerd Font:Regular:20.0"
   icon.color=0xffffffff
   label.color=0xffffffff
   icon.padding_left=4

@@ -19,7 +19,7 @@ blur = false
 [[hints.enabled]]
 #binding = { key = "U", mods = "Control|Shift" }
 command = "xdg-open"
-hyperlinks = false
+hyperlinks = true
 mouse.enabled = true
 #mouse.mods = "Control"
 post_processing = true
