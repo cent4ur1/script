@@ -1,3 +1,5 @@
+<img width="1920" height="1080" alt="github" src="https://github.com/user-attachments/assets/a127256e-1b9a-4579-9c09-bffbe5956d28" />
+
 # script 
 Install script for macOS
 
