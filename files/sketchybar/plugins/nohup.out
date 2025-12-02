@@ -3210,3 +3210,4 @@ sh: /Users/macintosh/.config/sketchybar/plugins/cpu.sh: No such file or director
 [!] Set (space.8): Expected <key>=<value> pair, but got: 'space.8'
 [!] Set (space.9): Expected <key>=<value> pair, but got: '--set'
 [!] Set (space.9): Expected <key>=<value> pair, but got: 'space.9'
+Workspace '4' is already focused. Tip: use --fail-if-noop to exit with non-zero code
