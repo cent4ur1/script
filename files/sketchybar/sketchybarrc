@@ -47,11 +47,12 @@ sketchybar --bar \
   position=top \
   height=26 \
   blur_radius=0 \
-  color=0xff414141 \
+  color=0xff1a1a1a \
   padding_left=0 \
   padding_right=0
 
 
+# Grey = 0xff414141
 ##################################
 ### GLOBAL DEFAULTS (UNCHANGED) ###
 ##################################
@@ -88,7 +89,7 @@ sketchybar --add item front_app center \
 ###########################
 
 sketchybar --add item clock right \
-  --set clock update_freq=10 icon= script="$PLUGIN_DIR/clock.sh"
+  --set clock update_freq=10 icon="" script="$PLUGIN_DIR/clock.sh"
 
 sketchybar --add item volume right \
   --set volume script="$PLUGIN_DIR/volume.sh" \
