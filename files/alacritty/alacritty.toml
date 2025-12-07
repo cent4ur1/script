@@ -2,8 +2,8 @@
 TERM = "xterm-256color"
 
 [window]
-padding.x = 10 
-padding.y = 10 
+padding.x = 0 
+padding.y = 0 
 
 decorations = "Buttonless"
 
@@ -43,7 +43,7 @@ size=18
 
 # Default colors
 [colors.primary]
-background = '#171d23'
+background = '#000000'
 foreground = '#ffffff'
 
 ## Cursor colors
