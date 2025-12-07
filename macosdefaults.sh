@@ -14,6 +14,7 @@ if [ "$x" == "1" ]; then
   defaults write com.apple.dock autohide -bool true
   defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
   defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+  defaults write -g NSWindowShouldDragOnGesture -bool true
   defaults write NSGlobalDomain NSScrollAnimationEnabled -bool false
   defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
   defaults write -g QLPanelAnimationDuration -float 0
