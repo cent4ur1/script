@@ -1,10 +1,13 @@
 #!/bin/bash
 
+
+# Bright Blue = 0xff000cff
+
 options=(
 	style=round
 	width=4.0
 	hidpi=off
-	active_color=0xff7d00ff
+	active_color=0xff000cff
 )
 
 borders "${options[@]}"
