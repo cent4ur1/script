@@ -1,6 +1,0 @@
-bind common a pl-create
-bind common <a> pl-create
-bind common <key> pl-createa
-live-filter 
-add Music/
-add
