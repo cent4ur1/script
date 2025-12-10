@@ -1,7 +1,7 @@
-cp -r $HOME/.config/ /Users/$USER/script/files/
+cp -r $HOME/.config/ /Users/$USER/script/files/config/
 cp $HOME/.aerospace.toml /Users/$USER/script/files/
 cp $HOME/.zshrc /Users/$USER/script/files/
-cp -R $HOME/.mpd /Users/$USER/script/files/
+cp -R $HOME/.mpd /Users/$USER/script/files/config/
 cd $HOME/script/
 git add .
 git commit -m "updated files $(date +%d/%m/%Y)"
