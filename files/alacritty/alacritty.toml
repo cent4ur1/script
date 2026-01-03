@@ -1,0 +1,159 @@
+[env]
+TERM = "xterm-256color"
+
+[window]
+padding.x = 0 
+padding.y = 0 
+
+decorations = "Buttonless"
+
+
+opacity = 0.7
+
+blur = false 
+
+#option_as_alt = "Both"
+
+[[hints.enabled]]
+#binding = { key = "U", mods = "Control|Shift" }
+command = "xdg-open"
+hyperlinks = true
+mouse.enabled = true
+#mouse.mods = "Control"
+post_processing = true
+persist = false
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩‘]+"
+
+[scrolling]
+history = 100000
+
+[font]
+normal.family = "Hack Nerd Font"
+
+size=18
+
+
+
+#theme 
+#
+#https://github.com/alacritty/alacritty-theme/blob/4091fddff8da892d5594e94116927c7445620867/themes/citylights.toml
+
+
+# Default colors
+[colors.primary]
+background = '#000000'
+foreground = '#ffffff'
+
+## Cursor colors
+[colors.cursor]
+text   = '#fafafa'
+cursor = '#008b94'
+#
+## Normal colors
+[colors.normal]
+black   = '#333f4a'
+red     = '#d95468'
+green   = '#8bd49c'
+blue    = '#539afc'
+magenta = '#b62d65'
+cyan    = '#70e1e8'
+white   = '#b7c5d3'
+#
+## Bright colors
+#[colors.bright]
+#black   = '#41505e'
+#red     = '#d95468'
+#green   = '#8bd49c'
+#yellow  = '#ebbf83'
+#blue    = '#5ec4ff'
+#magenta = '#e27e8d'
+#cyan    = '#70e1e8'
+#white   = '#ffffff'
+
+
+# Colors section of "Alacritty - TOML configuration file format"
+# https://github.com/alacritty/alacritty/blob/master/extra/man/alacritty.5.scd#colors
+
+#https://github.com/rose-pine/alacritty?tab=readme-ov-file
+
+# Colors section of "Alacritty - TOML configuration file format"
+# https://github.com/alacritty/alacritty/blob/master/extra/man/alacritty.5.scd#colors
+
+# Colors section of "Alacritty - TOML configuration file format"
+# https://github.com/alacritty/alacritty/blob/master/extra/man/alacritty.5.scd#colors
+
+# Colors section of "Alacritty - TOML configuration file format"
+# https://github.com/alacritty/alacritty/blob/master/extra/man/alacritty.5.scd#colors
+
+##[colors.primary]
+#foreground = "#e0def4"
+#background = "#232136"
+#dim_foreground = "#908caa"
+#bright_foreground = "#e0def4"
+
+##[colors.cursor]
+#text = "#e0def4"
+#cursor = "#56526e"
+#
+#[colors.vi_mode_cursor]
+#text = "#e0def4"
+#cursor = "#56526e"
+#
+#[colors.search.matches]
+#foreground = "#908caa"
+#background = "#393552"
+#
+#[colors.search.focused_match]
+#foreground = "#232136"
+#background = "#ea9a97"
+#
+#foreground = "#908caa"
+#background = "#2a273f"
+#
+#[colors.hints.end]
+#foreground = "#6e6a86"
+#background = "#2a273f"
+#
+#[colors.line_indicator]
+#foreground = "None"
+#background = "None"
+#
+#[colors.footer_bar]
+#foreground = "#e0def4"
+#background = "#2a273f"
+#
+#[colors.selection]
+#text = "#e0def4"
+#background = "#44415a"
+#
+#[colors.normal]
+#black = "#393552"
+#red = "#eb6f92"
+#green = "#3e8fb0"
+#yellow = "#f6c177"
+#blue = "#9ccfd8"
+#magenta = "#c4a7e7"
+#cyan = "#ea9a97"
+#white = "#e0def4"
+
+#[colors.bright]
+#black = "#6e6a86"
+#red = "#eb6f92"
+#green = "#3e8fb0"
+#yellow = "#f6c177"
+#blue = "#9ccfd8"
+#magenta = "#c4a7e7"
+#cyan = "#ea9a97"
+#white = "#e0def4"
+
+#[colors.dim]
+#black = "#6e6a86"
+#red = "#eb6f92"
+#green = "#3e8fb0"
+#yellow = "#f6c177"
+#blue = "#9ccfd8"
+#magenta = "#c4a7e7"
+#cyan = "#ea9a97"
+#white = "#e0def4"
+
+

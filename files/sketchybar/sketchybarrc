@@ -1,0 +1,108 @@
+#!/bin/bash
+
+CONFIG_DIR="$HOME/.config/sketchybar"
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+
+##############################################
+### AEROSPACE SPACES CONFIG (FIXED + CLEAN) ###
+##############################################
+
+# COLOURS 
+# Navy Blue = 0xff000674
+# Purle = 0xff7d00ff
+
+
+#!/bin/bash
+
+sketchybar --add event aerospace_workspace_change
+
+for sid in $(aerospace list-workspaces --all); do
+  sketchybar --add item space.$sid left \
+    --subscribe space.$sid aerospace_workspace_change \
+    --set space.$sid \
+        width=28 \
+        align=center \
+        padding_left=0 \
+        padding_right=0 \
+        label.padding_left=0 \
+        label.padding_right=0 \
+        icon.padding_left=0 \
+        icon.padding_right=0 \
+        background.drawing=on \
+        background.color=0xff000674 \
+        background.corner_radius=0 \
+        background.height=29 \
+        label.font="Hack Nerd Font:Regular:20.0" \
+        label="$sid" \
+        click_script="aerospace workspace $sid" \
+        script="$CONFIG_DIR/plugins/aerospace.sh $sid"
+done
+
+
+##############################
+### BAR APPEARANCE SETTINGS ###
+##############################
+
+sketchybar --bar \
+  position=top \
+  height=29 \
+  blur_radius=0 \
+  color=0xff1a1a1a \
+  padding_left=0 \
+  padding_right=0
+
+
+# Grey = 0xff414141
+##################################
+### GLOBAL DEFAULTS (UNCHANGED) ###
+##################################
+
+default=(
+  padding_left=4
+  padding_right=4
+  icon.font="Hack Nerd Font:Regular:20.0"
+  label.font="Hack Nerd Font:Regular:20.0"
+  icon.color=0xffffffff
+  label.color=0xffffffff
+  icon.padding_left=4
+  icon.padding_right=4
+  label.padding_left=4
+  label.padding_right=4
+)
+sketchybar --default "${default[@]}"
+
+
+##########################
+### LEFT-SIDE BAR ITEMS ###
+##########################
+
+sketchybar --add item chevron left \
+  --set chevron icon= label.drawing=off
+
+sketchybar --add item front_app center \
+  --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
+  --subscribe front_app front_app_switched
+
+
+###########################
+### RIGHT-SIDE BAR ITEMS ###
+###########################
+
+sketchybar --add item clock right \
+  --set clock update_freq=10 icon="" script="$PLUGIN_DIR/clock.sh"
+
+sketchybar --add item volume right \
+  --set volume script="$PLUGIN_DIR/volume.sh" \
+  --subscribe volume volume_change
+
+sketchybar --add item battery right \
+  --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
+  --subscribe battery system_woke power_source_change
+
+
+#######################################
+### RUN ALL SCRIPTS ON FIRST START ###
+#######################################
+
+sketchybar --update
+

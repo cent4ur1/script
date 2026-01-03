@@ -1,0 +1,2 @@
+A borders instance is already running and no valid arguments where provided. To modify properties of the running instance provide them as arguments.
+sketchybar: could not acquire lock-file... already running?

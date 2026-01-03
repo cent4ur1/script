@@ -149,3 +149,11 @@ alias dup='$HOME/dotfilesupdate.sh'
 alias m='ncmpcpp'
 
 alias py3='python3'
+
+alias spy3='sudo python3'
+
+alias pyvenv='source $HOME/Documents/dev/python/bin/activate'
+
+
+# Created by `pipx` on 2025-12-13 06:27:29
+export PATH="$PATH:/Users/macintosh/.local/bin"

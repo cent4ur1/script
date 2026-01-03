@@ -1,5 +1,5 @@
 # Run Sketchybar together with AeroSpace
-# sketchbar has a built-in detection of already running process,
+#wje123123 sketchbar has a built-in detection of already running process,
 
 # Notify Sketchybar about workspace change
 exec-on-workspace-change = ['/bin/bash', '-c',
@@ -75,7 +75,7 @@ automatically-unhide-macos-hidden-apps = true
     inner.vertical =   0
     outer.left =       0
     outer.bottom =     0 
-    outer.top =        2
+    outer.top =       29
     outer.right =      0
 
 # 'main' binding mode declaration
@@ -171,7 +171,7 @@ automatically-unhide-macos-hidden-apps = true
 
 
     # Close window
-    alt-w = ['close']
+    alt-q = ['close']
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
