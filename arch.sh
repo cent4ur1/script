@@ -14,6 +14,6 @@ chsh -s /usr/bin/zsh
 cp -R ./archfiles/alacritty/ $HOME/
 cp -R ./archfiles/hypr/ $HOME/
 cp -R ./archfiles/waybar/ $HOME/
-
+cp ./archfiles/.zshrc $HOME/
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
