@@ -8,6 +8,7 @@ yes | sudo pacman -S alacritty firefox qbittorrent zsh thunar yazi mpv obs-studi
 git clone https://github.com/NvChad/starter ~/.config/nvim
 
 flatpak install flathub com.discordapp.Discord -y
+flatpak install flathub org.qbittorrent.qBittorrent -y
 
 chsh -s /usr/bin/zsh
 
