@@ -5,7 +5,7 @@ echo "1 installing brew"
 sleep 1
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo "2 installing packages"
-yes | brew install neovim mpv audacious alacritty monitorcontroll obs kdenlive jankyborders sketchybar aerospace mac-mouse-fix ffmpeg yt-dlp fprobe cmatrix yazi
+yes | brew install neovim mpv audacious alacritty monitorcontroll obs kdenlive jankyborders sketchybar aerospace mac-mouse-fix ffmpeg yt-dlp fprobe cmatrix yazi karabiner-elements
 clear
 echo "3 Install extra packages? 1[yes] 2[no]"
 echo "Discord, PrismLauncher, Dolphin, Ares-emulator"
