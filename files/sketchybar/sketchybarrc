@@ -16,8 +16,8 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 
 sketchybar --add event aerospace_workspace_change
 
-for sid in $(aerospace list-workspaces --all); do
-  sketchybar --add item space.$sid left \
+#for sid in $(aerospace list-workspaces --all); do
+#  sketchybar --add item space.$sid left \
 #    --subscribe space.$sid aerospace_workspace_change \
 #    --set space.$sid \
 #        width=28 \
@@ -77,7 +77,7 @@ sketchybar --default "${default[@]}"
 ##########################
 
 sketchybar --add item chevron left \
-  --set chevron icon=$(whoami) label.drawing=off
+  --set chevron icon= label.drawing=off
 
 sketchybar --add item front_app left \
   --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
