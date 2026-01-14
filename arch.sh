@@ -3,7 +3,7 @@ cp ./dotfilesupdatearch.sh $HOME/
 cp ./archfiles/leverup.opus $HOME/
 cp ./archfiles/leverdown.opus $HOME/
 cp ./archfiles/mute.sh $HOME/
-sudo pacman -S alacritty firefox zsh thunar yazi mpv obs-studio ffmpeg wl-clipboard yt-dlp flatpak btop ttf-hack-nerd github-cli hyprland hyprpaper hyprlock hyprlauncher waybar waybar pavucontrol thunar wlsunset
+sudo pacman -S alacritty amd-ucode ark base base-devel btop efibootmgr ffmpeg firefox flatpak fzf git github-cli grub gst-plugin-pipewire hyprland hyprlauncher hyprlock hyprpaper keyd libpulse linux linux-firmware mpv neovim networkmanager obs-studio pavucontrol pipewire pipewire-alsa pipewire-jack pipewire-pulse steam sudo thunar ttf-hack-nerd waybar wireplumber wl-clipboard wlsunset wpa_supplicant xdg-desktop-portal-wlr yay yay-debug yazi yt-dlp zram-generator zsh
 
 git clone https://github.com/NvChad/starter ~/.config/nvim
 

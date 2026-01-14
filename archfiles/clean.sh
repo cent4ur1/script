@@ -15,3 +15,4 @@ clear
 echo "System Updated"
 sleep 1
 clear
+echo "Installed Packages: " $(pacman -Qqe)
