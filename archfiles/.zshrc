@@ -151,3 +151,5 @@ alias m='ncmpcpp'
 alias py3='python3'
 
 alias pman='sudo pacman'
+
+alias clean='$HOME/clean.sh'
