@@ -149,3 +149,5 @@ alias dup='$HOME/dotfilesupdatearch.sh'
 alias m='ncmpcpp'
 
 alias py3='python3'
+
+alias pman='sudo pacman'
