@@ -1,0 +1,2 @@
+start-hyprland
+#startplasma-wayland
