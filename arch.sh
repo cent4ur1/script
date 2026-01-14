@@ -22,3 +22,8 @@ cp -R ./archfiles/waybar/ $HOME/.config
 cp ./archfiles/.zshrc $HOME/
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
