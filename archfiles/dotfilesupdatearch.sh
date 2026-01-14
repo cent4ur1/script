@@ -4,8 +4,9 @@ cp -R $HOME/.config/alacritty/ $HOME/script/archfiles/
 cp -R $HOME/.config/alacritty/ $HOME/script/archfiles/
 cp -R $HOME/.config/btop/ $HOME/script/archfiles/
 cp -R $HOME/.zshrc $HOME/script/archfiles/
-cp -R $HOME/.zprofile $HOME/script/archfiles
-cp -R $HOME/dotfilesupdatearch.sh $HOME/script/archfiles
+cp -R $HOME/.zprofile $HOME/script/archfiles/
+cp -R $HOME/dotfilesupdatearch.sh $HOME/script/archfiles/
+cp -R $HOME/clean.sh $HOME/script/archfiles/
 
 cd $HOME/script/
 git add .
