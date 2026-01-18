@@ -110,21 +110,21 @@ alias 64brew='arch -x86_64 /usr/local/bin/brew'
 #alias ytmp3='yt-dlp -x --audio-format mp3 --audio-quality 320k "ytsearch:$*"'
 
 ytmp3() {
-    yt-dlp -x --audio-format mp3 --audio-quality 320k --embed-metadata "ytsearch:$*"
+    yt-dlp -x --audio-format mp3 --audio-quality 320k --embed-metadata --embed-thumbnail "ytsearch:$*"
 }
 
 # Download youtube videos as opus
 #alias ytopus='yt-dlp -x --audio-format opus'
 ytopus() {
-    yt-dlp -x --audio-format opus "ytsearch:$*"
+    yt-dlp -x --audio-format opus --embed-metadata --embed-thumbnail "ytsearch:$*"
 }
 
 ytmp4() {
-    yt-dlp -t mp4 "ytsearch:$*"
+    yt-dlp --sponsorblock-mark poi_highlight --sponsorblock-remove sponsor --write-auto-subs --embed-thumbnail --embed-metadata -t mp4 "ytsearch:$*"
 }
 
 ytmkv() {
-    yt-dlp -t mkv "ytsearch:$*"
+    yt-dlp --sponsorblock-mark poi_highlight --sponsorblock-remove sponsor --write-auto-subs --embed-thumbnail --embed-metadata -t mkv "ytsearch:$*"
 }
 
 #Xash 3D half life with console
