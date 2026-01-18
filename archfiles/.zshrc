@@ -110,39 +110,25 @@ alias 64brew='arch -x86_64 /usr/local/bin/brew'
 #alias ytmp3='yt-dlp -x --audio-format mp3 --audio-quality 320k "ytsearch:$*"'
 
 ytmp3() {
-    yt-dlp -x --audio-format mp3 --audio-quality 320k --embed-metadata "ytsearch:$*"
+    yt-dlp -x --audio-format mp3 --audio-quality 320k --embed-metadata --embed-thumbnail "ytsearch:$*"
 }
 
 # Download youtube videos as opus
 #alias ytopus='yt-dlp -x --audio-format opus'
 ytopus() {
-    yt-dlp -x --audio-format opus "ytsearch:$*"
+    yt-dlp -x --audio-format opus --embed-metadata --embed-thumbnail"ytsearch:$*"
 }
 
 ytmp4() {
-    yt-dlp -t mp4 "ytsearch:$*"
+    yt-dlp --sponsorblock-mark poi_highlight --sponsorblock-remove sponsor --write-auto-subs --embed-metadata --embed-thumbnail-t mp4 "ytsearch:$*"
 }
 
 ytmkv() {
-    yt-dlp -t mkv "ytsearch:$*"
+    yt-dlp --sponsorblock-mark poi_highlight --sponsorblock-remove sponsor --write-auto-subs --embed-metadata --embed-thumbnail-t mkv "ytsearch:$*"
 }
 
 #Xash 3D half life with console
-alias hl='/Applications/Xash3D-FWGS.app/Contents/MacOS/xash3d -console'
-
-# Download youtube videos as mp4
-#alias ytmp4='yt-dlp -t mp4'
-# Download youtube videos in mkv
-#alias ytmkv='yt-dlp -t mkv'
-# Download youtube videos with subtitles and sponsor block api, defaults as mp4
-alias ytfull='yt-dlp --sponsorblock-mark poi_highlight --sponsorblock-remove sponsor --write-auto-subs -t mp4'
-# Download youtube videos with subtitles and sponsor block api, as mkv
-alias ytfullmkv='yt-dlp --sponsorblock-mark poi_highlight --sponsorblock-remove sponsor --write-auto-subs -t mkv'
-
-# General mp4 download 
-alias gmp4='yt-dlp -t mp4'
-# General mkv download
-alias gmkv='yt-dlp -t mkv'
+#alias hl='/Applications/Xash3D-FWGS.app/Contents/MacOS/xash3d -console'
 
 alias dup='$HOME/dotfilesupdatearch.sh'
 
