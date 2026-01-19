@@ -1,5 +1,6 @@
 cp ./clean.sh $HOME/
 cp ./dotfilesupdatearch.sh $HOME/
+cp ./archfiles/mpd/ $HOME/.config/
 #cp ./archfiles/leverup.opus $HOME/
 #cp ./archfiles/leverdown.opus $HOME/
 #cp ./archfiles/mute.sh $HOME/
