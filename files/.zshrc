@@ -146,7 +146,7 @@ alias gmkv='yt-dlp -t mkv'
 
 alias dup='$HOME/dotfilesupdate.sh'
 
-alias m='ncmpcpp'
+alias m='rpmc'
 
 alias py3='python3'
 
