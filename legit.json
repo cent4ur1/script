@@ -24,12 +24,12 @@
         "value": [
           {
             "name": "Enabled",
-            "value": false
+            "value": true
           },
           {
             "name": "Bind",
             "value": {
-              "boundKey": "key.keyboard.b",
+              "boundKey": "key.keyboard.unknown",
               "action": "Toggle"
             }
           },
@@ -74,9 +74,7 @@
                   "Head": "Head"
                 },
                 "name": "ExemptBoxParts",
-                "value": [
-                  "Feet"
-                ]
+                "value": []
               },
               {
                 "name": "ExemptBestHitVector",
@@ -223,27 +221,27 @@
                   {
                     "name": "HorizontalSpeed",
                     "value": {
-                      "from": 71,
-                      "to": 81
+                      "from": 60,
+                      "to": 65
                     }
                   },
                   {
                     "name": "VerticalSpeed",
                     "value": {
                       "from": 20,
-                      "to": 20
+                      "to": 25
                     }
                   },
                   {
                     "name": "DirectionChangeFactor",
                     "value": {
-                      "from": 100,
+                      "from": 95,
                       "to": 100
                     }
                   },
                   {
                     "name": "Midpoint",
-                    "value": 0.7
+                    "value": 0.35
                   }
                 ]
               },
@@ -813,7 +811,7 @@
                     "value": [
                       {
                         "name": "Enabled",
-                        "value": false
+                        "value": true
                       },
                       {
                         "name": "Length",
@@ -2618,8 +2616,8 @@
                   {
                     "name": "CPS",
                     "value": {
-                      "from": 12,
-                      "to": 14
+                      "from": 9,
+                      "to": 11
                     }
                   },
                   {
@@ -2650,7 +2648,7 @@
               },
               {
                 "name": "DelayOnBroken",
-                "value": false
+                "value": true
               },
               {
                 "name": "Objective",
@@ -2687,7 +2685,7 @@
                   {
                     "name": "CPS",
                     "value": {
-                      "from": 12,
+                      "from": 13,
                       "to": 16
                     }
                   },
@@ -4732,7 +4730,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": true
+            "value": false
           },
           {
             "name": "Bind",
@@ -4853,7 +4851,7 @@
           },
           {
             "name": "RequireSneaking",
-            "value": true
+            "value": false
           },
           {
             "name": "RequireNearBed",
@@ -9454,8 +9452,8 @@
           {
             "name": "EdgeDistance",
             "value": {
-              "from": 0.49,
-              "to": 0.49
+              "from": 0.67,
+              "to": 0.67
             }
           },
           {
@@ -10925,7 +10923,7 @@
           {
             "name": "Bind",
             "value": {
-              "boundKey": "key.keyboard.m",
+              "boundKey": "key.keyboard.unknown",
               "action": "Toggle"
             }
           },
@@ -13224,7 +13222,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": true
+            "value": false
           },
           {
             "name": "Bind",
@@ -13314,6 +13312,7 @@
                 },
                 "name": "Priority",
                 "value": [
+                  "Direction",
                   "Distance"
                 ]
               },
@@ -13662,7 +13661,7 @@
               },
               {
                 "name": "MovementCorrection",
-                "value": "Strict"
+                "value": "Silent"
               },
               {
                 "name": "ResetThreshold",
@@ -13678,7 +13677,7 @@
               },
               {
                 "name": "ThroughWalls",
-                "value": true
+                "value": false
               }
             ]
           },
@@ -13824,7 +13823,6 @@
             },
             "name": "Requires",
             "value": [
-              "Click",
               "NotBreaking"
             ]
           },
@@ -17876,7 +17874,7 @@
           },
           {
             "name": "Technique",
-            "active": "Normal",
+            "active": "GodBridge",
             "value": [],
             "choices": {
               "Normal": {
@@ -17888,7 +17886,7 @@
                   },
                   {
                     "name": "RequiresSight",
-                    "value": true
+                    "value": false
                   },
                   {
                     "name": "Eagle",
@@ -17919,7 +17917,7 @@
                     "value": [
                       {
                         "name": "Enabled",
-                        "value": true
+                        "value": false
                       },
                       {
                         "name": "ResetMode",
@@ -17927,7 +17925,7 @@
                       },
                       {
                         "name": "Straight",
-                        "value": 0
+                        "value": 1
                       },
                       {
                         "name": "Jump",
@@ -17956,7 +17954,7 @@
                     "value": [
                       {
                         "name": "Enabled",
-                        "value": true
+                        "value": false
                       }
                     ]
                   },
@@ -18026,7 +18024,7 @@
           },
           {
             "name": "SameY",
-            "value": "On"
+            "value": "Off"
           },
           {
             "name": "Tower",
@@ -18175,24 +18173,24 @@
                       {
                         "name": "HorizontalTurnSpeed",
                         "value": {
-                          "from": 70.0,
-                          "to": 90.0
+                          "from": 19.8,
+                          "to": 40.5
                         }
                       },
                       {
                         "name": "VerticalTurnSpeed",
                         "value": {
-                          "from": 40.1,
-                          "to": 40.1
+                          "from": 8.1,
+                          "to": 30.6
                         }
                       },
                       {
                         "name": "Steepness",
-                        "value": 2.6
+                        "value": 10.0
                       },
                       {
                         "name": "Midpoint",
-                        "value": 0.27
+                        "value": 0.3
                       }
                     ]
                   },
@@ -18306,7 +18304,7 @@
               },
               {
                 "name": "TicksUntilReset",
-                "value": 1
+                "value": 20
               },
               {
                 "name": "ConsiderInventory",
@@ -18349,7 +18347,7 @@
                     "name": "CPS",
                     "value": {
                       "from": 11,
-                      "to": 16
+                      "to": 12
                     }
                   },
                   {
@@ -18472,7 +18470,7 @@
           },
           {
             "name": "Ledge",
-            "value": false
+            "value": true
           }
         ]
       },
@@ -20637,7 +20635,10 @@
               "Pants": "Pants"
             },
             "name": "ArmorColor",
-            "value": []
+            "value": [
+              "Helmet",
+              "Chestplate"
+            ]
           }
         ]
       },
@@ -21576,7 +21577,7 @@
           },
           {
             "name": "PauseOnFlag",
-            "value": 1
+            "value": 0
           }
         ]
       },
@@ -21694,11 +21695,11 @@
     ]
   },
   "author": "centavri",
-  "date": "16/01/2026",
-  "time": "15:23:33",
+  "date": "23/01/2026",
+  "time": "09:42:23",
   "clientVersion": "0.35.3",
   "clientCommit": "git-d1db7d8",
-  "serverAddress": "bridger.land",
+  "serverAddress": "hypixel.net",
   "protocolName": "1.8.x",
   "protocolVersion": 47,
   "type": "Rage",
