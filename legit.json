@@ -13295,7 +13295,7 @@
             "value": [
               {
                 "name": "FOV",
-                "value": 90.0
+                "value": 180.0
               },
               {
                 "name": "HurtTime",
@@ -13823,6 +13823,7 @@
             },
             "name": "Requires",
             "value": [
+              "Click",
               "NotBreaking"
             ]
           },
@@ -21696,7 +21697,7 @@
   },
   "author": "centavri",
   "date": "23/01/2026",
-  "time": "22:11:05",
+  "time": "23:47:42",
   "clientVersion": "0.35.3",
   "clientCommit": "git-d1db7d8",
   "serverAddress": "hypixel.net",
