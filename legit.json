@@ -29,7 +29,7 @@
           {
             "name": "Bind",
             "value": {
-              "boundKey": "key.keyboard.unknown",
+              "boundKey": "key.keyboard.b",
               "action": "Toggle"
             }
           },
@@ -15057,7 +15057,7 @@
           },
           {
             "name": "NoSwim",
-            "value": false
+            "value": true
           },
           {
             "name": "SneakHeight",
@@ -21696,12 +21696,12 @@
   },
   "author": "centavri",
   "date": "23/01/2026",
-  "time": "09:42:23",
+  "time": "22:11:05",
   "clientVersion": "0.35.3",
   "clientCommit": "git-d1db7d8",
   "serverAddress": "hypixel.net",
-  "protocolName": "1.8.x",
-  "protocolVersion": 47,
+  "protocolName": "1.21.11",
+  "protocolVersion": 774,
   "type": "Rage",
   "status": "Bypassing"
 }
