@@ -24,12 +24,12 @@
         "value": [
           {
             "name": "Enabled",
-            "value": true
+            "value": false
           },
           {
             "name": "Bind",
             "value": {
-              "boundKey": "key.keyboard.b",
+              "boundKey": "key.keyboard.unknown",
               "action": "Toggle"
             }
           },
@@ -2685,8 +2685,8 @@
                   {
                     "name": "CPS",
                     "value": {
-                      "from": 13,
-                      "to": 16
+                      "from": 18,
+                      "to": 26
                     }
                   },
                   {
@@ -4730,7 +4730,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": false
+            "value": true
           },
           {
             "name": "Bind",
@@ -4847,11 +4847,11 @@
           },
           {
             "name": "SwapPreviousDelay",
-            "value": 20
+            "value": 2
           },
           {
             "name": "RequireSneaking",
-            "value": false
+            "value": true
           },
           {
             "name": "RequireNearBed",
@@ -5133,7 +5133,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": false
+            "value": true
           },
           {
             "name": "Bind",
@@ -5156,7 +5156,7 @@
           },
           {
             "name": "SwitchBack",
-            "value": 20
+            "value": 4
           },
           {
             "choiceByName": {
@@ -9452,8 +9452,8 @@
           {
             "name": "EdgeDistance",
             "value": {
-              "from": 0.67,
-              "to": 0.67
+              "from": 0.5,
+              "to": 0.5
             }
           },
           {
@@ -13222,7 +13222,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": false
+            "value": true
           },
           {
             "name": "Bind",
@@ -13548,7 +13548,7 @@
                                 "name": "DirectionChangeFactor",
                                 "value": {
                                   "from": 20,
-                                  "to": 30
+                                  "to": 40
                                 }
                               },
                               {
@@ -13824,6 +13824,7 @@
             "name": "Requires",
             "value": [
               "Click",
+              "Weapon",
               "NotBreaking"
             ]
           },
@@ -19779,7 +19780,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": false
+            "value": true
           },
           {
             "name": "Bind",
@@ -21696,8 +21697,8 @@
     ]
   },
   "author": "centavri",
-  "date": "23/01/2026",
-  "time": "23:47:42",
+  "date": "26/01/2026",
+  "time": "19:38:14",
   "clientVersion": "0.35.3",
   "clientCommit": "git-d1db7d8",
   "serverAddress": "hypixel.net",
