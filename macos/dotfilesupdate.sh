@@ -1,3 +1,4 @@
+sed -i "9c\\yes | brew install $(brew list | tr '\n' ' ')" $HOME/script/macos/start.sh
 cp -r $HOME/.config/ /Users/$USER/script/macos/files/
 
 cp $HOME/.aerospace.toml /Users/$USER/script/macos/files/
