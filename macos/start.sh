@@ -6,7 +6,7 @@ echo "[1] Installing brew"
 sleep 1
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo "[2] Installing packages"
- 
+test
 clear
 echo "[3] Install extra packages? 1[yes] 2[no]"
 echo "Discord, PrismLauncher, Dolphin, Ares-emulator"
