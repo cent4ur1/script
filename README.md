@@ -1,4 +1,4 @@
-<img width="1920" height="1080" alt="github" src="https://github.com/user-attachments/assets/a127256e-1b9a-4579-9c09-bffbe5956d28" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/df09c819-b155-45f7-ab85-329e47c55cec" />
 
 # macOS script 
 Install script for macOS
