@@ -1,35 +1,31 @@
-echo "Installing"
-
 clear
-echo "1 installing brew"
+echo "DEFAULT MACOS SETUP"
+sleep 2
+clear
+echo "[1] Installing brew"
 sleep 1
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-echo "2 installing packages"
+echo "[2] Installing packages"
 yes | brew install neovim mpv audacious alacritty monitorcontroll obs kdenlive jankyborders sketchybar aerospace mac-mouse-fix ffmpeg yt-dlp fprobe cmatrix yazi
 clear
-echo "3 Install extra packages? 1[yes] 2[no]"
+echo "[3] Install extra packages? 1[yes] 2[no]"
 echo "Discord, PrismLauncher, Dolphin, Ares-emulator"
 read a
 if [ "$a" == "1" ]; then
   yes | brew install discord prismlauncher dolphin ares-emulator
 fi
 clear
-echo "4 setting defaults"
+echo "[4] Setting defaults"
 mv ./files/.aerospace.toml $HOME/ 
 mv ./files/.zshrc $HOME/ 
 mkdir $HOME/.config
-mv ./files/nvim/ $HOME/.config/ 
-mv ./files/btop/ $HOME/.config/
-mv ./files/sketchybar/ $HOME/.config
-
+mv ./files/* $HOME/.config/ 
 ./macosdefaults.sh
+
 echo "Done"
 open /Applications/AeroSpace.app/
 open /Applications/MonitorControl.app/
-open /Applications/Mac Mouse Fix.app/
 sleep 2 
 clear
 cd /Users/$USER/
-rm -rf /Users/$USER/script/
-
 #sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
