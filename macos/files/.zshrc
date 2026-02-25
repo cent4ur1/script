@@ -3,6 +3,7 @@
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export EDITOR="/opt/homebrew/bin/nvim"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -154,6 +155,7 @@ alias spy3='sudo python3'
 
 alias pyvenv='source $HOME/Documents/dev/python/bin/activate'
 
+alias gdu='gdu-go'
 
 # Created by `pipx` on 2025-12-13 06:27:29
 export PATH="$PATH:/Users/macintosh/.local/bin"
