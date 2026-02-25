@@ -4,7 +4,7 @@
 Install script for macOS
 
 ```shell
-git clone https://github.com/cent4ur1/script.git;cd script;chmod +x start.sh;./start.sh
+git clone https://github.com/cent4ur1/script.git;cd script/macos/;chmod +x start.sh;./start.sh
 ```
 # Arch Linux
 
