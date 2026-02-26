@@ -24,7 +24,7 @@ if [ $x -eq 1 ]; then
 
   killall SystemUIServer
   killall Dock
-elif [ $x -eq 2]; then
+elif [ $x -eq 2 ]; then
   pkill AeroSpace
   pkill borders
   pkill sketchybar
@@ -45,8 +45,6 @@ elif [ $x -eq 2]; then
   killall Dock
 else
   clear
-  echo "Neither chosen"
-  sleep 1
-  clear
+  ./macosdefaults.sh
 fi
 
