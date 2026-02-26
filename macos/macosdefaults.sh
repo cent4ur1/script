@@ -1,4 +1,4 @@
-echo "tiling(1) or normie?(2)"
+echo "[1] tiling or [2] normie?"
 read x
 
 if [ $x -eq 1 ]; then
