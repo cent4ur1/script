@@ -11,5 +11,3 @@ git clone https://github.com/cent4ur1/script.git;cd script/macos/;chmod +x start
 ```shell
 git clone https://github.com/cent4ur1/script.git;cd script;chmod +x arch.sh;./arch.sh
 ```
-# Neovim
-I use the "chocolate" theme, (ESC + T + H, then type "chocolate")
