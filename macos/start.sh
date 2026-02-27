@@ -20,8 +20,8 @@ else
   mkdir $HOME/.config
   mv ./files/* $HOME/.config/ 
   ./macosdefaults.sh
-
-  echo "Done"
+  clear
+  echo "Install Completed!"
   open /Applications/AeroSpace.app/
   open /Applications/MonitorControl.app/
   sleep 2 
