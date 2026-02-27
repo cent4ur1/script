@@ -1,6 +1,4 @@
-gsed -i "9c\\yes | brew install $(brew list | tr '\n' ' ')" $HOME/script/macos/start.sh
-cp -r $HOME/.config/ /Users/$USER/script/macos/files/
-
+gsed -i "9c\\yes | brew install $(brew list --formula | tr '\n' ' ')" $HOME/script/macos/start.sh
 cp $HOME/.aerospace.toml /Users/$USER/script/macos/files/
 cp $HOME/.zshrc /Users/$USER/script/macos/files
 cp -r $HOME/.mpd/ /Users/$USER/script/macos/files/
