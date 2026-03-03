@@ -168,6 +168,7 @@ automatically-unhide-macos-hidden-apps = true
 
     alt-enter = 'exec-and-forget open -n /Applications/Alacritty.app'
 
+
     alt-b = 'exec-and-forget open -n /Applications/Firefox.app'
 
     # Close window
