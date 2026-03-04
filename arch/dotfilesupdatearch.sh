@@ -6,6 +6,7 @@ cp -R $HOME/.zshrc $HOME/script/arch/files
 cp -R $HOME/dotfilesupdatearch.sh $HOME/script/arch/
 cp -R $HOME/clean.sh $HOME/script/arch/
 cp -R $HOME/.local/share/icons/ $HOME/script/arch/files
+cp -R $HOME/dotfilesupdatearch.sh $HOME/script/arch/
 echo "sudo pacman -S" $(pacman -Qqe) >>$HOME/script/arch/files/arch.sh
 
 cd $HOME/script/

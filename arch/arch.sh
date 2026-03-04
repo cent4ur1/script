@@ -3,18 +3,13 @@ mkdir $HOME/.gh/
 cp ./dotfilesupdatearch.sh $HOME/
 cp ./files/.zshrc $HOME/
 #sudo pacman -S alacritty amd-ucode ark base base-devel  btop dnsmasq thunar edk2-ovmf efibootmgr feh ffmpeg firefox flatpak fzf git github-cli grub gst-plugin-pipewire hyprland hyprlauncher hyprlock hyprpaper iptables-nft kate keyd kolourpaint libpulse mpv neovim networkmanager nftables nm-connection-editor noto-fonts-cjk obs-studio openresolv pavucontrol pipewire pipewire-alsa pipewire-jack pipewire-pulse  qemu-full sddm  strawberry sudo ttf-hack-nerd unrar vde2 virt-manager waybar wireguard-tools wireplumber wl-clipboard wlsunset wpa_supplicant xdg-desktop-portal-gtk xdg-desktop-portal-wlr yazi yt-dlp zram-generator zsh
-
-flatpak install flathub com.discordapp.Discord -y
-flatpak install flathub org.qbittorrent.qBittorrent -y
+sudo pacman -S alacritty mpd rmpc firefox hyprland hyprpaper kdenlive gimp obs-studio flatpak feh ffmpeg yazi zsh btop fastfetch github-cli thunar neovim mpv ttf-hack-nerd wl-clipboard yt-dlp wlsunset pavucontrol rofi qBittorrent
 flatpak install flathub io.github.ungoogled_software.ungoogled_chromium -y
-
 chmod +x $HOME/dotfilesupdatearch.sh
 
-#cp ./files/.zshrc $HOME/
+cp ./files/.zshrc $HOME/
 touch $HOME/.zprofile
 echo "start-hyprland" >>$HOME/.zprofile
-echo "mpd" >>$HOME/.zprofile
-#cp ./files/.zprofile $HOME/
 
 # Ohmyzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
