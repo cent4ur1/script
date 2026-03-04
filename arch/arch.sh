@@ -7,7 +7,7 @@ sudo pacman -S alacritty mpd rmpc firefox hyprland hyprpaper kdenlive gimp obs-s
 flatpak install flathub io.github.ungoogled_software.ungoogled_chromium -y
 chmod +x $HOME/dotfilesupdatearch.sh
 
-cp ./files/.zshrc $HOME/
+cp $HOME/script/arch/files/.zshrc $HOME/
 touch $HOME/.zprofile
 echo "start-hyprland" >>$HOME/.zprofile
 
