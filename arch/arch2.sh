@@ -24,3 +24,4 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 #clear
 #echo "Arch install complete"
 export GH_CONFIG_DIR=$HOME/.gh
+firefox https://www.jetbrains.com/idea/download/\?section\=linux
