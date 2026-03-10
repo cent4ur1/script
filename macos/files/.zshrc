@@ -160,7 +160,7 @@ alias gdu='gdu-go'
 # Replace macOS sed with GNU sed
 alias sed='gsed'
 alias uni='$HOME/uniwork/update.sh'
-alias umletuni='java -jar $HOME/UMLet-14.3/umlet.jar'
+alias umlet='java -jar $HOME/UMLet-14.3/umlet.jar'
 
 # Created by `pipx` on 2025-12-13 06:27:29
 export PATH="$PATH:/Users/macintosh/.local/bin"
