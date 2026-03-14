@@ -20,7 +20,7 @@ if [ $x -eq 1 ]; then
   defaults write com.apple.dock autohide-time-modifier -float 0
   defaults write com.apple.dock autohide-delay -float 0
   defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true
-  defaults write NSGlobalDomain _HIHideMenuBar -bool true
+#  defaults write NSGlobalDomain _HIHideMenuBar -bool true
 
   killall SystemUIServer
   killall Dock
@@ -41,7 +41,7 @@ elif [ $x -eq 2 ]; then
   defaults write com.apple.dock autohide-time-modifier -float 1
   defaults write com.apple.dock autohide-delay -float 1
   defaults write NSGlobalDomain NSTextShowsControlCharacters -bool false
-  defaults write NSGlobalDomain _HIHideMenuBar -bool true 
+#  defaults write NSGlobalDomain _HIHideMenuBar -bool true 
   killall Dock
 else
   clear
