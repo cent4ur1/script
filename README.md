@@ -5,8 +5,13 @@
 ```shell
 git clone https://github.com/cent4ur1/script.git;cd script/macos/;chmod +x start.sh;./start.sh
 ```
-# Arch Linux
+# Arch/Artix Linux
 
 ```shell
 git clone https://github.com/cent4ur1/script.git;cd script;chmod +x arch.sh;./arch.sh
+```
+# Windows 
+
+```shell
+powershell -NoProfile -ExecutionPolicy Bypass -Command "iwr -useb https://raw.githubusercontent.com/cent4ur1/script/windows/start.ps1 | iex"
 ```
