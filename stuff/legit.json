@@ -19303,7 +19303,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": false
+            "value": true
           },
           {
             "name": "Bind",
@@ -21363,7 +21363,7 @@
   },
   "author": "centavri",
   "date": "26/03/2026",
-  "time": "11:00:36",
+  "time": "11:15:03",
   "clientVersion": "0.36.0",
   "clientCommit": "git-4a044c6",
   "serverAddress": "oceanias.net",
