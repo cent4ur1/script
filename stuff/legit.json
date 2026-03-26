@@ -3462,7 +3462,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": false
+            "value": true
           },
           {
             "name": "Bind",
@@ -4595,7 +4595,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": false
+            "value": true
           },
           {
             "name": "Bind",
@@ -4708,11 +4708,11 @@
           },
           {
             "name": "SwapPreviousDelay",
-            "value": 20
+            "value": 10
           },
           {
             "name": "RequireSneaking",
-            "value": false
+            "value": true
           },
           {
             "name": "RequireNearBed",
@@ -9210,7 +9210,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": false
+            "value": true
           },
           {
             "name": "Bind",
@@ -9223,7 +9223,7 @@
             "name": "EdgeDistance",
             "value": {
               "from": 0.4,
-              "to": 0.6
+              "to": 0.4
             }
           },
           {
@@ -9236,7 +9236,10 @@
               {
                 "name": "Conditions",
                 "value": [
-                  "OnGround"
+                  "Backwards",
+                  "HoldingBlocks",
+                  "OnGround",
+                  "Sneak"
                 ]
               },
               {
@@ -20246,7 +20249,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": false
+            "value": true
           },
           {
             "name": "Bind",
@@ -20257,15 +20260,13 @@
           },
           {
             "name": "Matches",
-            "value": [
-              "ScoreboardTeam",
-              "NameColor"
-            ]
+            "value": []
           },
           {
             "name": "ArmorColor",
             "value": [
-              "Helmet"
+              "Helmet",
+              "Chestplate"
             ]
           }
         ]
@@ -21361,8 +21362,8 @@
     ]
   },
   "author": "centavri",
-  "date": "25/03/2026",
-  "time": "16:25:18",
+  "date": "26/03/2026",
+  "time": "11:00:36",
   "clientVersion": "0.36.0",
   "clientCommit": "git-4a044c6",
   "serverAddress": "oceanias.net",
