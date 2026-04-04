@@ -2615,7 +2615,7 @@
             "value": [
               {
                 "name": "Enabled",
-                "value": true
+                "value": false
               },
               {
                 "name": "Clicker",
@@ -4655,7 +4655,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": false
+            "value": true
           },
           {
             "name": "Bind",
@@ -4767,11 +4767,11 @@
           },
           {
             "name": "SwapPreviousDelay",
-            "value": 20
+            "value": 2
           },
           {
             "name": "RequireSneaking",
-            "value": false
+            "value": true
           },
           {
             "name": "NotDuringCombat",
@@ -12833,7 +12833,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": false
+            "value": true
           },
           {
             "name": "Bind",
@@ -12848,22 +12848,22 @@
               {
                 "name": "StartDelay",
                 "value": {
-                  "from": 1,
-                  "to": 2
+                  "from": 0,
+                  "to": 1
                 }
               },
               {
                 "name": "ClickDelay",
                 "value": {
-                  "from": 2,
-                  "to": 4
+                  "from": 1,
+                  "to": 2
                 }
               },
               {
                 "name": "CloseDelay",
                 "value": {
-                  "from": 1,
-                  "to": 2
+                  "from": 0,
+                  "to": 1
                 }
               },
               {
@@ -12875,7 +12875,11 @@
               },
               {
                 "name": "Requires",
-                "value": []
+                "value": [
+                  "NoMovement",
+                  "NoRotation",
+                  "InventoryOpen"
+                ]
               }
             ]
           },
@@ -12905,23 +12909,23 @@
           },
           {
             "name": "SlotItem-1",
-            "value": "Weapon"
+            "value": "Sword"
           },
           {
             "name": "SlotItem-2",
-            "value": "Bow"
+            "value": "Block"
           },
           {
             "name": "SlotItem-3",
-            "value": "Pickaxe"
+            "value": "Gapple"
           },
           {
             "name": "SlotItem-4",
-            "value": "Axe"
+            "value": "Pearl"
           },
           {
             "name": "SlotItem-5",
-            "value": "None"
+            "value": "Potion"
           },
           {
             "name": "SlotItem-6",
@@ -12929,15 +12933,15 @@
           },
           {
             "name": "SlotItem-7",
-            "value": "Food"
+            "value": "None"
           },
           {
             "name": "SlotItem-8",
-            "value": "Block"
+            "value": "Axe"
           },
           {
             "name": "SlotItem-9",
-            "value": "Block"
+            "value": "Pickaxe"
           }
         ]
       },
@@ -15001,7 +15005,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": false
+            "value": true
           },
           {
             "name": "Bind",
@@ -15012,11 +15016,11 @@
           },
           {
             "name": "NoSwim",
-            "value": false
+            "value": true
           },
           {
             "name": "SneakHeight",
-            "value": "1.15"
+            "value": "1.8"
           }
         ]
       },
@@ -16177,7 +16181,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": true
+            "value": false
           },
           {
             "name": "Bind",
@@ -20025,7 +20029,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": true
+            "value": false
           },
           {
             "name": "Bind",
@@ -20836,7 +20840,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": false
+            "value": true
           },
           {
             "name": "Bind",
@@ -21960,12 +21964,12 @@
       }
     ]
   },
-  "author": "centavri",
-  "date": "03/04/2026",
-  "time": "17:27:13",
+  "author": "Fridagon",
+  "date": "04/04/2026",
+  "time": "12:49:21",
   "clientVersion": "0.37.0",
   "clientCommit": "git-e77a669",
-  "serverAddress": "catpvp.xyz",
+  "serverAddress": "hypixel.net",
   "protocolName": "1.21.11",
   "protocolVersion": 774,
   "type": "Rage",
