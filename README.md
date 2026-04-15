@@ -9,5 +9,5 @@ git clone https://github.com/cent4ur1/script.git;cd script/macos/;chmod +x start
 # Windows 
 
 ```shell
-powershell -NoProfile -ExecutionPolicy Bypass -Command "iwr -useb https://raw.githubusercontent.com/cent4ur1/script/windows/start.ps1 | iex"
+Download start.ps1 from /windows
 ```
