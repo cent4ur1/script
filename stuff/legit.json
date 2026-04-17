@@ -204,8 +204,8 @@
                   {
                     "name": "HorizontalSpeed",
                     "value": {
-                      "from": 80,
-                      "to": 85
+                      "from": 90,
+                      "to": 90
                     }
                   },
                   {
@@ -224,7 +224,7 @@
                   },
                   {
                     "name": "Midpoint",
-                    "value": 0.35
+                    "value": 0.2
                   }
                 ]
               },
@@ -279,8 +279,7 @@
           {
             "name": "Axis",
             "value": [
-              "Horizontal",
-              "Vertical"
+              "Horizontal"
             ]
           },
           {
@@ -2615,7 +2614,7 @@
             "value": [
               {
                 "name": "Enabled",
-                "value": false
+                "value": true
               },
               {
                 "name": "Clicker",
@@ -2623,13 +2622,13 @@
                   {
                     "name": "CPS",
                     "value": {
-                      "from": 14,
-                      "to": 18
+                      "from": 12,
+                      "to": 16
                     }
                   },
                   {
                     "name": "Technique",
-                    "value": "Butterfly"
+                    "value": "Stabilized"
                   }
                 ]
               },
@@ -5061,10 +5060,7 @@
           {
             "name": "Preferred",
             "value": [
-              "Any",
-              "Sword",
-              "Axe",
-              "Mace"
+              "Any"
             ]
           },
           {
@@ -10636,7 +10632,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": true
+            "value": false
           },
           {
             "name": "Bind",
@@ -12833,7 +12829,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": true
+            "value": false
           },
           {
             "name": "Bind",
@@ -16181,7 +16177,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": false
+            "value": true
           },
           {
             "name": "Bind",
@@ -16197,20 +16193,20 @@
                 "name": "StartDelay",
                 "value": {
                   "from": 0,
-                  "to": 1
+                  "to": 0
                 }
               },
               {
                 "name": "ClickDelay",
                 "value": {
                   "from": 1,
-                  "to": 2
+                  "to": 1
                 }
               },
               {
                 "name": "CloseDelay",
                 "value": {
-                  "from": 1,
+                  "from": 0,
                   "to": 2
                 }
               },
@@ -16225,8 +16221,7 @@
                 "name": "Requires",
                 "value": [
                   "NoMovement",
-                  "NoRotation",
-                  "InventoryOpen"
+                  "NoRotation"
                 ]
               }
             ]
@@ -20840,7 +20835,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": true
+            "value": false
           },
           {
             "name": "Bind",
@@ -21676,7 +21671,7 @@
                 "value": [
                   {
                     "name": "Chance",
-                    "value": 100.0
+                    "value": 90.0
                   },
                   {
                     "name": "JumpByReceivedHits",
@@ -21699,7 +21694,7 @@
                     "value": [
                       {
                         "name": "Enabled",
-                        "value": true
+                        "value": false
                       },
                       {
                         "name": "UntilJump",
@@ -21964,12 +21959,12 @@
       }
     ]
   },
-  "author": "Fridagon",
-  "date": "04/04/2026",
-  "time": "12:49:21",
+  "author": "centavri",
+  "date": "17/04/2026",
+  "time": "12:32:45",
   "clientVersion": "0.37.0",
   "clientCommit": "git-e77a669",
-  "serverAddress": "hypixel.net",
+  "serverAddress": "catpvp.xyz",
   "protocolName": "1.21.11",
   "protocolVersion": 774,
   "type": "Rage",
