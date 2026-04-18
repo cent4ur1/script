@@ -24,7 +24,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": true
+            "value": false
           },
           {
             "name": "Bind",
@@ -204,8 +204,8 @@
                   {
                     "name": "HorizontalSpeed",
                     "value": {
-                      "from": 90,
-                      "to": 90
+                      "from": 80,
+                      "to": 85
                     }
                   },
                   {
@@ -224,7 +224,7 @@
                   },
                   {
                     "name": "Midpoint",
-                    "value": 0.2
+                    "value": 0.35
                   }
                 ]
               },
@@ -279,7 +279,8 @@
           {
             "name": "Axis",
             "value": [
-              "Horizontal"
+              "Horizontal",
+              "Vertical"
             ]
           },
           {
@@ -1439,7 +1440,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": true
+            "value": false
           },
           {
             "name": "Bind",
@@ -2622,21 +2623,23 @@
                   {
                     "name": "CPS",
                     "value": {
-                      "from": 12,
-                      "to": 16
+                      "from": 14,
+                      "to": 18
                     }
                   },
                   {
                     "name": "Technique",
-                    "value": "Stabilized"
+                    "value": "Butterfly"
                   }
                 ]
               },
               {
                 "name": "HoldingItemsForIgnore",
                 "value": [
+                  "minecraft:elytra",
                   "minecraft:ender_eye",
                   "minecraft:ender_pearl",
+                  "minecraft:firework_rocket",
                   "minecraft:lava_bucket",
                   "minecraft:player_head",
                   "minecraft:water_bucket"
@@ -5060,7 +5063,10 @@
           {
             "name": "Preferred",
             "value": [
-              "Any"
+              "Any",
+              "Sword",
+              "Axe",
+              "Mace"
             ]
           },
           {
@@ -10632,7 +10638,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": false
+            "value": true
           },
           {
             "name": "Bind",
@@ -14941,7 +14947,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": false
+            "value": true
           },
           {
             "name": "Bind",
@@ -15001,7 +15007,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": true
+            "value": false
           },
           {
             "name": "Bind",
@@ -16206,7 +16212,7 @@
               {
                 "name": "CloseDelay",
                 "value": {
-                  "from": 0,
+                  "from": 1,
                   "to": 2
                 }
               },
@@ -20835,7 +20841,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": false
+            "value": true
           },
           {
             "name": "Bind",
@@ -21671,7 +21677,7 @@
                 "value": [
                   {
                     "name": "Chance",
-                    "value": 90.0
+                    "value": 100.0
                   },
                   {
                     "name": "JumpByReceivedHits",
@@ -21694,7 +21700,7 @@
                     "value": [
                       {
                         "name": "Enabled",
-                        "value": false
+                        "value": true
                       },
                       {
                         "name": "UntilJump",
@@ -21960,8 +21966,8 @@
     ]
   },
   "author": "centavri",
-  "date": "17/04/2026",
-  "time": "12:32:45",
+  "date": "18/04/2026",
+  "time": "13:50:20",
   "clientVersion": "0.37.0",
   "clientCommit": "git-e77a669",
   "serverAddress": "catpvp.xyz",
