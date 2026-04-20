@@ -29,4 +29,5 @@ else {
     Write-Host "Invalid choice. Please enter 1 or 2."
 }
  
-
+cp $HOME\script\windows\files\.glzr\ $HOME
+cp $HOME\script\windows\files\PowerShell\ $HOME\Documents\
