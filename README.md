@@ -9,5 +9,6 @@ git clone https://github.com/cent4ur1/script.git;cd script/macos/;chmod +x start
 # Windows 
 
 ```shell
-Download start.ps1 from /windows
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
 ```

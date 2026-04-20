@@ -132,22 +132,7 @@ ytmkv() {
 #Xash 3D half life with console
 alias hl='/Applications/Xash3D-FWGS.app/Contents/MacOS/xash3d -console'
 
-# Download youtube videos as mp4
-#alias ytmp4='yt-dlp -t mp4'
-# Download youtube videos in mkv
-#alias ytmkv='yt-dlp -t mkv'
-# Download youtube videos with subtitles and sponsor block api, defaults as mp4
-alias ytfull='yt-dlp --sponsorblock-mark poi_highlight --sponsorblock-remove sponsor --write-auto-subs -t mp4'
-# Download youtube videos with subtitles and sponsor block api, as mkv
-alias ytfullmkv='yt-dlp --sponsorblock-mark poi_highlight --sponsorblock-remove sponsor --write-auto-subs -t mkv'
-# General mp4 download 
-alias gmp4='yt-dlp -t mp4'
-# General mkv download
-alias gmkv='yt-dlp -t mkv'
-
 alias dup='$HOME/dotfilesupdate.sh'
-
-alias m='rmpc'
 
 alias py3='python3'
 
@@ -157,12 +142,12 @@ alias pyvenv='source $HOME/Documents/dev/python/bin/activate'
 
 alias gdu='gdu-go'
 
-# Replace macOS sed with GNU sed
+alias m='rmpc'
+
 alias sed='gsed'
 alias uni='$HOME/uniwork/update.sh'
 alias umlet='java -jar $HOME/UMLet-14.3/umlet.jar & disown'
 
 alias nic='nicotine & disown'
-
 # Created by `pipx` on 2025-12-13 06:27:29
 export PATH="$PATH:/Users/macintosh/.local/bin"
