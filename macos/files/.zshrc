@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-
+clear;fastfetch
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export EDITOR="/opt/homebrew/bin/nvim"
@@ -106,7 +106,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias prev="open -a Preview"
 alias fs="clear;fastfetch"
-alias y="yazi"
+alias e="yazi"
 alias b="btop"
 alias 64brew='arch -x86_64 /usr/local/bin/brew'
 # Download youtube videos as mp3
@@ -130,9 +130,6 @@ ytmkv() {
     yt-dlp --sponsorblock-mark poi_highlight --sponsorblock-remove sponsor --write-auto-subs --embed-thumbnail --embed-metadata -t mkv "ytsearch:$*"
 }
 
-#Xash 3D half life with console
-alias hl='/Applications/Xash3D-FWGS.app/Contents/MacOS/xash3d -console'
-
 alias dup='$HOME/dotfilesupdate.sh'
 
 alias py3='python3'
@@ -142,13 +139,13 @@ alias spy3='sudo python3'
 alias pyvenv='source $HOME/Documents/dev/python/bin/activate'
 
 alias gdu='gdu-go'
-
 alias m='rmpc'
+alias n='nvim'
+
 
 alias sed='gsed'
 alias uni='$HOME/uniwork/update.sh'
 alias umlet='java -jar $HOME/UMLet-14.3/umlet.jar & disown'
-
 alias nic='nicotine & disown'
 # Created by `pipx` on 2025-12-13 06:27:29
 export PATH="$PATH:/Users/macintosh/.local/bin"
