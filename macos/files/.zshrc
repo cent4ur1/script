@@ -107,6 +107,7 @@ source $ZSH/oh-my-zsh.sh
 alias prev="open -a Preview"
 alias fs="clear;fastfetch"
 alias e="yazi"
+alias tr="cd $HOME/.Trash"
 alias b="btop"
 alias 64brew='arch -x86_64 /usr/local/bin/brew'
 # Download youtube videos as mp3

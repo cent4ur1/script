@@ -7,6 +7,10 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 ### AEROSPACE SPACES CONFIG (FIXED + CLEAN) ###
 ##############################################
 
+
+
+
+
 # COLOURS 
 # Navy Blue = 0xff000674
 # Purle = 0xff7d00ff
@@ -45,7 +49,7 @@ sketchybar --add event aerospace_workspace_change
 
 sketchybar --bar \
   position=top \
-  height=29 \
+  height=40 \
   blur_radius=0 \
   color=0xff1a1a1a \
   padding_left=0 \
