@@ -2587,7 +2587,7 @@
               },
               {
                 "name": "Objective",
-                "value": "Any"
+                "value": "Enemy"
               },
               {
                 "name": "OnItemUse",
@@ -2614,7 +2614,7 @@
             "value": [
               {
                 "name": "Enabled",
-                "value": false
+                "value": true
               },
               {
                 "name": "Clicker",
@@ -2635,9 +2635,12 @@
               {
                 "name": "HoldingItemsForIgnore",
                 "value": [
+                  "minecraft:elytra",
                   "minecraft:ender_eye",
                   "minecraft:ender_pearl",
+                  "minecraft:firework_rocket",
                   "minecraft:lava_bucket",
+                  "minecraft:netherite_chestplate",
                   "minecraft:player_head",
                   "minecraft:water_bucket"
                 ]
@@ -16177,7 +16180,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": false
+            "value": true
           },
           {
             "name": "Bind",
@@ -16248,11 +16251,11 @@
               },
               {
                 "name": "SwitchDelay",
-                "value": 120
+                "value": 80
               },
               {
                 "name": "SwitchBackDelay",
-                "value": 20
+                "value": 10
               },
               {
                 "name": "Health",
@@ -21961,8 +21964,8 @@
     ]
   },
   "author": "chvdjak",
-  "date": "22/04/2026",
-  "time": "21:24:59",
+  "date": "24/04/2026",
+  "time": "22:33:43",
   "clientVersion": "0.37.0",
   "clientCommit": "git-e77a669",
   "serverAddress": "catpvp.xyz",
