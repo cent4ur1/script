@@ -2628,7 +2628,7 @@
                   },
                   {
                     "name": "Technique",
-                    "value": "Butterfly"
+                    "value": "Stabilized"
                   }
                 ]
               },
@@ -10635,7 +10635,7 @@
         "value": [
           {
             "name": "Enabled",
-            "value": true
+            "value": false
           },
           {
             "name": "Bind",
@@ -21965,10 +21965,9 @@
   },
   "author": "chvdjak",
   "date": "24/04/2026",
-  "time": "22:33:43",
+  "time": "22:54:17",
   "clientVersion": "0.37.0",
   "clientCommit": "git-e77a669",
-  "serverAddress": "catpvp.xyz",
   "protocolName": "1.21.11",
   "protocolVersion": 774,
   "type": "Rage",
