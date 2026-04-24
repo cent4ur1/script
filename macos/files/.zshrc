@@ -12,6 +12,14 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
+function e() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -106,7 +114,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias prev="open -a Preview"
 alias fs="clear;fastfetch"
-alias e="yazi"
+#alias e="yazi"
 alias tr="cd $HOME/.Trash"
 alias b="btop"
 alias 64brew='arch -x86_64 /usr/local/bin/brew'
@@ -138,6 +146,7 @@ alias py3='python3'
 alias spy3='sudo python3'
 
 alias pyvenv='source $HOME/Documents/dev/python/bin/activate'
+alias gitupdate='git add .;git commit -m "update"; git push'
 
 alias gdu='gdu-go'
 alias m='rmpc'
@@ -148,5 +157,39 @@ alias sed='gsed'
 alias uni='$HOME/uniwork/update.sh'
 alias umlet='java -jar $HOME/UMLet-14.3/umlet.jar & disown'
 alias nic='nicotine & disown'
+
+mpv() {
+  # Check if first arg is a URL or file (passthrough to real mpv)
+  if [[ $# -eq 0 ]] || [[ "$1" == http* ]] || [[ -f "$1" ]]; then
+    command mpv "$@"
+    return
+  fi
+
+  # Treat all args as a search query
+  local query="$*"
+  local search_url="https://www.youtube.com/results?search_query=$(python3 -c "import urllib.parse; print(urllib.parse.quote('${query}'))")"
+
+  echo "Searching YouTube for: $query"
+
+  # Extract the first video ID from search results
+  local video_id
+  video_id=$(curl -s "$search_url" \
+    -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64)" \
+    | grep -o '"videoId":"[^"]*"' \
+    | head -1 \
+    | cut -d'"' -f4)
+
+  if [[ -z "$video_id" ]]; then
+    echo "Could not find a video for: $query"
+    return 1
+  fi
+
+  local video_url="https://www.youtube.com/watch?v=$video_id"
+  echo "Playing: $video_url"
+  command mpv "$video_url"
+}
+
+
+
 # Created by `pipx` on 2025-12-13 06:27:29
 export PATH="$PATH:/Users/macintosh/.local/bin"
