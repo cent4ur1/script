@@ -118,21 +118,12 @@ alias fs="clear;fastfetch"
 alias tr="cd $HOME/.Trash"
 alias b="btop"
 alias 64brew='arch -x86_64 /usr/local/bin/brew'
-# Download youtube videos as mp3
-#alias ytmp3='yt-dlp -x --audio-format mp3 --audio-quality 320k "ytsearch:$*"'
 
-ytmp3() {
-    yt-dlp -x --audio-format mp3 --audio-quality 320k --embed-metadata --embed-thumbnail "ytsearch:$*"
-}
 
 # Download youtube videos as opus
 #alias ytopus='yt-dlp -x --audio-format opus'
 ytopus() {
     yt-dlp -x --audio-format opus --embed-metadata --embed-thumbnail "ytsearch:$*"
-}
-
-ytmp4() {
-    yt-dlp --sponsorblock-mark poi_highlight --sponsorblock-remove sponsor --write-auto-subs --embed-thumbnail --embed-metadata -t mp4 "ytsearch:$*"
 }
 
 ytmkv() {
