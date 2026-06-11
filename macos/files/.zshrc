@@ -130,6 +130,8 @@ ytmkv() {
     yt-dlp --sponsorblock-mark poi_highlight --sponsorblock-remove sponsor --write-auto-subs --embed-thumbnail --embed-metadata -t mkv "ytsearch:$*"
 }
 
+alias mkv='yt-dlp --sponsorblock-mark poi_highlight --sponsorblock-remove sponsor --write-auto-subs --embed-thumbnail --embed-metadata -t mkv'
+
 alias dup='$HOME/dotfilesupdate.sh'
 
 alias py3='python3'
