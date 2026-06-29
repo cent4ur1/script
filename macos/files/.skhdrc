@@ -138,7 +138,7 @@ alt + shift - f : yabai -m window --toggle native-fullscreen
  
 #alt - return : /Applications/Alacritty.app/Contents/MacOS/alacritty 
 #alt - return : /Applications/WezTerm.app/Contents/MacOS/wezterm
-alt - return : /Applications/Ghostty.app/Contents/MacOS/ghostty
+alt - return : alacritty
 # toggle window split type
 # alt - e : yabai -m window --toggle split
 

@@ -145,10 +145,7 @@ alias gdu='gdu-go'
 alias m='rmpc'
 alias n='nvim'
 
-
 alias sed='gsed'
-alias uni='$HOME/uniwork/update.sh'
-alias umlet='java -jar $HOME/UMLet-14.3/umlet.jar & disown'
 alias nic='nicotine & disown'
 
 mpv() {
