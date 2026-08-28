@@ -5,10 +5,3 @@ This script uses yabai, requiring SIP to be disabled
 ```shell
 git clone https://github.com/cent4ur1/script.git;cd script/macos/;chmod +x start.sh;./start.sh
 ```
-
-# Windows 
-
-```shell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-
-```
