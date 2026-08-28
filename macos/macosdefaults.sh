@@ -2,9 +2,11 @@ echo "[1] tiling or [2] normie?"
 read x
 
 if [ $x -eq 1 ]; then
+  pkill AltTab
   borders & disown
-  open /Applications/AeroSpace.app/
-  sketchybar & disown
+  yabai --start-service
+  skhd --start-service
+#  open /Applications/AeroSpace.app/
   defaults write com.apple.universalaccess reduceMotion -bool true
   defaults write com.apple.dock autohide -bool true
   defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
@@ -27,7 +29,9 @@ if [ $x -eq 1 ]; then
 elif [ $x -eq 2 ]; then
   pkill AeroSpace
   pkill borders
-  pkill sketchybar
+  yabai --stop-service
+  skhd --stop-service
+  open /Applications/AltTab.app/
   defaults write com.apple.universalaccess reduceMotion -bool false
   defaults write com.apple.dock autohide -bool false 
   defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool true 

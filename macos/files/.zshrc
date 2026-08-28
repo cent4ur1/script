@@ -127,7 +127,15 @@ ytopus() {
 }
 
 ytmkv() {
-    yt-dlp --sponsorblock-mark poi_highlight --sponsorblock-remove sponsor --write-auto-subs --embed-thumbnail --embed-metadata -t mkv "ytsearch:$*"
+    yt-dlp \
+        --sponsorblock-mark poi_highlight \
+        --sponsorblock-remove sponsor \
+        --write-auto-subs \
+        --embed-thumbnail \
+        --embed-metadata \
+        -f "bv[height=1080]+ba/b[height=1080]" \
+        --merge-output-format mkv \
+        "ytsearch:$*"
 }
 
 alias mkv='yt-dlp --sponsorblock-mark poi_highlight --sponsorblock-remove sponsor --write-auto-subs --embed-thumbnail --embed-metadata -t mkv'
@@ -138,14 +146,15 @@ alias py3='python3'
 
 alias spy3='sudo python3'
 
-alias pyvenv='source $HOME/Documents/dev/python/bin/activate'
+alias pyvenv='source $HOME/Documents/dev/python-arm/bin/activate'
+
 alias gitupdate='git add .;git commit -m "update"; git push'
 
 alias gdu='gdu-go'
 alias m='rmpc'
 alias n='nvim'
 
-alias sed='gsed'
+#alias sed='gsed'
 alias nic='nicotine & disown'
 
 mpv() {
@@ -183,3 +192,6 @@ mpv() {
 
 # Created by `pipx` on 2025-12-13 06:27:29
 export PATH="$PATH:/Users/macintosh/.local/bin"
+
+# opencode
+export PATH=/Users/macintosh/.opencode/bin:$PATH
