@@ -4,9 +4,9 @@ read x
 if [ $x -eq 1 ]; then
   pkill AltTab
   borders & disown
-  yabai --start-service
-  skhd --start-service
-#  open /Applications/AeroSpace.app/
+#  yabai --start-service
+#  skhd --start-service
+  open /Applications/AeroSpace.app/
   defaults write com.apple.universalaccess reduceMotion -bool true
   defaults write com.apple.dock autohide -bool true
   defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
