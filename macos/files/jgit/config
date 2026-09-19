@@ -1,0 +1,6 @@
+[filesystem "Homebrew|25.0.4.1|/dev/disk4s1"]
+	timestampResolution = 11000 nanoseconds
+	minRacyThreshold = 0 nanoseconds
+[filesystem "Homebrew|26.0.2.1|/dev/disk4s1"]
+	timestampResolution = 2000 nanoseconds
+	minRacyThreshold = 0 nanoseconds

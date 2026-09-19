@@ -1,0 +1,152 @@
+tap "asmvik/formulae"
+tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae"
+tap "jstkdng/programs"
+tap "nikitabobko/tap"
+# Tool for generating GNU Standards-compliant Makefiles
+brew "automake"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
+brew "btop"
+# Cross-platform make
+brew "cmake"
+# Like neofetch, but much faster because written mostly in C
+brew "fastfetch"
+# macOS CLI for managing custom icons for files and folders
+brew "fileicon"
+# GitHub command-line tool
+brew "gh"
+# Distributed revision control system
+brew "git"
+# Open-source build automation tool based on the Groovy and Kotlin DSL
+brew "gradle", link: false
+# Open-source build automation tool based on the Groovy and Kotlin DSL
+brew "gradle@8", link: true
+# Client library for huggingface.co hub
+brew "hf"
+# Generic library support script
+brew "libtool"
+# Tools and libraries to manipulate images in select formats
+brew "imagemagick"
+# CLI wrapper for basic network utilities on macOS - ip command
+brew "iproute2mac"
+# Powerful, lightweight programming language
+brew "lua"
+# Implementation of the Vulkan graphics and compute API on top of Metal
+brew "molten-vk"
+# Music Player Daemon
+brew "mpd"
+# Open source relational database management system
+brew "mysql"
+# Netwide Assembler (NASM) is an 80x86 assembler
+brew "nasm"
+# Ncurses-based client for the Music Player Daemon
+brew "ncmpcpp"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Graphical client for the Soulseek peer-to-peer network
+brew "nicotine-plus"
+# Small build system for use with gyp or CMake
+brew "ninja"
+# Retrieves currently playing media, and simulates media actions
+brew "nowplaying-cli"
+# Create, run, and share large language models (LLMs)
+brew "ollama"
+# AI coding agent, built for the terminal
+brew "opencode"
+# Development kit for the Java programming language
+brew "openjdk@17"
+# Development kit for the Java programming language
+brew "openjdk@25"
+# 7-Zip (high compression file archiver) implementation
+brew "p7zip"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.13"
+# Terminal based Media Player Client with album art support
+brew "rmpc"
+# 7-Zip is a file archiver with a high compression ratio
+brew "sevenzip"
+# Change macOS audio source from the command-line
+brew "switchaudio-osx"
+# Lightweight BitTorrent client
+brew "transmission-cli"
+# Blazing fast terminal file manager written in Rust, based on async I/O
+brew "yazi"
+# Feature-rich command-line audio/video downloader
+brew "yt-dlp"
+# Fish-like fast/unobtrusive autosuggestions for zsh
+brew "zsh-autosuggestions"
+# Simple hotkey-daemon for macOS.
+brew "asmvik/formulae/skhd", trusted: true
+# A tiling window manager for macOS based on binary space partitioning.
+brew "asmvik/formulae/yabai", trusted: true
+# A window border system for macOS
+brew "felixkratz/formulae/borders", trusted: true
+# AeroSpace is an i3-like tiling window manager for macOS
+cask "nikitabobko/tap/aerospace", trusted: true
+# GPU-accelerated terminal emulator
+cask "alacritty"
+# Enable Windows-like alt-tab
+cask "alt-tab"
+# Multi-track audio editor and recorder
+cask "audacity"
+# Tool to flash OS images to SD cards & USB drives
+cask "balenaetcher"
+# Web browser focusing on privacy
+cask "brave-browser"
+# Terminal-based AI coding assistant
+cask "claude-code"
+# Voice and text chat software
+cask "discord"
+# Emulator to play GameCube and Wii games
+cask "dolphin"
+# Web browser
+cask "firefox"
+cask "font-hack-nerd-font"
+cask "font-sf-mono"
+cask "font-sf-pro"
+# Free and open-source image editor
+cask "gimp"
+# Keyboard customiser
+cask "karabiner-elements"
+# GPU-based terminal emulator
+cask "kitty"
+# Free cross-platform office suite, fresh version
+cask "libreoffice"
+# Web browser
+cask "librewolf"
+# Open-source cross-platform alternative to AirDrop
+cask "localsend"
+# Modpack for Minecraft 1.7.10 and 1.8.9
+cask "lunar-client"
+# Tool to control external monitor brightness & volume
+cask "monitorcontrol"
+# Smooths scrolling and set mouse scroll directions independently
+cask "mos"
+# VPN client
+cask "mullvad-vpn"
+# Open-source software for live streaming and screen recording
+cask "obs"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
+# Minecraft launcher
+cask "prismlauncher"
+# Control your tools with a few keystrokes
+cask "raycast"
+# Tool that provides consistent, highly configurable symbols for apps
+cask "sf-symbols"
+# Video game digital distribution service
+cask "steam"
+# JDK from the Eclipse Foundation (Adoptium)
+cask "temurin@21"
+# JDK from the Eclipse Foundation (Adoptium)
+cask "temurin@8"
+# Desktop application for Unsloth Studio
+cask "unsloth"
+# Virtual machines UI using QEMU
+cask "utm"
+# Menu bar toolkit with keep-awake, system monitor and volume mixer
+cask "vorssaint"
+# Video communication and virtual meeting platform
+cask "zoom"
+uv "browser-use"
