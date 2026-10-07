@@ -4,7 +4,7 @@
 
 AeroSpace + sketchybar + borders setup. Configs live in `macos/files/`.
 
-## Fresh install (new Mac)
+## Install 
 
 ```shell
 git clone https://github.com/cent4ur1/script.git; cd script/macos/; chmod +x install.sh; ./install.sh
