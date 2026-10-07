@@ -21,7 +21,6 @@
     "erikjs",
     "alexi.build",
     "samuelkraft",
-    "ray.dhruv",
     "ChrisPanTaken"
   ],
   "pastContributors": [
@@ -2989,7 +2988,7 @@
   ],
   "dependencies": {
     "@linear/sdk": "^91.0.0",
-    "@raycast/api": "^1.104.1",
+    "@raycast/api": "^2.5.0",
     "@raycast/utils": "^2.2.3",
     "date-fns": "^4.1.0",
     "lodash": "^4.17.23",
@@ -3013,7 +3012,7 @@
     "dev": "ray develop",
     "fix-lint": "ray lint --fix",
     "lint": "ray lint",
-    "test": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types --test tests/commentUtils.test.mts tests/favorites.test.mts",
+    "test": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types --test tests/favorites.test.mts",
     "prepublishOnly": "echo \"\\n\\nIt seems like you are trying to publish the Raycast extension to npm.\\n\\nIf you did intend to publish it to npm, remove the \\`prepublishOnly\\` script and rerun \\`npm publish\\` again.\\nIf you wanted to publish it to the Raycast Store instead, use \\`npm run publish\\` instead.\\n\\n\" && exit 1",
     "publish": "npx @raycast/api@latest publish"
   },
@@ -3023,9 +3022,15 @@
   ],
   "overrides": {
     "brace-expansion": "5.0.9",
-    "js-yaml@4": "4.3.1"
+    "js-yaml@4": "4.3.2"
   },
   "ai": {
+    "skills": [
+      {
+        "name": "linear-work-planning",
+        "title": "Plan and Review Work"
+      }
+    ],
     "instructions": "- Format Linear object titles and names as markdown links whenever the object has a URL.\n- Resolve referenced objects with the appropriate lookup, search, or list tool. Never invent IDs or silently choose an unrelated fuzzy match. If multiple plausible matches remain, ask the user to clarify.\n- Prefer the `list-*`, `get-*`, and `save-*` tools for capabilities they cover. Use a `save-*` tool without `id` to create and with `id` to update. Use the older, operation-specific tools only for capabilities not covered by those tools.\n- For comment, document, issue, project, initiative, milestone, release, release-note, and status-update writes, use the matching `save-*` tool instead of an older create/update tool.\n- `save-document` uses `project`, `issue`, `initiative`, `cycle`, or `team` for its parent. Do not pass legacy `projectId`, `issueId`, `initiativeId`, `cycleId`, or `teamId` fields to `save-document`.\n- When filtering by the current user, resolve the current user and pass the resolved user to the relevant assignee, owner, member, creator, or user filter.\n- When the user specifies a team, project, initiative, label, release pipeline, release, or other scope, pass that scope into the final list/filter tool after resolving it. Do not drop a requested filter just because a lookup returned relevant-looking mock data.\n- Use `full-text-search-issues` for relevance-ranked keyword searches. Use `filter-issues` or `list-issues` for structured criteria. Follow `nextCursor` when the user asks for all results or when the current page is insufficient.\n- \"My issues\" means issues assigned to the current user. Use `list-issues` with `assignee: me`. Use `assignee: \"null\"` for unassigned issues.\n- Use ISO 8601 dates and timestamps. Pass the literal string `null` only where a tool documents it as the way to clear a field.\n- Linear issue priorities are `1` urgent, `2` high, `3` medium, `4` low, and `0` no priority.\n- To attach a local file to an issue, call `create-attachment` with its absolute `filePath`. The extension reads, uploads, and links the file. Do not base64-encode files, request signed upload URLs, or upload bytes outside the extension. When creating a new issue with an attachment, create the issue first, then attach the file using the returned issue ID.\n- For `list-comments` and new threads with `save-comment`, provide exactly one parent. Use `parentId` for replies and `id` for edits.\n- \"Close\" an issue by moving it to a completed status. Only use `delete-issue` when the user explicitly asks to delete or trash it.\n- \"Inbox\" means Linear notifications.\n",
     "evals": [
       {

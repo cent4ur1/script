@@ -19,7 +19,9 @@
     "yusifaliyevpro",
     "elibattistoni",
     "clins1994",
-    "just_me"
+    "just_me",
+    "0xdhrv",
+    "alexi.build"
   ],
   "pastContributors": [
     "thomaslombart"
@@ -158,6 +160,273 @@
       ]
     }
   ],
+  "tools": [
+    {
+      "name": "convert-color",
+      "title": "Convert Color",
+      "description": "Convert a CSS color to a requested format.",
+      "instructions": "Convert a valid CSS color value to another color format.",
+      "input": {
+        "type": "object",
+        "properties": {
+          "color": {
+            "type": "string",
+            "description": "A CSS color value, such as #FF6363, rgb(255 99 99), hsl(0 100% 69%), or rebeccapurple."
+          },
+          "format": {
+            "type": "string",
+            "description": "The color format to return.",
+            "enum": [
+              "hex",
+              "hex-lower-case",
+              "hex-no-prefix",
+              "rgb",
+              "rgb-percentage",
+              "rgba",
+              "rgba-percentage",
+              "hsla",
+              "hsva",
+              "oklch",
+              "lch",
+              "p3"
+            ]
+          }
+        },
+        "required": [
+          "color",
+          "format"
+        ]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "input": {
+            "type": "string"
+          },
+          "format": {
+            "type": "string",
+            "enum": [
+              "hex",
+              "hex-lower-case",
+              "hex-no-prefix",
+              "rgb",
+              "rgb-percentage",
+              "rgba",
+              "rgba-percentage",
+              "hsla",
+              "hsva",
+              "oklch",
+              "lch",
+              "p3"
+            ]
+          }
+        },
+        "required": [
+          "input",
+          "format"
+        ]
+      },
+      "confirmation": false
+    },
+    {
+      "name": "name-color",
+      "title": "Name Color",
+      "description": "Find the closest names for a CSS color.",
+      "instructions": "Find the closest human-readable names for a color across the supported color-name palettes.",
+      "input": {
+        "type": "object",
+        "properties": {
+          "color": {
+            "type": "string",
+            "description": "A CSS color value, such as #663399, rgb(102 51 153), or rebeccapurple."
+          },
+          "limit": {
+            "type": "number",
+            "description": "Number of nearest color names to return. Defaults to 5 and must be between 1 and 10."
+          }
+        },
+        "required": [
+          "color"
+        ]
+      },
+      "output": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "confirmation": false
+    },
+    {
+      "name": "list-saved-colors",
+      "title": "List Saved Colors",
+      "description": "List colors in Color Picker history or favorites.",
+      "instructions": "List colors saved in Color Picker, newest first.",
+      "input": {
+        "type": "object",
+        "properties": {
+          "filter": {
+            "type": "string",
+            "description": "Choose whether to return all saved colors or only favorites.",
+            "enum": [
+              "all",
+              "favorites"
+            ]
+          },
+          "limit": {
+            "type": "number",
+            "description": "Maximum number of colors to return. Defaults to 20 and must be between 1 and 100."
+          }
+        },
+        "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "filter": {
+            "type": "string",
+            "enum": [
+              "all",
+              "favorites"
+            ]
+          }
+        },
+        "required": [
+          "filter"
+        ]
+      },
+      "confirmation": false
+    },
+    {
+      "name": "save-colors",
+      "title": "Save Colors",
+      "description": "Save CSS colors to Color Picker history or favorites.",
+      "instructions": "Save one or more colors to Color Picker history so they appear in Organize Colors and the menu bar.",
+      "input": {
+        "type": "object",
+        "properties": {
+          "colors": {
+            "type": "string",
+            "description": "One or more valid CSS color values separated by semicolons, for example \"#FF6363; #66D3BB\"."
+          },
+          "favorite": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "colors"
+        ]
+      },
+      "confirmation": true
+    },
+    {
+      "name": "analyze-contrast",
+      "title": "Analyze Contrast",
+      "description": "Check WCAG contrast between foreground and background colors.",
+      "input": {
+        "type": "object",
+        "properties": {
+          "foreground": {
+            "type": "string"
+          },
+          "background": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "foreground",
+          "background"
+        ]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "passes": {
+            "type": "object",
+            "properties": {
+              "aaNormalText": {
+                "type": "boolean"
+              },
+              "aaLargeText": {
+                "type": "boolean"
+              },
+              "aaaNormalText": {
+                "type": "boolean"
+              },
+              "aaaLargeText": {
+                "type": "boolean"
+              },
+              "nonText": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "aaNormalText",
+              "aaLargeText",
+              "aaaNormalText",
+              "aaaLargeText",
+              "nonText"
+            ]
+          }
+        },
+        "required": [
+          "passes"
+        ]
+      },
+      "confirmation": false
+    },
+    {
+      "name": "generate-color-scale",
+      "title": "Generate Color Scale",
+      "description": "Generate an 11-step OKLCH color scale from an opaque base color.",
+      "input": {
+        "type": "object",
+        "properties": {
+          "color": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "color"
+        ]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "colorSpace": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "colorSpace"
+        ]
+      },
+      "confirmation": false
+    },
+    {
+      "name": "format-palette",
+      "title": "Format Palette",
+      "description": "Format CSS colors as JSON, CSS variables, or CSS classes.",
+      "input": {
+        "type": "object",
+        "properties": {
+          "colors": {
+            "type": "string"
+          },
+          "format": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "colors",
+          "format"
+        ]
+      },
+      "output": {
+        "type": "string"
+      },
+      "confirmation": false
+    }
+  ],
   "preferences": [
     {
       "data": [
@@ -242,11 +511,221 @@
     "dev": "ray develop",
     "fix-lint": "ray lint --fix",
     "lint": "ray lint",
+    "test": "node --test test/*.test.mjs",
     "pull": "ray pull-contributions",
     "publish": "ray publish"
   },
   "platforms": [
     "macOS",
     "Windows"
-  ]
+  ],
+  "ai": {
+    "instructions": "Use convert-color when the user wants a color converted to a specific format. Pass CSS color values exactly as supplied and use one of the tool's supported format values.\nUse name-color when the user asks what a color is called or wants the nearest named colors.\nUse list-saved-colors for questions about Color Picker history, recent colors, or favorites. Use filter \"favorites\" only when the user specifically asks for favorites.\nUse save-colors only when the user explicitly asks to save colors to history or favorites. Pass multiple CSS color values as one semicolon-separated string. Set favorite to true when the user asks to favorite or favourite colors; otherwise omit it. The tool asks for confirmation before changing Color Picker history. Invoke it directly and let the tool confirmation obtain approval; do not ask for an additional chat confirmation.\nUse analyze-contrast when the user asks about contrast, readability, or WCAG accessibility for a foreground and background color.\nUse generate-color-scale to create an 11-step 50-950 scale from one opaque base color. The scale uses OKLCH interpolation and keeps the base color at 500.\nUse format-palette when the user wants colors formatted as JSON, CSS variables, or CSS classes. Pass multiple colors as one semicolon-separated string and set format to json, css-variables, or css-classes.\nRaycast AI can devise a palette from a natural-language description. Call save-colors after generating it only when the user also asks to save it.\nNever claim that a color was picked from the screen or extracted from an image because these tools cannot inspect the screen or selected files.\n",
+    "evals": [
+      {
+        "input": "@color-picker Convert #FF6363 to OKLCH.",
+        "mocks": {
+          "convert-color": {
+            "input": "#FF6363",
+            "format": "oklch",
+            "color": "oklch(69.87% 0.1902 23.468)"
+          }
+        },
+        "expected": [
+          {
+            "callsTool": {
+              "name": "convert-color",
+              "arguments": {
+                "color": "#FF6363",
+                "format": "oklch"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "input": "@color-picker What is the closest name for #663399?",
+        "mocks": {
+          "name-color": {
+            "color": "#663399",
+            "names": [
+              {
+                "name": "Rebecca Purple",
+                "hex": "#663399",
+                "distance": 0
+              }
+            ]
+          }
+        },
+        "expected": [
+          {
+            "callsTool": {
+              "name": "name-color",
+              "arguments": {
+                "color": "#663399"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "input": "@color-picker Show my 5 most recent favorite colors.",
+        "mocks": {
+          "list-saved-colors": {
+            "filter": "favorites",
+            "totalCount": 1,
+            "colors": [
+              {
+                "color": "#663399",
+                "title": "Brand purple",
+                "isFavorite": true,
+                "savedAt": "2026-08-26T09:00:00.000Z"
+              }
+            ]
+          }
+        },
+        "expected": [
+          {
+            "callsTool": {
+              "name": "list-saved-colors",
+              "arguments": {
+                "filter": "favorites",
+                "limit": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "input": "@color-picker Save #FF6363 and #66D3BB to my color history.",
+        "mocks": {
+          "save-colors": {
+            "savedCount": 2,
+            "colors": [
+              "#FF6363",
+              "#66D3BB"
+            ],
+            "favorite": false,
+            "message": "Added 2 colors to Color Picker history."
+          }
+        },
+        "expected": [
+          {
+            "callsTool": {
+              "name": "save-colors",
+              "arguments": {
+                "colors": {
+                  "matches": "^#FF6363;\\s*#66D3BB$"
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "input": "@color-picker Add #E6E6E7 to my favourites.",
+        "mocks": {
+          "save-colors": {
+            "savedCount": 1,
+            "colors": [
+              "#E6E6E7"
+            ],
+            "favorite": true,
+            "message": "Added 1 color to Color Picker favorites."
+          }
+        },
+        "expected": [
+          {
+            "callsTool": {
+              "name": "save-colors",
+              "arguments": {
+                "colors": "#E6E6E7",
+                "favorite": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "input": "@color-picker Does #777777 text on #FFFFFF pass WCAG AA contrast?",
+        "mocks": {
+          "analyze-contrast": {
+            "foreground": "#777777",
+            "background": "#FFFFFF",
+            "ratio": 4.48,
+            "passes": {
+              "aaNormalText": false,
+              "aaLargeText": true,
+              "aaaNormalText": false,
+              "aaaLargeText": false,
+              "nonText": true
+            }
+          }
+        },
+        "expected": [
+          {
+            "callsTool": {
+              "name": "analyze-contrast",
+              "arguments": {
+                "foreground": "#777777",
+                "background": "#FFFFFF"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "input": "@color-picker Generate a 50-950 color scale from #FF6363.",
+        "mocks": {
+          "generate-color-scale": {
+            "baseColor": "#FF6363",
+            "colorSpace": "oklch",
+            "scale": [
+              {
+                "label": 50,
+                "color": "#FFFFFF"
+              },
+              {
+                "label": 500,
+                "color": "#FF6363"
+              },
+              {
+                "label": 950,
+                "color": "#000000"
+              }
+            ]
+          }
+        },
+        "expected": [
+          {
+            "callsTool": {
+              "name": "generate-color-scale",
+              "arguments": {
+                "color": "#FF6363"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "input": "@color-picker Format #FF6363 and #66D3BB as CSS variables.",
+        "mocks": {
+          "format-palette": ":root {\n  --color-1: #FF6363;\n  --color-2: #66D3BB;\n}"
+        },
+        "expected": [
+          {
+            "callsTool": {
+              "name": "format-palette",
+              "arguments": {
+                "colors": {
+                  "matches": "^#FF6363;\\s*#66D3BB$"
+                },
+                "format": "css-variables"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
 }

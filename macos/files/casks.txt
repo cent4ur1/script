@@ -4,9 +4,7 @@ alt-tab
 audacity
 balenaetcher
 brave-browser
-claude-code
 discord
-dolphin
 firefox
 font-hack-nerd-font
 font-sf-mono
@@ -17,12 +15,12 @@ kitty
 libreoffice
 librewolf
 localsend
-lunar-client
 monitorcontrol
 mos
 mullvad-vpn
 obs
 obsidian
+osu
 prismlauncher
 raycast
 sf-symbols

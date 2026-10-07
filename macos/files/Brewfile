@@ -8,6 +8,8 @@ brew "automake"
 brew "btop"
 # Cross-platform make
 brew "cmake"
+# .NET Core
+brew "dotnet"
 # Like neofetch, but much faster because written mostly in C
 brew "fastfetch"
 # macOS CLI for managing custom icons for files and folders
@@ -34,6 +36,10 @@ brew "lua"
 brew "molten-vk"
 # Music Player Daemon
 brew "mpd"
+# Feature-rich command-line audio/video downloader
+brew "yt-dlp"
+# Media player based on MPlayer and mplayer2
+brew "mpv"
 # Open source relational database management system
 brew "mysql"
 # Netwide Assembler (NASM) is an 80x86 assembler
@@ -62,8 +68,12 @@ brew "p7zip"
 brew "python@3.12"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.13"
+# File browser
+brew "ranger"
 # Terminal based Media Player Client with album art support
 brew "rmpc"
+# Safe, concurrent, practical language
+brew "rust"
 # 7-Zip is a file archiver with a high compression ratio
 brew "sevenzip"
 # Change macOS audio source from the command-line
@@ -72,8 +82,6 @@ brew "switchaudio-osx"
 brew "transmission-cli"
 # Blazing fast terminal file manager written in Rust, based on async I/O
 brew "yazi"
-# Feature-rich command-line audio/video downloader
-brew "yt-dlp"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
 # Simple hotkey-daemon for macOS.
@@ -94,12 +102,8 @@ cask "audacity"
 cask "balenaetcher"
 # Web browser focusing on privacy
 cask "brave-browser"
-# Terminal-based AI coding assistant
-cask "claude-code"
 # Voice and text chat software
 cask "discord"
-# Emulator to play GameCube and Wii games
-cask "dolphin"
 # Web browser
 cask "firefox"
 cask "font-hack-nerd-font"
@@ -117,8 +121,6 @@ cask "libreoffice"
 cask "librewolf"
 # Open-source cross-platform alternative to AirDrop
 cask "localsend"
-# Modpack for Minecraft 1.7.10 and 1.8.9
-cask "lunar-client"
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
 # Smooths scrolling and set mouse scroll directions independently
@@ -129,6 +131,8 @@ cask "mullvad-vpn"
 cask "obs"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# Rhythm game
+cask "osu"
 # Minecraft launcher
 cask "prismlauncher"
 # Control your tools with a few keystrokes
