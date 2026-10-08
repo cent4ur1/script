@@ -284,182 +284,9 @@
   ],
   "tools": [
     {
-      "name": "get-current-user",
-      "title": "Get Current User",
-      "description": "Get the Linear information of the current user.",
-      "confirmation": false
-    },
-    {
-      "name": "create-comment",
-      "title": "Create Comment",
-      "description": "Creates a comment in Linear",
-      "input": {
-        "type": "object",
-        "properties": {
-          "issueId": {
-            "type": "string",
-            "description": "The ID of the issue to associate the comment with. Format is a combination of a team key and a unique number, like `ENG-123`"
-          },
-          "parentId": {
-            "type": "string",
-            "description": "The ID of the parent comment (for nested comments)"
-          },
-          "projectUpdateId": {
-            "type": "string",
-            "description": "The ID of the project update to associate the comment with"
-          },
-          "body": {
-            "type": "string",
-            "description": "The comment content in markdown format"
-          },
-          "attachmentPaths": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "A list of absolute local file paths to upload and append to the comment"
-          }
-        },
-        "required": [
-          "body"
-        ]
-      },
-      "confirmation": true
-    },
-    {
-      "name": "update-comment",
-      "title": "Update Comment",
-      "description": "Updates an existing comment in Linear",
-      "input": {
-        "type": "object",
-        "properties": {
-          "body": {
-            "type": "string",
-            "description": "The comment content in markdown format"
-          },
-          "attachmentPaths": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "A list of absolute local file paths to upload and append to the comment"
-          },
-          "id": {
-            "type": "string",
-            "description": "The ID of the comment to update"
-          }
-        },
-        "required": [
-          "body",
-          "id"
-        ]
-      },
-      "confirmation": true
-    },
-    {
-      "name": "get-documents",
-      "title": "Get Documents",
-      "description": "Fetches all documents/PRDs from Linear",
-      "input": {
-        "type": "object",
-        "properties": {
-          "query": {
-            "type": "string",
-            "description": "Search query to filter documents"
-          },
-          "initiativeId": {
-            "type": "string",
-            "description": "Restrict the documents/PRDs returned to a specific initiative"
-          },
-          "projectId": {
-            "type": "string",
-            "description": "Restrict the documents/PRDs returned to a specific project"
-          }
-        },
-        "required": []
-      },
-      "confirmation": false
-    },
-    {
-      "name": "get-document-content",
-      "title": "Get Document Content",
-      "description": "Get the content of a document/PRD from Linear",
-      "input": {
-        "type": "object",
-        "properties": {
-          "documentId": {
-            "type": "string",
-            "description": "The ID of the document/PRD to fetch"
-          }
-        },
-        "required": [
-          "documentId"
-        ]
-      },
-      "confirmation": false
-    },
-    {
-      "name": "create-document",
-      "title": "Create Document",
-      "description": "Creates a new document/PRD in Linear",
-      "input": {
-        "type": "object",
-        "properties": {
-          "content": {
-            "type": "string",
-            "description": "The content of the document/PRD as a Markdown string"
-          },
-          "title": {
-            "type": "string",
-            "description": "The title of the document/PRD"
-          },
-          "projectId": {
-            "type": "string",
-            "description": "The ID of the project the document/PRD belongs to"
-          }
-        },
-        "required": [
-          "content",
-          "title",
-          "projectId"
-        ]
-      },
-      "confirmation": true
-    },
-    {
-      "name": "update-document",
-      "title": "Update Document",
-      "description": "Updates an existing PRD in Linear",
-      "input": {
-        "type": "object",
-        "properties": {
-          "documentId": {
-            "type": "string",
-            "description": "The ID of the document/PRD to update"
-          },
-          "content": {
-            "type": "string",
-            "description": "The content of the document/PRD as a Markdown string"
-          },
-          "title": {
-            "type": "string",
-            "description": "The title of the document/PRD"
-          },
-          "projectId": {
-            "type": "string",
-            "description": "The ID of the project the document/PRD belongs to"
-          }
-        },
-        "required": [
-          "documentId"
-        ]
-      },
-      "confirmation": true
-    },
-    {
       "name": "full-text-search-issues",
       "title": "Full Text Search Issues",
-      "description": "Full-text search across Linear issues using plain text. Use this for relevance-ranked keyword search; use filter-issues or list-issues for structured criteria. Supports cursor pagination and returns nextCursor when more results are available.",
+      "description": "Relevance-ranked keyword search across Linear issue content. Use it when the user searches by topic or phrase; it cannot filter by team or project, so check each result's scope. Use list-issues for structured criteria. Supports cursor pagination and returns nextCursor when more results are available.",
       "input": {
         "type": "object",
         "properties": {
@@ -480,12 +307,21 @@
           "query"
         ]
       },
+      "output": {
+        "type": "object",
+        "properties": {
+          "nextCursor": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
       "confirmation": false
     },
     {
       "name": "filter-issues",
       "title": "Filter Issues",
-      "description": "Filter Linear issues using structured GraphQL criteria such as assignee, team, status, labels, priority, cycle, project, or milestone. Use full-text-search-issues for relevance-ranked keyword search. Supports cursor pagination and returns nextCursor when more results are available.",
+      "description": "Filter Linear issues with a raw GraphQL IssueFilter for criteria list-issues cannot express, such as priority ranges, due-date ranges, estimates, completion dates, or OR conditions. Prefer list-issues for team, status, assignee, label, cycle, project, or priority filters. Supports cursor pagination and returns nextCursor when more results are available.",
       "input": {
         "type": "object",
         "properties": {
@@ -506,284 +342,196 @@
           "filter"
         ]
       },
-      "confirmation": false
-    },
-    {
-      "name": "update-issue",
-      "title": "Update Issue",
-      "description": "Updates an existing issue in Linear",
-      "input": {
+      "output": {
         "type": "object",
         "properties": {
-          "stateId": {
-            "type": "string",
-            "description": "The id of the State (issue or 'workflow' status) of the issue.\nIf an issue is created without a specified stateId (the status field for the issue), the issue will be assigned to the team's first state in the Backlog workflow state category.\nIf the \"Triage\" feature is turned on for the team, then the issue will be assigned to the Triage workflow state."
-          },
-          "parentId": {
-            "type": "string",
-            "description": "The ID of the parent issue"
-          },
-          "assigneeId": {
-            "type": "string",
-            "description": "The ID of the user to assign the issue to"
-          },
-          "issueId": {
-            "type": "string",
-            "description": "The ID of the issue to update"
-          },
-          "projectMilestoneId": {
-            "type": "string",
-            "description": "The ID of the project milestone the issue belongs to"
-          },
-          "priority": {
-            "type": "number",
-            "description": "The priority of the issue (0-4, where 0 is no priority and 4 is urgent)"
-          },
-          "dueDate": {
-            "type": "string",
-            "description": "The due date of the issue in ISO date format (e.g., '2023-12-31')"
-          },
-          "estimate": {
-            "type": "number",
-            "description": "The estimate of the issue using a 0-5 scale"
-          },
-          "title": {
-            "type": "string",
-            "description": "The title of the issue"
-          },
-          "labelIds": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Array of IDs of labels to be assigned to the issue"
-          },
-          "projectId": {
-            "type": "string",
-            "description": "The ID of the project the issue belongs to"
-          },
-          "description": {
-            "type": "string",
-            "description": "A detailed description of the issue"
+          "nextCursor": {
+            "type": "string"
           }
         },
-        "required": [
-          "issueId"
-        ]
+        "required": []
       },
-      "confirmation": true
-    },
-    {
-      "name": "create-issue",
-      "title": "Create Issue",
-      "description": "Creates a new issue in Linear with a title, description, dueDate and priority",
-      "input": {
-        "type": "object",
-        "properties": {
-          "priority": {
-            "type": "number",
-            "description": "The priority of the issue (0-4, where 0 is no priority and 4 is urgent)"
-          },
-          "stateId": {
-            "type": "string",
-            "description": "The id of the State (issue or 'workflow' status) of the issue.\nIf an issue is created without a specified stateId (the status field for the issue), the issue will be assigned to the team's first state in the Backlog workflow state category.\nIf the \"Triage\" feature is turned on for the team, then the issue will be assigned to the Triage workflow state."
-          },
-          "parentId": {
-            "type": "string",
-            "description": "The ID of the parent issue. Use it to add sub-issues. UUID format"
-          },
-          "assigneeId": {
-            "type": "string",
-            "description": "The ID of the user to assign the issue to"
-          },
-          "title": {
-            "type": "string",
-            "description": "The title of the issue"
-          },
-          "teamId": {
-            "type": "string",
-            "description": "The ID of the team to fetch the statuses for. Do not ask user to specify team if there is only one in the list"
-          },
-          "labelIds": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Array of IDs of labels to be assigned to new issue"
-          },
-          "projectId": {
-            "type": "string",
-            "description": "The ID of the project the issue belongs to"
-          },
-          "description": {
-            "type": "string",
-            "description": "A detailed description of the issue"
-          },
-          "projectMilestoneId": {
-            "type": "string",
-            "description": "The ID of the project milestone the issue belongs to"
-          },
-          "dueDate": {
-            "type": "string",
-            "description": "The due date of the issue in ISO date format (e.g., '2023-12-31')"
-          },
-          "estimate": {
-            "type": "number",
-            "description": "The estimate of the issue using a 0-5 scale"
-          }
-        },
-        "required": [
-          "title",
-          "teamId"
-        ]
-      },
-      "confirmation": true
-    },
-    {
-      "name": "get-teams",
-      "title": "Get Teams",
-      "description": "Returns all Linear teams that the current user is part of",
-      "confirmation": false
-    },
-    {
-      "name": "get-issue-states",
-      "title": "Get Issue States",
-      "description": "Fetches all available issue states. Issue status could be a synonym of issue state",
-      "input": {
-        "type": "object",
-        "properties": {
-          "teamId": {
-            "type": "string",
-            "description": "The ID of the team to fetch the statuses for. Do not ask user to specify team if there is only one in the list"
-          }
-        },
-        "required": [
-          "teamId"
-        ]
-      },
-      "confirmation": false
-    },
-    {
-      "name": "get-members",
-      "title": "Get Members",
-      "description": "Retrieves all members of the Linear organization",
       "confirmation": false
     },
     {
       "name": "get-notifications",
       "title": "Get Notifications",
-      "description": "Retrieves all notifications for current user",
-      "confirmation": false
-    },
-    {
-      "name": "get-labels",
-      "title": "Get Issue Labels",
-      "description": "Retrieves all labels that can be assigned to a Linear issue",
+      "description": "Retrieve the current user's Linear notifications (their Linear inbox). Pass unreadOnly for unread notifications. Supports cursor pagination and returns nextCursor when more results are available.",
+      "input": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "number",
+            "description": "Max results (default 50, max 250)"
+          },
+          "cursor": {
+            "type": "string",
+            "description": "Next page cursor"
+          },
+          "unreadOnly": {
+            "type": "boolean",
+            "description": "Only return notifications that have not been read"
+          }
+        },
+        "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "nodes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "subtitle": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "readAt": {
+                  "type": "string"
+                },
+                "snoozedUntilAt": {
+                  "type": "string"
+                },
+                "actor": {
+                  "type": "string"
+                },
+                "issue": {
+                  "type": "object",
+                  "properties": {
+                    "identifier": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "identifier",
+                    "title",
+                    "url",
+                    "status"
+                  ]
+                },
+                "comment": {
+                  "type": "string"
+                },
+                "project": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "url"
+                  ]
+                }
+              },
+              "required": [
+                "id",
+                "type",
+                "title",
+                "subtitle",
+                "url",
+                "createdAt",
+                "readAt",
+                "snoozedUntilAt",
+                "actor",
+                "issue",
+                "comment",
+                "project"
+              ]
+            }
+          },
+          "nextCursor": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "nodes",
+          "nextCursor"
+        ]
+      },
       "confirmation": false
     },
     {
       "name": "add-label",
       "title": "Add Label to Issue",
-      "description": "Add a Label to an existing Linear issue",
+      "description": "Add one label to an existing Linear issue while keeping its other labels.",
       "input": {
         "type": "object",
         "properties": {
           "issueId": {
             "type": "string",
-            "description": "The ID of the issue to add the label to. Format is a combination of a team key and a unique number, like `ENG-123`"
+            "description": "The issue ID or identifier. Format is a combination of a team key and a unique number, like `ENG-123`"
           },
-          "labelId": {
+          "label": {
             "type": "string",
-            "description": "The ID of the label to add to the issue. Never use title as ID: you have to use `get-labels` tool to get the actual ID from the list of labels"
+            "description": "Label name or ID to add to the issue. Other labels on the issue are kept."
           }
         },
         "required": [
           "issueId",
-          "labelId"
+          "label"
         ]
+      },
+      "output": {
+        "type": "object",
+        "properties": {},
+        "required": []
       },
       "confirmation": true
     },
     {
       "name": "remove-label",
       "title": "Remove Label from Issue",
-      "description": "Remove a Label from an existing Linear issue",
+      "description": "Remove one label from an existing Linear issue while keeping its other labels.",
       "input": {
         "type": "object",
         "properties": {
           "issueId": {
             "type": "string",
-            "description": "The ID of the issue to add the label to. Format is a combination of a team key and a unique number, like `ENG-123`"
+            "description": "The issue ID or identifier. Format is a combination of a team key and a unique number, like `ENG-123`"
           },
-          "labelId": {
+          "label": {
             "type": "string",
-            "description": "The ID of the label to add to the issue. Never use title as ID: you have to use `get-labels` tool to get the actual ID from the list of labels"
+            "description": "Label name or ID to remove from the issue. Other labels on the issue are kept."
           }
         },
         "required": [
           "issueId",
-          "labelId"
+          "label"
         ]
       },
-      "confirmation": true
-    },
-    {
-      "name": "get-projects",
-      "title": "Get Projects",
-      "description": "Fetches all projects from Linear",
-      "confirmation": false
-    },
-    {
-      "name": "get-project-updates",
-      "title": "Get Project Updates",
-      "description": "Retrieves all project updates for a given project ID from Linear",
-      "input": {
+      "output": {
         "type": "object",
-        "properties": {
-          "projectId": {
-            "type": "string",
-            "description": "The ID of the project to fetch the updates for. Use the 'get-projects' tool to get the project ID."
-          }
-        },
-        "required": [
-          "projectId"
-        ]
-      },
-      "confirmation": false
-    },
-    {
-      "name": "get-project-statuses",
-      "title": "Get Project Statuses",
-      "description": "Fetches all project statuses from Linear",
-      "confirmation": false
-    },
-    {
-      "name": "update-project-milestone",
-      "title": "Update an Existing Project Milestone",
-      "description": "Updates an existing project milestone in Linear",
-      "input": {
-        "type": "object",
-        "properties": {
-          "milestoneId": {
-            "type": "string",
-            "description": "The ID of the project update to modify."
-          },
-          "name": {
-            "type": "string",
-            "description": "The new name of the milestone"
-          },
-          "description": {
-            "type": "string",
-            "description": "A new detailed description of the milestone"
-          },
-          "targetDate": {
-            "type": "string",
-            "description": "The new target date of the milestone in ISO date format (e.g., '2023-12-31')"
-          }
-        },
-        "required": [
-          "milestoneId"
-        ]
+        "properties": {},
+        "required": []
       },
       "confirmation": true
     },
@@ -805,6 +553,32 @@
         "required": [
           "query"
         ]
+      },
+      "output": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "snippet": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "title",
+            "url",
+            "snippet"
+          ]
+        }
       },
       "confirmation": false
     },
@@ -831,6 +605,15 @@
         },
         "required": []
       },
+      "output": {
+        "type": "object",
+        "properties": {
+          "nextCursor": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
       "confirmation": false
     },
     {
@@ -846,6 +629,73 @@
         },
         "required": [
           "id"
+        ]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "slugId": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          },
+          "shared": {
+            "type": "boolean"
+          },
+          "teamId": {
+            "type": "string"
+          },
+          "ownerId": {
+            "type": "string"
+          },
+          "creatorId": {
+            "type": "string"
+          },
+          "recentUsageCount": {
+            "type": "number"
+          },
+          "lastUsedAt": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "description",
+          "body",
+          "slugId",
+          "icon",
+          "color",
+          "shared",
+          "teamId",
+          "ownerId",
+          "creatorId",
+          "recentUsageCount",
+          "lastUsedAt",
+          "createdAt",
+          "updatedAt"
         ]
       },
       "confirmation": false
@@ -908,6 +758,164 @@
         },
         "required": []
       },
+      "output": {
+        "type": "object",
+        "properties": {
+          "nodes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "body": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "author": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "displayName": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "displayName",
+                    "email"
+                  ]
+                },
+                "onBehalfOf": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "displayName": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "displayName",
+                    "email"
+                  ]
+                },
+                "botActor": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "subType": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "type",
+                    "subType"
+                  ]
+                },
+                "issueId": {
+                  "type": "string"
+                },
+                "projectId": {
+                  "type": "string"
+                },
+                "initiativeId": {
+                  "type": "string"
+                },
+                "documentContentId": {
+                  "type": "string"
+                },
+                "projectUpdateId": {
+                  "type": "string"
+                },
+                "initiativeUpdateId": {
+                  "type": "string"
+                },
+                "parentId": {
+                  "type": "string"
+                },
+                "quotedText": {
+                  "type": "string"
+                },
+                "resolvingCommentId": {
+                  "type": "string"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                },
+                "editedAt": {
+                  "type": "string"
+                },
+                "resolvedAt": {
+                  "type": "string"
+                },
+                "archivedAt": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "body",
+                "url",
+                "author",
+                "onBehalfOf",
+                "botActor",
+                "issueId",
+                "projectId",
+                "initiativeId",
+                "documentContentId",
+                "projectUpdateId",
+                "initiativeUpdateId",
+                "parentId",
+                "quotedText",
+                "resolvingCommentId",
+                "createdAt",
+                "updatedAt",
+                "editedAt",
+                "resolvedAt",
+                "archivedAt"
+              ]
+            }
+          }
+        },
+        "required": [
+          "nodes"
+        ]
+      },
       "confirmation": false
     },
     {
@@ -925,12 +933,27 @@
           "id"
         ]
       },
+      "output": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "entityId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "success",
+          "entityId"
+        ]
+      },
       "confirmation": false
     },
     {
       "name": "list-cycles",
       "title": "List Cycles",
-      "description": "Retrieve cycles for a specific Linear team. Cycles always belong to a team. Supports cursor pagination and returns nextCursor when more results are available.",
+      "description": "List Linear cycles, optionally scoped to a team and filtered to the current, previous, or next cycle. Without a team, returns cycles across all teams with each cycle's teamId. Supports cursor pagination and returns nextCursor when more results are available.",
       "input": {
         "type": "object",
         "properties": {
@@ -942,13 +965,13 @@
             "type": "string",
             "description": "Next page cursor"
           },
-          "teamId": {
+          "team": {
             "type": "string",
-            "description": "Team ID"
+            "description": "Team name, key, or ID. Omit to list cycles across all teams."
           },
           "type": {
             "type": "string",
-            "description": "Filter the team's cycles",
+            "description": "Only return the current, previous, or next cycle",
             "enum": [
               "current",
               "previous",
@@ -956,16 +979,23 @@
             ]
           }
         },
-        "required": [
-          "teamId"
-        ]
+        "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "nextCursor": {
+            "type": "string"
+          }
+        },
+        "required": []
       },
       "confirmation": false
     },
     {
       "name": "list-teams",
       "title": "List Teams",
-      "description": "List teams in the user's Linear workspace",
+      "description": "List teams in the Linear workspace. Every input is optional; call it without arguments to get all teams, or pass query to match a team name or key.",
       "input": {
         "type": "object",
         "properties": {
@@ -996,6 +1026,15 @@
         },
         "required": []
       },
+      "output": {
+        "type": "object",
+        "properties": {
+          "nextCursor": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
       "confirmation": false
     },
     {
@@ -1011,6 +1050,77 @@
         },
         "required": [
           "query"
+        ]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "key": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          },
+          "private": {
+            "type": "boolean"
+          },
+          "timezone": {
+            "type": "string"
+          },
+          "cyclesEnabled": {
+            "type": "boolean"
+          },
+          "triageEnabled": {
+            "type": "boolean"
+          },
+          "issueCount": {
+            "type": "number"
+          },
+          "parentId": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "archivedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "key",
+          "name",
+          "displayName",
+          "description",
+          "icon",
+          "color",
+          "private",
+          "timezone",
+          "cyclesEnabled",
+          "triageEnabled",
+          "issueCount",
+          "parentId",
+          "createdAt",
+          "updatedAt",
+          "archivedAt"
         ]
       },
       "confirmation": false
@@ -1049,6 +1159,15 @@
         },
         "required": []
       },
+      "output": {
+        "type": "object",
+        "properties": {
+          "nextCursor": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
       "confirmation": false
     },
     {
@@ -1066,12 +1185,146 @@
           "query"
         ]
       },
+      "output": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "avatarUrl": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "timezone": {
+            "type": "string"
+          },
+          "statusEmoji": {
+            "type": "string"
+          },
+          "statusLabel": {
+            "type": "string"
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "admin": {
+            "type": "boolean"
+          },
+          "guest": {
+            "type": "boolean"
+          },
+          "app": {
+            "type": "boolean"
+          },
+          "isMe": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "archivedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "displayName",
+          "email",
+          "url",
+          "avatarUrl",
+          "title",
+          "timezone",
+          "statusEmoji",
+          "statusLabel",
+          "active",
+          "admin",
+          "guest",
+          "app",
+          "isMe",
+          "createdAt",
+          "archivedAt"
+        ]
+      },
       "confirmation": false
     },
     {
       "name": "get-workspace",
       "title": "Get Workspace",
       "description": "Retrieve the connected Linear workspace",
+      "output": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "urlKey": {
+            "type": "string"
+          },
+          "logoUrl": {
+            "type": "string"
+          },
+          "userCount": {
+            "type": "number"
+          },
+          "createdIssueCount": {
+            "type": "number"
+          },
+          "gitBranchFormat": {
+            "type": "string"
+          },
+          "roadmapEnabled": {
+            "type": "boolean"
+          },
+          "releasesEnabled": {
+            "type": "boolean"
+          },
+          "customersEnabled": {
+            "type": "boolean"
+          },
+          "samlEnabled": {
+            "type": "boolean"
+          },
+          "scimEnabled": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "urlKey",
+          "logoUrl",
+          "userCount",
+          "createdIssueCount",
+          "gitBranchFormat",
+          "roadmapEnabled",
+          "releasesEnabled",
+          "customersEnabled",
+          "samlEnabled",
+          "scimEnabled",
+          "createdAt"
+        ]
+      },
       "confirmation": false
     },
     {
@@ -1130,6 +1383,92 @@
           }
         },
         "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "nodes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "stages": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "canceled",
+                          "completed",
+                          "planned",
+                          "started"
+                        ]
+                      },
+                      "color": {
+                        "type": "string"
+                      },
+                      "position": {
+                        "type": "number"
+                      },
+                      "frozen": {
+                        "type": "boolean"
+                      },
+                      "pipelineId": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "name",
+                      "type",
+                      "color",
+                      "position",
+                      "frozen",
+                      "pipelineId"
+                    ]
+                  }
+                },
+                "teams": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "key": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "key",
+                      "name"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "stages",
+                "teams"
+              ]
+            }
+          }
+        },
+        "required": [
+          "nodes"
+        ]
       },
       "confirmation": false
     },
@@ -1195,6 +1534,66 @@
         },
         "required": []
       },
+      "output": {
+        "type": "object",
+        "properties": {
+          "nodes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "stage": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "canceled",
+                        "completed",
+                        "planned",
+                        "started"
+                      ]
+                    },
+                    "color": {
+                      "type": "string"
+                    },
+                    "position": {
+                      "type": "number"
+                    },
+                    "frozen": {
+                      "type": "boolean"
+                    },
+                    "pipelineId": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "type",
+                    "color",
+                    "position",
+                    "frozen",
+                    "pipelineId"
+                  ]
+                }
+              },
+              "required": [
+                "stage"
+              ]
+            }
+          }
+        },
+        "required": [
+          "nodes"
+        ]
+      },
       "confirmation": false
     },
     {
@@ -1213,6 +1612,160 @@
         },
         "required": [
           "id"
+        ]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "slugId": {
+            "type": "string"
+          },
+          "commitSha": {
+            "type": "string"
+          },
+          "pipelineId": {
+            "type": "string"
+          },
+          "stageId": {
+            "type": "string"
+          },
+          "issueCount": {
+            "type": "number"
+          },
+          "hasReleaseNotes": {
+            "type": "boolean"
+          },
+          "releaseNotes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "slugId": {
+                  "type": "string"
+                },
+                "pipelineId": {
+                  "type": "string"
+                },
+                "releaseCount": {
+                  "type": "number"
+                },
+                "firstReleaseId": {
+                  "type": "string"
+                },
+                "lastReleaseId": {
+                  "type": "string"
+                },
+                "generationStatus": {
+                  "type": "string",
+                  "enum": [
+                    "completed",
+                    "pending"
+                  ]
+                },
+                "content": {
+                  "type": "string"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                },
+                "archivedAt": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "url",
+                "slugId",
+                "pipelineId",
+                "releaseCount",
+                "firstReleaseId",
+                "lastReleaseId",
+                "generationStatus",
+                "content",
+                "createdAt",
+                "updatedAt",
+                "archivedAt"
+              ]
+            }
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "targetDate": {
+            "type": "string"
+          },
+          "startedAt": {
+            "type": "string"
+          },
+          "completedAt": {
+            "type": "string"
+          },
+          "canceledAt": {
+            "type": "string"
+          },
+          "trashed": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "archivedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "version",
+          "description",
+          "url",
+          "slugId",
+          "commitSha",
+          "pipelineId",
+          "stageId",
+          "issueCount",
+          "hasReleaseNotes",
+          "releaseNotes",
+          "startDate",
+          "targetDate",
+          "startedAt",
+          "completedAt",
+          "canceledAt",
+          "trashed",
+          "createdAt",
+          "updatedAt",
+          "archivedAt"
         ]
       },
       "confirmation": false
@@ -1267,6 +1820,160 @@
         },
         "required": []
       },
+      "output": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "slugId": {
+            "type": "string"
+          },
+          "commitSha": {
+            "type": "string"
+          },
+          "pipelineId": {
+            "type": "string"
+          },
+          "stageId": {
+            "type": "string"
+          },
+          "issueCount": {
+            "type": "number"
+          },
+          "hasReleaseNotes": {
+            "type": "boolean"
+          },
+          "releaseNotes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "slugId": {
+                  "type": "string"
+                },
+                "pipelineId": {
+                  "type": "string"
+                },
+                "releaseCount": {
+                  "type": "number"
+                },
+                "firstReleaseId": {
+                  "type": "string"
+                },
+                "lastReleaseId": {
+                  "type": "string"
+                },
+                "generationStatus": {
+                  "type": "string",
+                  "enum": [
+                    "completed",
+                    "pending"
+                  ]
+                },
+                "content": {
+                  "type": "string"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                },
+                "archivedAt": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "url",
+                "slugId",
+                "pipelineId",
+                "releaseCount",
+                "firstReleaseId",
+                "lastReleaseId",
+                "generationStatus",
+                "content",
+                "createdAt",
+                "updatedAt",
+                "archivedAt"
+              ]
+            }
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "targetDate": {
+            "type": "string"
+          },
+          "startedAt": {
+            "type": "string"
+          },
+          "completedAt": {
+            "type": "string"
+          },
+          "canceledAt": {
+            "type": "string"
+          },
+          "trashed": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "archivedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "version",
+          "description",
+          "url",
+          "slugId",
+          "commitSha",
+          "pipelineId",
+          "stageId",
+          "issueCount",
+          "hasReleaseNotes",
+          "releaseNotes",
+          "startDate",
+          "targetDate",
+          "startedAt",
+          "completedAt",
+          "canceledAt",
+          "trashed",
+          "createdAt",
+          "updatedAt",
+          "archivedAt"
+        ]
+      },
       "confirmation": false
     },
     {
@@ -1319,6 +2026,182 @@
         },
         "required": []
       },
+      "output": {
+        "type": "object",
+        "properties": {
+          "nodes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "releases": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "version": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      },
+                      "slugId": {
+                        "type": "string"
+                      },
+                      "commitSha": {
+                        "type": "string"
+                      },
+                      "pipelineId": {
+                        "type": "string"
+                      },
+                      "stageId": {
+                        "type": "string"
+                      },
+                      "issueCount": {
+                        "type": "number"
+                      },
+                      "hasReleaseNotes": {
+                        "type": "boolean"
+                      },
+                      "releaseNotes": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "title": {
+                              "type": "string"
+                            },
+                            "url": {
+                              "type": "string"
+                            },
+                            "slugId": {
+                              "type": "string"
+                            },
+                            "pipelineId": {
+                              "type": "string"
+                            },
+                            "releaseCount": {
+                              "type": "number"
+                            },
+                            "firstReleaseId": {
+                              "type": "string"
+                            },
+                            "lastReleaseId": {
+                              "type": "string"
+                            },
+                            "generationStatus": {
+                              "type": "string",
+                              "enum": [
+                                "completed",
+                                "pending"
+                              ]
+                            },
+                            "content": {
+                              "type": "string"
+                            },
+                            "createdAt": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "string"
+                            },
+                            "archivedAt": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "title",
+                            "url",
+                            "slugId",
+                            "pipelineId",
+                            "releaseCount",
+                            "firstReleaseId",
+                            "lastReleaseId",
+                            "generationStatus",
+                            "content",
+                            "createdAt",
+                            "updatedAt",
+                            "archivedAt"
+                          ]
+                        }
+                      },
+                      "startDate": {
+                        "type": "string"
+                      },
+                      "targetDate": {
+                        "type": "string"
+                      },
+                      "startedAt": {
+                        "type": "string"
+                      },
+                      "completedAt": {
+                        "type": "string"
+                      },
+                      "canceledAt": {
+                        "type": "string"
+                      },
+                      "trashed": {
+                        "type": "boolean"
+                      },
+                      "createdAt": {
+                        "type": "string"
+                      },
+                      "updatedAt": {
+                        "type": "string"
+                      },
+                      "archivedAt": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "name",
+                      "version",
+                      "description",
+                      "url",
+                      "slugId",
+                      "commitSha",
+                      "pipelineId",
+                      "stageId",
+                      "issueCount",
+                      "hasReleaseNotes",
+                      "releaseNotes",
+                      "startDate",
+                      "targetDate",
+                      "startedAt",
+                      "completedAt",
+                      "canceledAt",
+                      "trashed",
+                      "createdAt",
+                      "updatedAt",
+                      "archivedAt"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "releases"
+              ]
+            }
+          }
+        },
+        "required": [
+          "nodes"
+        ]
+      },
       "confirmation": false
     },
     {
@@ -1337,6 +2220,171 @@
         },
         "required": [
           "id"
+        ]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "releases": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "slugId": {
+                  "type": "string"
+                },
+                "commitSha": {
+                  "type": "string"
+                },
+                "pipelineId": {
+                  "type": "string"
+                },
+                "stageId": {
+                  "type": "string"
+                },
+                "issueCount": {
+                  "type": "number"
+                },
+                "hasReleaseNotes": {
+                  "type": "boolean"
+                },
+                "releaseNotes": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      },
+                      "slugId": {
+                        "type": "string"
+                      },
+                      "pipelineId": {
+                        "type": "string"
+                      },
+                      "releaseCount": {
+                        "type": "number"
+                      },
+                      "firstReleaseId": {
+                        "type": "string"
+                      },
+                      "lastReleaseId": {
+                        "type": "string"
+                      },
+                      "generationStatus": {
+                        "type": "string",
+                        "enum": [
+                          "completed",
+                          "pending"
+                        ]
+                      },
+                      "content": {
+                        "type": "string"
+                      },
+                      "createdAt": {
+                        "type": "string"
+                      },
+                      "updatedAt": {
+                        "type": "string"
+                      },
+                      "archivedAt": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "title",
+                      "url",
+                      "slugId",
+                      "pipelineId",
+                      "releaseCount",
+                      "firstReleaseId",
+                      "lastReleaseId",
+                      "generationStatus",
+                      "content",
+                      "createdAt",
+                      "updatedAt",
+                      "archivedAt"
+                    ]
+                  }
+                },
+                "startDate": {
+                  "type": "string"
+                },
+                "targetDate": {
+                  "type": "string"
+                },
+                "startedAt": {
+                  "type": "string"
+                },
+                "completedAt": {
+                  "type": "string"
+                },
+                "canceledAt": {
+                  "type": "string"
+                },
+                "trashed": {
+                  "type": "boolean"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                },
+                "archivedAt": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "version",
+                "description",
+                "url",
+                "slugId",
+                "commitSha",
+                "pipelineId",
+                "stageId",
+                "issueCount",
+                "hasReleaseNotes",
+                "releaseNotes",
+                "startDate",
+                "targetDate",
+                "startedAt",
+                "completedAt",
+                "canceledAt",
+                "trashed",
+                "createdAt",
+                "updatedAt",
+                "archivedAt"
+              ]
+            }
+          }
+        },
+        "required": [
+          "releases"
         ]
       },
       "confirmation": false
@@ -1418,6 +2466,69 @@
         },
         "required": []
       },
+      "output": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "slugId": {
+            "type": "string"
+          },
+          "pipelineId": {
+            "type": "string"
+          },
+          "releaseCount": {
+            "type": "number"
+          },
+          "firstReleaseId": {
+            "type": "string"
+          },
+          "lastReleaseId": {
+            "type": "string"
+          },
+          "generationStatus": {
+            "type": "string",
+            "enum": [
+              "completed",
+              "pending"
+            ]
+          },
+          "content": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "archivedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "url",
+          "slugId",
+          "pipelineId",
+          "releaseCount",
+          "firstReleaseId",
+          "lastReleaseId",
+          "generationStatus",
+          "content",
+          "createdAt",
+          "updatedAt",
+          "archivedAt"
+        ]
+      },
       "confirmation": false
     },
     {
@@ -1433,6 +2544,77 @@
         },
         "required": [
           "id"
+        ]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "slugId": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "projectId": {
+            "type": "string"
+          },
+          "initiativeId": {
+            "type": "string"
+          },
+          "issueId": {
+            "type": "string"
+          },
+          "creatorId": {
+            "type": "string"
+          },
+          "updatedById": {
+            "type": "string"
+          },
+          "trashed": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "archivedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "url",
+          "slugId",
+          "icon",
+          "color",
+          "content",
+          "projectId",
+          "initiativeId",
+          "issueId",
+          "creatorId",
+          "updatedById",
+          "trashed",
+          "createdAt",
+          "updatedAt",
+          "archivedAt"
         ]
       },
       "confirmation": false
@@ -1507,6 +2689,22 @@
           }
         },
         "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "nodes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          }
+        },
+        "required": [
+          "nodes"
+        ]
       },
       "confirmation": false
     },
@@ -1593,6 +2791,77 @@
         },
         "required": []
       },
+      "output": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "slugId": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "projectId": {
+            "type": "string"
+          },
+          "initiativeId": {
+            "type": "string"
+          },
+          "issueId": {
+            "type": "string"
+          },
+          "creatorId": {
+            "type": "string"
+          },
+          "updatedById": {
+            "type": "string"
+          },
+          "trashed": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "archivedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "url",
+          "slugId",
+          "icon",
+          "color",
+          "content",
+          "projectId",
+          "initiativeId",
+          "issueId",
+          "creatorId",
+          "updatedById",
+          "trashed",
+          "createdAt",
+          "updatedAt",
+          "archivedAt"
+        ]
+      },
       "confirmation": false
     },
     {
@@ -1622,6 +2891,15 @@
             "type": "string"
           },
           "team": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "nextCursor": {
             "type": "string"
           }
         },
@@ -1657,6 +2935,53 @@
         },
         "required": [
           "name"
+        ]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "isGroup": {
+            "type": "boolean"
+          },
+          "parentId": {
+            "type": "string"
+          },
+          "teamId": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "archivedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "color",
+          "description",
+          "isGroup",
+          "parentId",
+          "teamId",
+          "createdAt",
+          "updatedAt",
+          "archivedAt"
         ]
       },
       "confirmation": false
@@ -1751,6 +3076,22 @@
         },
         "required": []
       },
+      "output": {
+        "type": "object",
+        "properties": {
+          "nodes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          }
+        },
+        "required": [
+          "nodes"
+        ]
+      },
       "confirmation": false
     },
     {
@@ -1775,6 +3116,250 @@
         },
         "required": [
           "query"
+        ]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "milestones": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "targetDate": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "done",
+                    "next",
+                    "overdue",
+                    "unstarted"
+                  ]
+                },
+                "progress": {
+                  "type": "number"
+                },
+                "projectId": {
+                  "type": "string"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                },
+                "archivedAt": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "description",
+                "targetDate",
+                "status",
+                "progress",
+                "projectId",
+                "createdAt",
+                "updatedAt",
+                "archivedAt"
+              ]
+            }
+          },
+          "members": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "displayName": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "displayName",
+                "email"
+              ]
+            }
+          },
+          "resources": {
+            "type": "object",
+            "properties": {
+              "documents": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "slugId": {
+                      "type": "string"
+                    },
+                    "icon": {
+                      "type": "string"
+                    },
+                    "color": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    },
+                    "projectId": {
+                      "type": "string"
+                    },
+                    "initiativeId": {
+                      "type": "string"
+                    },
+                    "issueId": {
+                      "type": "string"
+                    },
+                    "creatorId": {
+                      "type": "string"
+                    },
+                    "updatedById": {
+                      "type": "string"
+                    },
+                    "trashed": {
+                      "type": "boolean"
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    },
+                    "archivedAt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "title",
+                    "url",
+                    "slugId",
+                    "icon",
+                    "color",
+                    "content",
+                    "projectId",
+                    "initiativeId",
+                    "issueId",
+                    "creatorId",
+                    "updatedById",
+                    "trashed",
+                    "createdAt",
+                    "updatedAt",
+                    "archivedAt"
+                  ]
+                }
+              },
+              "links": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "label",
+                    "url",
+                    "createdAt"
+                  ]
+                }
+              },
+              "attachments": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "subtitle": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "sourceType": {
+                      "type": "string"
+                    },
+                    "issueId": {
+                      "type": "string"
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "title",
+                    "subtitle",
+                    "url",
+                    "sourceType",
+                    "issueId",
+                    "createdAt",
+                    "updatedAt"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "documents",
+              "links",
+              "attachments"
+            ]
+          }
+        },
+        "required": [
+          "milestones",
+          "members",
+          "resources"
         ]
       },
       "confirmation": false
@@ -1944,6 +3529,137 @@
         },
         "required": []
       },
+      "output": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "statusId": {
+            "type": "string"
+          },
+          "health": {
+            "type": "string",
+            "enum": [
+              "atRisk",
+              "offTrack",
+              "onTrack"
+            ]
+          },
+          "priority": {
+            "type": "number"
+          },
+          "priorityLabel": {
+            "type": "string"
+          },
+          "progress": {
+            "type": "number"
+          },
+          "leadId": {
+            "type": "string"
+          },
+          "labelIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "startDateResolution": {
+            "type": "string",
+            "enum": [
+              "halfYear",
+              "month",
+              "quarter",
+              "year"
+            ]
+          },
+          "targetDate": {
+            "type": "string"
+          },
+          "targetDateResolution": {
+            "type": "string",
+            "enum": [
+              "halfYear",
+              "month",
+              "quarter",
+              "year"
+            ]
+          },
+          "startedAt": {
+            "type": "string"
+          },
+          "completedAt": {
+            "type": "string"
+          },
+          "canceledAt": {
+            "type": "string"
+          },
+          "trashed": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "archivedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "summary",
+          "description",
+          "url",
+          "icon",
+          "color",
+          "state",
+          "statusId",
+          "health",
+          "priority",
+          "priorityLabel",
+          "progress",
+          "leadId",
+          "labelIds",
+          "startDate",
+          "startDateResolution",
+          "targetDate",
+          "targetDateResolution",
+          "startedAt",
+          "completedAt",
+          "canceledAt",
+          "trashed",
+          "createdAt",
+          "updatedAt",
+          "archivedAt"
+        ]
+      },
       "confirmation": false
     },
     {
@@ -1975,12 +3691,21 @@
         },
         "required": []
       },
+      "output": {
+        "type": "object",
+        "properties": {
+          "nextCursor": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
       "confirmation": false
     },
     {
       "name": "list-milestones",
       "title": "List Project Milestones",
-      "description": "List milestones in a Linear project. Milestones always belong to a project. Supports cursor pagination and returns nextCursor when more results are available.",
+      "description": "List Linear project milestones, optionally scoped to a project. Without a project, returns milestones across all projects with each milestone's projectId. Supports cursor pagination and returns nextCursor when more results are available.",
       "input": {
         "type": "object",
         "properties": {
@@ -1993,12 +3718,20 @@
             "description": "Next page cursor"
           },
           "project": {
+            "type": "string",
+            "description": "Project name, ID, or slug. Omit to list milestones of all projects; each milestone carries its `projectId`."
+          }
+        },
+        "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "nextCursor": {
             "type": "string"
           }
         },
-        "required": [
-          "project"
-        ]
+        "required": []
       },
       "confirmation": false
     },
@@ -2021,6 +3754,59 @@
           "query"
         ]
       },
+      "output": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "targetDate": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "done",
+              "next",
+              "overdue",
+              "unstarted"
+            ]
+          },
+          "progress": {
+            "type": "number"
+          },
+          "projectId": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "archivedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "description",
+          "targetDate",
+          "status",
+          "progress",
+          "projectId",
+          "createdAt",
+          "updatedAt",
+          "archivedAt"
+        ]
+      },
       "confirmation": false
     },
     {
@@ -2031,7 +3817,8 @@
         "type": "object",
         "properties": {
           "project": {
-            "type": "string"
+            "type": "string",
+            "description": "Project name, ID, or slug. Required when creating; optional when updating by milestone ID."
           },
           "id": {
             "type": "string"
@@ -2046,8 +3833,59 @@
             "type": "string"
           }
         },
+        "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "targetDate": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "done",
+              "next",
+              "overdue",
+              "unstarted"
+            ]
+          },
+          "progress": {
+            "type": "number"
+          },
+          "projectId": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "archivedAt": {
+            "type": "string"
+          }
+        },
         "required": [
-          "project"
+          "id",
+          "name",
+          "description",
+          "targetDate",
+          "status",
+          "progress",
+          "projectId",
+          "createdAt",
+          "updatedAt",
+          "archivedAt"
         ]
       },
       "confirmation": false
@@ -2076,6 +3914,15 @@
             ]
           },
           "name": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "nextCursor": {
             "type": "string"
           }
         },
@@ -2110,6 +3957,53 @@
           "name"
         ]
       },
+      "output": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "isGroup": {
+            "type": "boolean"
+          },
+          "parentId": {
+            "type": "string"
+          },
+          "teamId": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "archivedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "color",
+          "description",
+          "isGroup",
+          "parentId",
+          "teamId",
+          "createdAt",
+          "updatedAt",
+          "archivedAt"
+        ]
+      },
       "confirmation": false
     },
     {
@@ -2125,6 +4019,45 @@
         },
         "required": [
           "id"
+        ]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "subtitle": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "sourceType": {
+            "type": "string"
+          },
+          "issueId": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "subtitle",
+          "url",
+          "sourceType",
+          "issueId",
+          "createdAt",
+          "updatedAt"
         ]
       },
       "confirmation": false
@@ -2155,6 +4088,45 @@
           "filePath"
         ]
       },
+      "output": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "subtitle": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "sourceType": {
+            "type": "string"
+          },
+          "issueId": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "subtitle",
+          "url",
+          "sourceType",
+          "issueId",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
       "confirmation": false
     },
     {
@@ -2172,6 +4144,17 @@
           "id"
         ]
       },
+      "output": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "success"
+        ]
+      },
       "confirmation": false
     },
     {
@@ -2183,6 +4166,13 @@
         "properties": {
           "body": {
             "type": "string"
+          },
+          "attachmentPaths": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Absolute local file paths to upload and append to the comment body as links."
           },
           "id": {
             "type": "string"
@@ -2220,6 +4210,153 @@
           "body"
         ]
       },
+      "output": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "author": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "displayName": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "displayName",
+              "email"
+            ]
+          },
+          "onBehalfOf": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "displayName": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "displayName",
+              "email"
+            ]
+          },
+          "botActor": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "subType": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "type",
+              "subType"
+            ]
+          },
+          "issueId": {
+            "type": "string"
+          },
+          "projectId": {
+            "type": "string"
+          },
+          "initiativeId": {
+            "type": "string"
+          },
+          "documentContentId": {
+            "type": "string"
+          },
+          "projectUpdateId": {
+            "type": "string"
+          },
+          "initiativeUpdateId": {
+            "type": "string"
+          },
+          "parentId": {
+            "type": "string"
+          },
+          "quotedText": {
+            "type": "string"
+          },
+          "resolvingCommentId": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "editedAt": {
+            "type": "string"
+          },
+          "resolvedAt": {
+            "type": "string"
+          },
+          "archivedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "body",
+          "url",
+          "author",
+          "onBehalfOf",
+          "botActor",
+          "issueId",
+          "projectId",
+          "initiativeId",
+          "documentContentId",
+          "projectUpdateId",
+          "initiativeUpdateId",
+          "parentId",
+          "quotedText",
+          "resolvingCommentId",
+          "createdAt",
+          "updatedAt",
+          "editedAt",
+          "resolvedAt",
+          "archivedAt"
+        ]
+      },
       "confirmation": false
     },
     {
@@ -2236,6 +4373,26 @@
         "required": [
           "markdown"
         ]
+      },
+      "output": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "alt": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "url"
+          ]
+        }
       },
       "confirmation": false
     },
@@ -2263,12 +4420,421 @@
           "id"
         ]
       },
+      "output": {
+        "type": "object",
+        "properties": {
+          "branchName": {
+            "type": "string"
+          },
+          "attachments": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "subtitle": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "sourceType": {
+                  "type": "string"
+                },
+                "issueId": {
+                  "type": "string"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "subtitle",
+                "url",
+                "sourceType",
+                "issueId",
+                "createdAt",
+                "updatedAt"
+              ]
+            }
+          },
+          "relations": {
+            "type": "object",
+            "properties": {
+              "outgoing": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "issue": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "identifier": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "url": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "identifier",
+                        "title",
+                        "url"
+                      ]
+                    },
+                    "relatedIssue": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "identifier": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "url": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "identifier",
+                        "title",
+                        "url"
+                      ]
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "type",
+                    "issue",
+                    "relatedIssue",
+                    "createdAt"
+                  ]
+                }
+              },
+              "incoming": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "issue": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "identifier": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "url": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "identifier",
+                        "title",
+                        "url"
+                      ]
+                    },
+                    "relatedIssue": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "identifier": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "url": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "identifier",
+                        "title",
+                        "url"
+                      ]
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "type",
+                    "issue",
+                    "relatedIssue",
+                    "createdAt"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "outgoing",
+              "incoming"
+            ]
+          },
+          "customerNeeds": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "body": {
+                  "type": "string"
+                },
+                "priority": {
+                  "type": "number"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "customerId": {
+                  "type": "string"
+                },
+                "issueId": {
+                  "type": "string"
+                },
+                "projectId": {
+                  "type": "string"
+                },
+                "attachmentId": {
+                  "type": "string"
+                },
+                "createdAt": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "body",
+                "priority",
+                "url",
+                "customerId",
+                "issueId",
+                "projectId",
+                "attachmentId",
+                "createdAt"
+              ]
+            }
+          },
+          "releases": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "slugId": {
+                  "type": "string"
+                },
+                "commitSha": {
+                  "type": "string"
+                },
+                "pipelineId": {
+                  "type": "string"
+                },
+                "stageId": {
+                  "type": "string"
+                },
+                "issueCount": {
+                  "type": "number"
+                },
+                "hasReleaseNotes": {
+                  "type": "boolean"
+                },
+                "releaseNotes": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      },
+                      "slugId": {
+                        "type": "string"
+                      },
+                      "pipelineId": {
+                        "type": "string"
+                      },
+                      "releaseCount": {
+                        "type": "number"
+                      },
+                      "firstReleaseId": {
+                        "type": "string"
+                      },
+                      "lastReleaseId": {
+                        "type": "string"
+                      },
+                      "generationStatus": {
+                        "type": "string",
+                        "enum": [
+                          "completed",
+                          "pending"
+                        ]
+                      },
+                      "content": {
+                        "type": "string"
+                      },
+                      "createdAt": {
+                        "type": "string"
+                      },
+                      "updatedAt": {
+                        "type": "string"
+                      },
+                      "archivedAt": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "title",
+                      "url",
+                      "slugId",
+                      "pipelineId",
+                      "releaseCount",
+                      "firstReleaseId",
+                      "lastReleaseId",
+                      "generationStatus",
+                      "content",
+                      "createdAt",
+                      "updatedAt",
+                      "archivedAt"
+                    ]
+                  }
+                },
+                "startDate": {
+                  "type": "string"
+                },
+                "targetDate": {
+                  "type": "string"
+                },
+                "startedAt": {
+                  "type": "string"
+                },
+                "completedAt": {
+                  "type": "string"
+                },
+                "canceledAt": {
+                  "type": "string"
+                },
+                "trashed": {
+                  "type": "boolean"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                },
+                "archivedAt": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "version",
+                "description",
+                "url",
+                "slugId",
+                "commitSha",
+                "pipelineId",
+                "stageId",
+                "issueCount",
+                "hasReleaseNotes",
+                "releaseNotes",
+                "startDate",
+                "targetDate",
+                "startedAt",
+                "completedAt",
+                "canceledAt",
+                "trashed",
+                "createdAt",
+                "updatedAt",
+                "archivedAt"
+              ]
+            }
+          }
+        },
+        "required": [
+          "branchName",
+          "attachments",
+          "relations",
+          "customerNeeds",
+          "releases"
+        ]
+      },
       "confirmation": false
     },
     {
       "name": "list-issues",
       "title": "List Issues",
-      "description": "List issues in the user's Linear workspace, including active Triage Intelligence suggestions for issues in triage. For my issues, use \"me\" as the assignee. Use \"null\" for no assignee.",
+      "description": "List issues in the user's Linear workspace, including active Triage Intelligence suggestions for issues in triage. For my issues, use \"me\" as the assignee. Use \"null\" for no assignee. Filter by status name or type with state; without a team it matches that status in every team.",
       "input": {
         "type": "object",
         "properties": {
@@ -2295,7 +4861,8 @@
             "type": "string"
           },
           "state": {
-            "type": "string"
+            "type": "string",
+            "description": "Status ID, name, or type. Without `team`, matches that status in every team."
           },
           "cycle": {
             "type": "string"
@@ -2377,6 +4944,22 @@
           }
         },
         "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "nodes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          }
+        },
+        "required": [
+          "nodes"
+        ]
       },
       "confirmation": false
     },
@@ -2576,6 +5159,11 @@
         },
         "required": []
       },
+      "output": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
       "confirmation": false
     },
     {
@@ -2594,12 +5182,35 @@
           "id"
         ]
       },
+      "output": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "identifier": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "identifier",
+          "title",
+          "url"
+        ]
+      },
       "confirmation": true
     },
     {
       "name": "list-issue-statuses",
       "title": "List Issue Statuses",
-      "description": "List available issue statuses in a Linear team. Statuses are team-specific. Supports cursor pagination and returns nextCursor when more results are available.",
+      "description": "List Linear issue statuses (workflow states), optionally scoped to a team. Statuses are team-specific, so pass team before using a status ID in a write. Without a team, returns statuses across all teams with each status's teamId. Supports cursor pagination and returns nextCursor when more results are available.",
       "input": {
         "type": "object",
         "properties": {
@@ -2612,12 +5223,20 @@
             "description": "Next page cursor"
           },
           "team": {
+            "type": "string",
+            "description": "Team name, key, or ID. Omit to list statuses of all teams; each status carries its `teamId`."
+          }
+        },
+        "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "nextCursor": {
             "type": "string"
           }
         },
-        "required": [
-          "team"
-        ]
+        "required": []
       },
       "confirmation": false
     },
@@ -2642,6 +5261,45 @@
           "id",
           "name",
           "team"
+        ]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "position": {
+            "type": "number"
+          },
+          "teamId": {
+            "type": "string"
+          },
+          "archivedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "type",
+          "color",
+          "description",
+          "position",
+          "teamId",
+          "archivedAt"
         ]
       },
       "confirmation": false
@@ -2731,6 +5389,22 @@
         },
         "required": []
       },
+      "output": {
+        "type": "object",
+        "properties": {
+          "nodes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          }
+        },
+        "required": [
+          "nodes"
+        ]
+      },
       "confirmation": false
     },
     {
@@ -2753,6 +5427,11 @@
         "required": [
           "query"
         ]
+      },
+      "output": {
+        "type": "object",
+        "properties": {},
+        "required": []
       },
       "confirmation": false
     },
@@ -2856,12 +5535,17 @@
         },
         "required": []
       },
+      "output": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
       "confirmation": false
     },
     {
       "name": "get-status-updates",
       "title": "Get Status Updates",
-      "description": "List or get project/initiative status updates. Pass `id` to get a specific update, or filter to list.",
+      "description": "List or get project and initiative status updates. Pass id to get one update. type defaults to initiative when only initiative is given, otherwise project.",
       "input": {
         "type": "object",
         "properties": {
@@ -2883,6 +5567,7 @@
           },
           "type": {
             "type": "string",
+            "description": "Defaults to \"initiative\" when only `initiative` is given, otherwise \"project\".",
             "enum": [
               "project",
               "initiative"
@@ -2910,9 +5595,7 @@
             "type": "boolean"
           }
         },
-        "required": [
-          "type"
-        ]
+        "required": []
       },
       "confirmation": false
     },
@@ -2958,6 +5641,81 @@
           "type"
         ]
       },
+      "output": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "health": {
+            "type": "string",
+            "enum": [
+              "atRisk",
+              "offTrack",
+              "onTrack",
+              "atRisk",
+              "offTrack",
+              "onTrack"
+            ]
+          },
+          "url": {
+            "type": "string"
+          },
+          "slugId": {
+            "type": "string"
+          },
+          "projectId": {
+            "type": "string"
+          },
+          "initiativeId": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "isDiffHidden": {
+            "type": "boolean"
+          },
+          "isStale": {
+            "type": "boolean"
+          },
+          "commentCount": {
+            "type": "number"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "editedAt": {
+            "type": "string"
+          },
+          "archivedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "body",
+          "health",
+          "url",
+          "slugId",
+          "projectId",
+          "initiativeId",
+          "userId",
+          "isDiffHidden",
+          "isStale",
+          "commentCount",
+          "createdAt",
+          "updatedAt",
+          "editedAt",
+          "archivedAt"
+        ]
+      },
       "confirmation": false
     },
     {
@@ -2981,6 +5739,17 @@
         "required": [
           "type",
           "id"
+        ]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "success"
         ]
       },
       "confirmation": false
@@ -3031,12 +5800,153 @@
         "title": "Plan and Review Work"
       }
     ],
-    "instructions": "- Format Linear object titles and names as markdown links whenever the object has a URL.\n- Resolve referenced objects with the appropriate lookup, search, or list tool. Never invent IDs or silently choose an unrelated fuzzy match. If multiple plausible matches remain, ask the user to clarify.\n- Prefer the `list-*`, `get-*`, and `save-*` tools for capabilities they cover. Use a `save-*` tool without `id` to create and with `id` to update. Use the older, operation-specific tools only for capabilities not covered by those tools.\n- For comment, document, issue, project, initiative, milestone, release, release-note, and status-update writes, use the matching `save-*` tool instead of an older create/update tool.\n- `save-document` uses `project`, `issue`, `initiative`, `cycle`, or `team` for its parent. Do not pass legacy `projectId`, `issueId`, `initiativeId`, `cycleId`, or `teamId` fields to `save-document`.\n- When filtering by the current user, resolve the current user and pass the resolved user to the relevant assignee, owner, member, creator, or user filter.\n- When the user specifies a team, project, initiative, label, release pipeline, release, or other scope, pass that scope into the final list/filter tool after resolving it. Do not drop a requested filter just because a lookup returned relevant-looking mock data.\n- Use `full-text-search-issues` for relevance-ranked keyword searches. Use `filter-issues` or `list-issues` for structured criteria. Follow `nextCursor` when the user asks for all results or when the current page is insufficient.\n- \"My issues\" means issues assigned to the current user. Use `list-issues` with `assignee: me`. Use `assignee: \"null\"` for unassigned issues.\n- Use ISO 8601 dates and timestamps. Pass the literal string `null` only where a tool documents it as the way to clear a field.\n- Linear issue priorities are `1` urgent, `2` high, `3` medium, `4` low, and `0` no priority.\n- To attach a local file to an issue, call `create-attachment` with its absolute `filePath`. The extension reads, uploads, and links the file. Do not base64-encode files, request signed upload URLs, or upload bytes outside the extension. When creating a new issue with an attachment, create the issue first, then attach the file using the returned issue ID.\n- For `list-comments` and new threads with `save-comment`, provide exactly one parent. Use `parentId` for replies and `id` for edits.\n- \"Close\" an issue by moving it to a completed status. Only use `delete-issue` when the user explicitly asks to delete or trash it.\n- \"Inbox\" means Linear notifications.\n",
+    "instructions": "- Format Linear object titles and names as markdown links whenever the object has a URL.\n- Never invent IDs or silently choose an unrelated fuzzy match. If multiple plausible matches remain, ask the user to clarify.\n- Use a `save-*` tool without `id` to create and with `id` to update. Writes for comments, documents, issues, projects, initiatives, milestones, releases, release notes, and status updates all go through the matching `save-*` tool.\n- Most inputs that reference another object accept a name, key, identifier, slug, or ID, so pass what the user said (for example `team: ENG`) instead of looking up an ID first. Look objects up only to disambiguate or when the user asks to see them.\n- Scope inputs on list tools are optional unless a tool's schema requires them. Call `list-teams`, `list-users`, `list-cycles`, `list-issue-statuses`, and `list-milestones` without arguments to list across the workspace. Pass `team` to `list-issue-statuses` before using a status ID in a write, because statuses are team-specific.\n- Use `get-user` with `query: me` for the current user and `list-users` for workspace members. Use `list-teams` for teams; it has no \"my teams\" filter, so describe results as workspace teams.\n- `save-document` uses `project`, `issue`, `initiative`, `cycle`, or `team` for its parent. Do not pass legacy `projectId`, `issueId`, `initiativeId`, `cycleId`, or `teamId` fields to `save-document`.\n- When filtering by the current user, pass `me` where a filter accepts it; otherwise resolve the current user with `get-user` and pass the resolved user.\n- When the user specifies a team, project, initiative, label, release pipeline, release, or other scope, pass that scope into the final list/filter tool after resolving it. Do not drop a requested filter just because a lookup returned relevant-looking mock data.\n- Use `list-issues` for structured issue queries. Use `full-text-search-issues` for relevance-ranked topic or phrase searches. Use `filter-issues` only for criteria `list-issues` cannot express, such as priority or date ranges, estimates, or OR conditions. Follow `nextCursor` when the user asks for all results or when the current page is insufficient.\n- \"My issues\" means issues assigned to the current user. Use `list-issues` with `assignee: me`. Use `assignee: \"null\"` for unassigned issues.\n- `list-issues` accepts a status name or type in `state` (for example `In Progress` or `started`) and, without `team`, matches it in every team. Do not look up statuses or split the query per team first.\n- Use ISO 8601 dates and timestamps. Pass the literal string `null` only where a tool documents it as the way to clear a field.\n- Linear issue priorities are `1` urgent, `2` high, `3` medium, `4` low, and `0` no priority.\n- To attach a local file to an issue, call `create-attachment` with its absolute `filePath`. The extension reads, uploads, and links the file. Do not base64-encode files, request signed upload URLs, or upload bytes outside the extension. When creating a new issue with an attachment, create the issue first, then attach the file using the returned issue ID.\n- To add or remove a single label without touching the others, use `add-label` or `remove-label`. Passing `labels` to `save-issue` replaces the whole set.\n- For `list-comments` and new threads with `save-comment`, provide exactly one parent. Use `parentId` for replies and `id` for edits.\n- \"Close\" an issue by moving it to a completed status. Only use `delete-issue` when the user explicitly asks to delete or trash it.\n- \"Inbox\" means Linear notifications. Use `get-notifications` with `unreadOnly: true` for unread notifications.\n",
     "evals": [
+      {
+        "input": "@linear which teams are there?",
+        "mocks": {
+          "list-teams": {
+            "nodes": [
+              {
+                "id": "team-eng",
+                "key": "ENG",
+                "name": "Engineering"
+              }
+            ]
+          }
+        },
+        "expected": [
+          {
+            "callsTool": "list-teams"
+          }
+        ]
+      },
+      {
+        "input": "@linear what are the current cycles?",
+        "usedAsExample": false,
+        "mocks": {
+          "list-cycles": {
+            "nodes": [
+              {
+                "id": "cycle-24",
+                "number": 24,
+                "teamId": "team-eng",
+                "isActive": true
+              }
+            ]
+          }
+        },
+        "expected": [
+          {
+            "callsTool": {
+              "name": "list-cycles",
+              "arguments": {
+                "type": "current"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "input": "@linear add the Bug label to ENG-42",
+        "usedAsExample": false,
+        "mocks": {
+          "add-label": {
+            "id": "issue-42",
+            "identifier": "ENG-42",
+            "title": "Flaky OAuth redirects"
+          }
+        },
+        "expected": [
+          {
+            "callsTool": {
+              "name": "add-label",
+              "arguments": {
+                "issueId": "ENG-42",
+                "label": "Bug"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "input": "@linear show my unread notifications",
+        "usedAsExample": false,
+        "mocks": {
+          "get-notifications": {
+            "nodes": []
+          }
+        },
+        "expected": [
+          {
+            "callsTool": {
+              "name": "get-notifications",
+              "arguments": {
+                "unreadOnly": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "input": "@linear show my in-progress issues",
+        "usedAsExample": false,
+        "mocks": {
+          "get-user": {
+            "id": "user-me",
+            "name": "Alex Chen",
+            "email": "alex@example.com",
+            "isMe": true
+          },
+          "list-issues": {
+            "nodes": []
+          },
+          "list-issue-statuses": {
+            "nodes": [
+              {
+                "id": "status-progress-eng",
+                "name": "In Progress",
+                "type": "started",
+                "teamId": "team-eng"
+              },
+              {
+                "id": "status-progress-ios",
+                "name": "In Progress",
+                "type": "started",
+                "teamId": "team-ios"
+              }
+            ]
+          }
+        },
+        "expected": [
+          {
+            "callsTool": {
+              "name": "list-issues",
+              "arguments": {
+                "assignee": {
+                  "or": [
+                    "me",
+                    "user-me"
+                  ]
+                },
+                "state": {
+                  "or": [
+                    "In Progress",
+                    "in progress",
+                    "started"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      },
       {
         "input": "@linear what's in my inbox",
         "mocks": {
-          "get-notifications": []
+          "get-notifications": {
+            "nodes": []
+          }
         },
         "expected": [
           {
@@ -3074,24 +5984,17 @@
       {
         "input": "@linear show my priority 1 issues",
         "mocks": {
-          "get-teams": [
-            {
-              "id": "team-eng",
-              "key": "ENG",
-              "name": "Engineering"
-            }
-          ],
-          "get-current-user": {
-            "id": "user-me",
-            "name": "Alex Chen",
-            "email": "alex@example.com",
-            "isMe": true
-          },
           "filter-issues": {
             "issues": []
           },
           "list-issues": {
             "nodes": []
+          },
+          "get-user": {
+            "id": "user-me",
+            "name": "Alex Chen",
+            "email": "alex@example.com",
+            "isMe": true
           }
         },
         "expected": [
@@ -3131,19 +6034,6 @@
               }
             ]
           },
-          "get-current-user": {
-            "id": "user-me",
-            "name": "Alex Chen",
-            "email": "alex@example.com",
-            "isMe": true
-          },
-          "get-teams": [
-            {
-              "id": "team-eng",
-              "key": "ENG",
-              "name": "Engineering"
-            }
-          ],
           "list-teams": {
             "nodes": [
               {
@@ -3155,6 +6045,12 @@
           },
           "list-issues": {
             "nodes": []
+          },
+          "get-user": {
+            "id": "user-me",
+            "name": "Alex Chen",
+            "email": "alex@example.com",
+            "isMe": true
           }
         },
         "expected": [
@@ -3178,12 +6074,6 @@
         "input": "@linear close issue ENG-42",
         "usedAsExample": false,
         "mocks": {
-          "get-current-user": {
-            "id": "user-me",
-            "name": "Alex Chen",
-            "email": "alex@example.com",
-            "isMe": true
-          },
           "filter-issues": {
             "issues": [
               {
@@ -3211,30 +6101,6 @@
               }
             ]
           },
-          "get-teams": [
-            {
-              "id": "team-eng",
-              "key": "ENG",
-              "name": "Engineering"
-            }
-          ],
-          "get-issue-states": [
-            {
-              "id": "status-done",
-              "name": "Done",
-              "type": "completed"
-            }
-          ],
-          "update-issue": {
-            "id": "issue-oauth",
-            "identifier": "ENG-42",
-            "title": "Flaky OAuth redirects",
-            "state": {
-              "id": "status-done",
-              "name": "Done",
-              "type": "completed"
-            }
-          },
           "list-issue-statuses": {
             "nodes": [
               {
@@ -3249,6 +6115,12 @@
             "identifier": "ENG-42",
             "title": "Flaky OAuth redirects",
             "state": "Done"
+          },
+          "get-user": {
+            "id": "user-me",
+            "name": "Alex Chen",
+            "email": "alex@example.com",
+            "isMe": true
           }
         },
         "expected": [
@@ -3283,7 +6155,6 @@
       {
         "input": "@linear how do I configure automatic closing of canceled issues?",
         "mocks": {
-          "get-projects": [],
           "search-documentation": [
             {
               "id": "doc-auto-close",
@@ -3333,12 +6204,6 @@
         "input": "@linear show the full instructions for agent skill skill-triage",
         "usedAsExample": false,
         "mocks": {
-          "get-current-user": {
-            "id": "user-me",
-            "name": "Alex Chen",
-            "email": "alex@example.com",
-            "isMe": true
-          },
           "get-workspace": {
             "id": "workspace-acme",
             "name": "Acme",
@@ -3356,6 +6221,12 @@
             "id": "skill-triage",
             "name": "Triage issues",
             "instructions": "Review severity and ownership."
+          },
+          "get-user": {
+            "id": "user-me",
+            "name": "Alex Chen",
+            "email": "alex@example.com",
+            "isMe": true
           }
         },
         "expected": [
@@ -3397,19 +6268,6 @@
         "input": "@linear show inline comments on document api-migration",
         "usedAsExample": false,
         "mocks": {
-          "get-current-user": {
-            "id": "user-me",
-            "name": "Alex Chen",
-            "email": "alex@example.com",
-            "isMe": true
-          },
-          "get-documents": [
-            {
-              "id": "document-api-migration",
-              "slugId": "api-migration",
-              "title": "API migration"
-            }
-          ],
           "list-documents": {
             "nodes": [
               {
@@ -3427,6 +6285,12 @@
                 "quotedText": "Retry policy"
               }
             ]
+          },
+          "get-user": {
+            "id": "user-me",
+            "name": "Alex Chen",
+            "email": "alex@example.com",
+            "isMe": true
           }
         },
         "expected": [
@@ -3464,13 +6328,6 @@
               }
             ]
           },
-          "get-projects": [
-            {
-              "id": "project-mobile-redesign",
-              "name": "Mobile redesign",
-              "slugId": "mobile-redesign"
-            }
-          ],
           "save-comment": {
             "id": "comment-project",
             "body": "Waiting for design"
@@ -3531,10 +6388,6 @@
         "input": "@linear change comment comment-1 to 'Fixed in the latest build'",
         "usedAsExample": false,
         "mocks": {
-          "update-comment": {
-            "id": "comment-1",
-            "body": "Fixed in the latest build"
-          },
           "save-comment": {
             "id": "comment-1",
             "body": "Fixed in the latest build"
@@ -3542,30 +6395,15 @@
         },
         "expected": [
           {
-            "or": [
-              {
-                "callsTool": {
-                  "name": "save-comment",
-                  "arguments": {
-                    "id": "comment-1",
-                    "body": {
-                      "includes": "latest build"
-                    }
-                  }
-                }
-              },
-              {
-                "callsTool": {
-                  "name": "update-comment",
-                  "arguments": {
-                    "id": "comment-1",
-                    "body": {
-                      "includes": "latest build"
-                    }
-                  }
+            "callsTool": {
+              "name": "save-comment",
+              "arguments": {
+                "id": "comment-1",
+                "body": {
+                  "includes": "latest build"
                 }
               }
-            ]
+            }
           }
         ]
       },
@@ -3608,13 +6446,6 @@
       {
         "input": "@linear show the current cycle for team team-eng",
         "mocks": {
-          "get-teams": [
-            {
-              "id": "team-eng",
-              "key": "ENG",
-              "name": "Engineering"
-            }
-          ],
           "list-teams": {
             "nodes": [
               {
@@ -3644,7 +6475,7 @@
             "callsTool": {
               "name": "list-cycles",
               "arguments": {
-                "teamId": "team-eng"
+                "team": "team-eng"
               }
             }
           }
@@ -3681,13 +6512,6 @@
         "input": "@linear get details for team ENG",
         "usedAsExample": false,
         "mocks": {
-          "get-teams": [
-            {
-              "id": "team-eng",
-              "key": "ENG",
-              "name": "Engineering"
-            }
-          ],
           "list-teams": {
             "nodes": [
               {
@@ -3742,19 +6566,6 @@
             "id": "workspace-acme",
             "name": "Acme",
             "urlKey": "acme"
-          },
-          "get-members": [
-            {
-              "id": "user-alex",
-              "name": "Alex Chen",
-              "email": "alex@example.com"
-            }
-          ],
-          "get-current-user": {
-            "id": "user-me",
-            "name": "Alex Chen",
-            "email": "alex@example.com",
-            "isMe": true
           },
           "get-user": {
             "id": "user-alex",
@@ -3835,12 +6646,6 @@
         "input": "@linear list our release pipelines",
         "usedAsExample": false,
         "mocks": {
-          "get-current-user": {
-            "id": "user-me",
-            "name": "Alex Chen",
-            "email": "alex@example.com",
-            "isMe": true
-          },
           "list-release-pipelines": {
             "nodes": [
               {
@@ -3848,6 +6653,12 @@
                 "name": "App Releases"
               }
             ]
+          },
+          "get-user": {
+            "id": "user-me",
+            "name": "Alex Chen",
+            "email": "alex@example.com",
+            "isMe": true
           }
         },
         "expected": [
@@ -4280,18 +7091,6 @@
               }
             ]
           },
-          "get-document-content": {
-            "id": "document-api-migration",
-            "title": "API migration",
-            "content": "# API migration"
-          },
-          "get-documents": [
-            {
-              "id": "document-api-migration",
-              "title": "API migration",
-              "slugId": "api-migration"
-            }
-          ],
           "get-document": {
             "id": "document-api-migration",
             "slugId": "api-migration",
@@ -4301,32 +7100,12 @@
         },
         "expected": [
           {
-            "or": [
-              {
-                "callsTool": {
-                  "name": "get-document",
-                  "arguments": {
-                    "id": "api-migration"
-                  }
-                }
-              },
-              {
-                "callsTool": {
-                  "name": "get-documents",
-                  "arguments": {
-                    "query": "api-migration"
-                  }
-                }
-              },
-              {
-                "callsTool": {
-                  "name": "get-document-content",
-                  "arguments": {
-                    "documentId": "api-migration"
-                  }
-                }
+            "callsTool": {
+              "name": "get-document",
+              "arguments": {
+                "id": "api-migration"
               }
-            ]
+            }
           }
         ]
       },
@@ -4334,19 +7113,6 @@
         "input": "@linear list documents in project mobile-redesign updated since 2026-08-01",
         "usedAsExample": false,
         "mocks": {
-          "get-current-user": {
-            "id": "user-me",
-            "name": "Alex Chen",
-            "email": "alex@example.com",
-            "isMe": true
-          },
-          "get-projects": [
-            {
-              "id": "project-mobile-redesign",
-              "name": "Mobile redesign",
-              "slugId": "mobile-redesign"
-            }
-          ],
           "list-projects": {
             "nodes": [
               {
@@ -4363,6 +7129,12 @@
                 "title": "Mobile redesign spec"
               }
             ]
+          },
+          "get-user": {
+            "id": "user-me",
+            "name": "Alex Chen",
+            "email": "alex@example.com",
+            "isMe": true
           }
         },
         "expected": [
@@ -4407,19 +7179,6 @@
       {
         "input": "@linear create a document titled 'Launch checklist' under project mobile-redesign with content '# Checklist'",
         "mocks": {
-          "get-teams": [
-            {
-              "id": "team-eng",
-              "key": "ENG",
-              "name": "Engineering"
-            }
-          ],
-          "get-current-user": {
-            "id": "user-me",
-            "name": "Alex Chen",
-            "email": "alex@example.com",
-            "isMe": true
-          },
           "list-projects": {
             "nodes": [
               {
@@ -4429,17 +7188,16 @@
               }
             ]
           },
-          "get-projects": [
-            {
-              "id": "project-mobile-redesign",
-              "name": "Mobile redesign",
-              "slugId": "mobile-redesign"
-            }
-          ],
           "save-document": {
             "id": "document-launch-checklist",
             "title": "Launch checklist",
             "content": "# Checklist"
+          },
+          "get-user": {
+            "id": "user-me",
+            "name": "Alex Chen",
+            "email": "alex@example.com",
+            "isMe": true
           }
         },
         "expected": [
@@ -4448,7 +7206,12 @@
               "name": "save-document",
               "arguments": {
                 "title": "Launch checklist",
-                "project": "project-mobile-redesign",
+                "project": {
+                  "or": [
+                    "mobile-redesign",
+                    "project-mobile-redesign"
+                  ]
+                },
                 "content": {
                   "includes": "# Checklist"
                 }
@@ -4461,13 +7224,6 @@
         "input": "@linear create a document titled 'Cycle retrospective' under cycle 24 for team ENG with content '# Retro'",
         "usedAsExample": false,
         "mocks": {
-          "get-teams": [
-            {
-              "id": "team-eng",
-              "key": "ENG",
-              "name": "Engineering"
-            }
-          ],
           "list-teams": {
             "nodes": [
               {
@@ -4500,7 +7256,12 @@
                 "content": {
                   "includes": "# Retro"
                 },
-                "cycle": "cycle-24"
+                "cycle": {
+                  "or": [
+                    "cycle-24",
+                    "24"
+                  ]
+                }
               }
             }
           }
@@ -4529,19 +7290,6 @@
               }
             ]
           },
-          "get-document-content": {
-            "id": "document-api-migration",
-            "title": "API migration",
-            "content": "Use Polling for updates."
-          },
-          "get-documents": [
-            {
-              "id": "document-api-migration",
-              "title": "API migration",
-              "slugId": "api-migration",
-              "content": "Use Polling for updates."
-            }
-          ],
           "save-document": {
             "id": "document-api-migration",
             "title": "API migration",
@@ -4643,13 +7391,6 @@
               }
             ]
           },
-          "get-teams": [
-            {
-              "id": "team-eng",
-              "key": "ENG",
-              "name": "Engineering"
-            }
-          ],
           "get-project": {
             "id": "project-platform",
             "name": "Platform reliability",
@@ -4699,14 +7440,14 @@
         "input": "@linear continue listing projects after cursor projects-page-1",
         "usedAsExample": false,
         "mocks": {
-          "get-current-user": {
+          "list-projects": {
+            "nodes": []
+          },
+          "get-user": {
             "id": "user-me",
             "name": "Alex Chen",
             "email": "alex@example.com",
             "isMe": true
-          },
-          "list-projects": {
-            "nodes": []
           }
         },
         "expected": [
@@ -4764,12 +7505,6 @@
             "key": "ENG",
             "name": "Engineering"
           },
-          "get-current-user": {
-            "id": "user-me",
-            "name": "Alex Chen",
-            "email": "alex@example.com",
-            "isMe": true
-          },
           "list-teams": {
             "nodes": [
               {
@@ -4784,18 +7519,6 @@
               }
             ]
           },
-          "get-teams": [
-            {
-              "id": "team-eng",
-              "key": "ENG",
-              "name": "Engineering"
-            },
-            {
-              "id": "team-desktop",
-              "key": "DESKTOP",
-              "name": "Desktop"
-            }
-          ],
           "save-project": {
             "id": "project-desktop-performance",
             "name": "Desktop performance",
@@ -4804,6 +7527,12 @@
               "name": "Alex Chen"
             },
             "targetDate": "2026-12-31"
+          },
+          "get-user": {
+            "id": "user-me",
+            "name": "Alex Chen",
+            "email": "alex@example.com",
+            "isMe": true
           }
         },
         "expected": [
@@ -4822,7 +7551,12 @@
                         "includes": "team-desktop"
                       }
                     ],
-                    "lead": "user-me",
+                    "lead": {
+                      "or": [
+                        "me",
+                        "user-me"
+                      ]
+                    },
                     "targetDate": "2026-12-31"
                   }
                 }
@@ -4834,13 +7568,18 @@
                     "name": "Desktop performance",
                     "addTeams": [
                       {
-                        "includes": "team-eng"
+                        "includes": "ENG"
                       },
                       {
-                        "includes": "team-desktop"
+                        "includes": "DESKTOP"
                       }
                     ],
-                    "lead": "Alex Chen",
+                    "lead": {
+                      "or": [
+                        "me",
+                        "user-me"
+                      ]
+                    },
                     "targetDate": "2026-12-31"
                   }
                 }
@@ -4858,7 +7597,12 @@
                         "includes": "team-desktop"
                       }
                     ],
-                    "lead": "user-me",
+                    "lead": {
+                      "or": [
+                        "me",
+                        "user-me"
+                      ]
+                    },
                     "targetDate": "2026-12-31"
                   }
                 }
@@ -4870,13 +7614,18 @@
                     "name": "Desktop performance",
                     "setTeams": [
                       {
-                        "includes": "team-eng"
+                        "includes": "ENG"
                       },
                       {
-                        "includes": "team-desktop"
+                        "includes": "DESKTOP"
                       }
                     ],
-                    "lead": "Alex Chen",
+                    "lead": {
+                      "or": [
+                        "me",
+                        "user-me"
+                      ]
+                    },
                     "targetDate": "2026-12-31"
                   }
                 }
@@ -4894,13 +7643,6 @@
             "name": "Product quality",
             "slugId": "quality"
           },
-          "get-projects": [
-            {
-              "id": "project-mobile-redesign",
-              "name": "Mobile redesign",
-              "slugId": "mobile-redesign"
-            }
-          ],
           "list-projects": {
             "nodes": [
               {
@@ -4983,12 +7725,6 @@
             "name": "Mobile redesign",
             "slugId": "mobile-redesign"
           },
-          "get-current-user": {
-            "id": "user-me",
-            "name": "Alex Chen",
-            "email": "alex@example.com",
-            "isMe": true
-          },
           "list-projects": {
             "nodes": [
               {
@@ -4998,16 +7734,15 @@
               }
             ]
           },
-          "get-projects": [
-            {
-              "id": "project-mobile-redesign",
-              "name": "Mobile redesign",
-              "slugId": "mobile-redesign"
-            }
-          ],
           "save-project": {
             "id": "project-mobile-redesign",
             "name": "Mobile redesign"
+          },
+          "get-user": {
+            "id": "user-me",
+            "name": "Alex Chen",
+            "email": "alex@example.com",
+            "isMe": true
           }
         },
         "expected": [
@@ -5056,13 +7791,6 @@
             "name": "Mobile redesign",
             "slugId": "mobile-redesign"
           },
-          "get-projects": [
-            {
-              "id": "project-mobile-redesign",
-              "name": "Mobile redesign",
-              "slugId": "mobile-redesign"
-            }
-          ],
           "list-projects": {
             "nodes": [
               {
@@ -5102,13 +7830,6 @@
         "input": "@linear get milestone Public beta in project mobile-redesign",
         "usedAsExample": false,
         "mocks": {
-          "get-projects": [
-            {
-              "id": "project-mobile-redesign",
-              "name": "Mobile redesign",
-              "slugId": "mobile-redesign"
-            }
-          ],
           "get-project": {
             "id": "project-mobile-redesign",
             "name": "Mobile redesign",
@@ -5192,13 +7913,6 @@
               }
             ]
           },
-          "get-projects": [
-            {
-              "id": "project-mobile-redesign",
-              "name": "Mobile redesign",
-              "slugId": "mobile-redesign"
-            }
-          ],
           "save-milestone": {
             "id": "milestone-beta",
             "name": "Public beta",
@@ -5236,13 +7950,6 @@
             "id": "milestone-beta",
             "name": "Public beta"
           },
-          "get-projects": [
-            {
-              "id": "project-mobile-redesign",
-              "name": "Mobile redesign",
-              "slugId": "mobile-redesign"
-            }
-          ],
           "list-projects": {
             "nodes": [
               {
@@ -5260,10 +7967,6 @@
               }
             ]
           },
-          "update-project-milestone": {
-            "id": "milestone-beta",
-            "name": "Open beta"
-          },
           "save-milestone": {
             "id": "milestone-beta",
             "name": "Open beta"
@@ -5271,37 +7974,13 @@
         },
         "expected": [
           {
-            "or": [
-              {
-                "callsTool": {
-                  "name": "save-milestone",
-                  "arguments": {
-                    "project": "mobile-redesign",
-                    "id": "milestone-beta",
-                    "name": "Open beta"
-                  }
-                }
-              },
-              {
-                "callsTool": {
-                  "name": "save-milestone",
-                  "arguments": {
-                    "project": "project-mobile-redesign",
-                    "id": "milestone-beta",
-                    "name": "Open beta"
-                  }
-                }
-              },
-              {
-                "callsTool": {
-                  "name": "update-project-milestone",
-                  "arguments": {
-                    "milestoneId": "milestone-beta",
-                    "name": "Open beta"
-                  }
-                }
+            "callsTool": {
+              "name": "save-milestone",
+              "arguments": {
+                "id": "milestone-beta",
+                "name": "Open beta"
               }
-            ]
+            }
           }
         ]
       },
@@ -5350,12 +8029,6 @@
         "input": "@linear list initiatives owned by me with status planned",
         "usedAsExample": false,
         "mocks": {
-          "get-current-user": {
-            "id": "user-me",
-            "name": "Alex Chen",
-            "email": "alex@example.com",
-            "isMe": true
-          },
           "list-initiatives": {
             "nodes": [
               {
@@ -5363,12 +8036,15 @@
                 "name": "Product quality"
               }
             ]
+          },
+          "get-user": {
+            "id": "user-me",
+            "name": "Alex Chen",
+            "email": "alex@example.com",
+            "isMe": true
           }
         },
         "expected": [
-          {
-            "callsTool": "get-current-user"
-          },
           {
             "callsTool": {
               "name": "list-initiatives",
@@ -5407,20 +8083,6 @@
         "input": "@linear create initiative Product quality owned by me, led by team ENG, targeting 2026-12-31",
         "usedAsExample": false,
         "mocks": {
-          "get-members": [
-            {
-              "id": "user-me",
-              "name": "Alex Chen",
-              "email": "alex@example.com",
-              "isMe": true
-            }
-          ],
-          "get-current-user": {
-            "id": "user-me",
-            "name": "Alex Chen",
-            "email": "alex@example.com",
-            "isMe": true
-          },
           "list-teams": {
             "nodes": [
               {
@@ -5430,17 +8092,16 @@
               }
             ]
           },
-          "get-teams": [
-            {
-              "id": "team-eng",
-              "key": "ENG",
-              "name": "Engineering"
-            }
-          ],
           "save-initiative": {
             "id": "initiative-quality",
             "name": "Product quality",
             "targetDate": "2026-12-31"
+          },
+          "get-user": {
+            "id": "user-me",
+            "name": "Alex Chen",
+            "email": "alex@example.com",
+            "isMe": true
           }
         },
         "expected": [
@@ -5471,12 +8132,6 @@
         "input": "@linear append 'Track crash-free sessions.' to initiative quality and remove its owner",
         "usedAsExample": false,
         "mocks": {
-          "get-current-user": {
-            "id": "user-me",
-            "name": "Alex Chen",
-            "email": "alex@example.com",
-            "isMe": true
-          },
           "get-initiative": {
             "id": "initiative-quality",
             "name": "Product quality",
@@ -5506,6 +8161,12 @@
             "name": "Product quality",
             "description": "Track crash-free sessions.",
             "owner": null
+          },
+          "get-user": {
+            "id": "user-me",
+            "name": "Alex Chen",
+            "email": "alex@example.com",
+            "isMe": true
           }
         },
         "expected": [
@@ -5594,12 +8255,6 @@
         "input": "@linear create issue 'Investigate crash' for team ENG and attach /Users/alex/Desktop/crash.log",
         "usedAsExample": false,
         "mocks": {
-          "get-current-user": {
-            "id": "user-me",
-            "name": "Alex Chen",
-            "email": "alex@example.com",
-            "isMe": true
-          },
           "list-issue-statuses": {
             "nodes": [
               {
@@ -5609,13 +8264,6 @@
               }
             ]
           },
-          "get-teams": [
-            {
-              "id": "team-eng",
-              "key": "ENG",
-              "name": "Engineering"
-            }
-          ],
           "list-teams": {
             "nodes": [
               {
@@ -5624,11 +8272,6 @@
                 "name": "Engineering"
               }
             ]
-          },
-          "create-issue": {
-            "id": "issue-crash",
-            "identifier": "ENG-99",
-            "title": "Investigate crash"
           },
           "save-issue": {
             "id": "issue-crash",
@@ -5639,18 +8282,17 @@
             "id": "attachment-crash",
             "title": "crash.log",
             "issueId": "issue-crash"
+          },
+          "get-user": {
+            "id": "user-me",
+            "name": "Alex Chen",
+            "email": "alex@example.com",
+            "isMe": true
           }
         },
         "expected": [
           {
-            "or": [
-              {
-                "callsTool": "save-issue"
-              },
-              {
-                "callsTool": "create-issue"
-              }
-            ]
+            "callsTool": "save-issue"
           },
           {
             "callsTool": {
@@ -5746,18 +8388,6 @@
       {
         "input": "@linear list high-priority issues with label Bug in project mobile-redesign updated since 2026-08-01",
         "mocks": {
-          "get-current-user": {
-            "id": "user-me",
-            "name": "Alex Chen",
-            "email": "alex@example.com",
-            "isMe": true
-          },
-          "get-labels": [
-            {
-              "id": "label-bug",
-              "name": "Bug"
-            }
-          ],
           "filter-issues": {
             "issues": [
               {
@@ -5767,13 +8397,6 @@
               }
             ]
           },
-          "get-projects": [
-            {
-              "id": "project-mobile-redesign",
-              "name": "Mobile redesign",
-              "slugId": "mobile-redesign"
-            }
-          ],
           "list-projects": {
             "nodes": [
               {
@@ -5800,6 +8423,12 @@
                 "priority": 2
               }
             ]
+          },
+          "get-user": {
+            "id": "user-me",
+            "name": "Alex Chen",
+            "email": "alex@example.com",
+            "isMe": true
           }
         },
         "expected": [
@@ -5809,28 +8438,27 @@
                 "callsTool": {
                   "name": "list-issues",
                   "arguments": {
-                    "project": "project-mobile-redesign",
-                    "label": "Bug",
-                    "priority": 2,
-                    "updatedAt": "2026-08-01"
-                  }
-                }
-              },
-              {
-                "callsTool": "filter-issues"
-              },
-              {
-                "callsTool": {
-                  "name": "list-issues",
-                  "arguments": {
-                    "project": "project-mobile-redesign",
-                    "label": "label-bug",
+                    "project": {
+                      "or": [
+                        "mobile-redesign",
+                        "project-mobile-redesign"
+                      ]
+                    },
+                    "label": {
+                      "or": [
+                        "Bug",
+                        "label-bug"
+                      ]
+                    },
                     "priority": 2,
                     "updatedAt": {
                       "matches": "^2026-08-01"
                     }
                   }
                 }
+              },
+              {
+                "callsTool": "filter-issues"
               }
             ]
           }
@@ -5858,13 +8486,6 @@
       {
         "input": "@linear create an urgent issue titled 'OAuth outage' for team ENG, assign it to me, due 2026-08-26",
         "mocks": {
-          "get-teams": [
-            {
-              "id": "team-eng",
-              "key": "ENG",
-              "name": "Engineering"
-            }
-          ],
           "list-teams": {
             "nodes": [
               {
@@ -5873,12 +8494,6 @@
                 "name": "Engineering"
               }
             ]
-          },
-          "get-current-user": {
-            "id": "user-me",
-            "name": "Alex Chen",
-            "email": "alex@example.com",
-            "isMe": true
           },
           "list-issue-statuses": {
             "nodes": [
@@ -5889,22 +8504,8 @@
               }
             ]
           },
-          "get-issue-states": [
-            {
-              "id": "status-backlog",
-              "name": "Backlog",
-              "type": "backlog"
-            }
-          ],
           "list-issues": {
             "nodes": []
-          },
-          "create-issue": {
-            "id": "issue-outage",
-            "identifier": "ENG-100",
-            "title": "OAuth outage",
-            "priority": 4,
-            "dueDate": "2026-08-26"
           },
           "save-issue": {
             "id": "issue-outage",
@@ -5912,37 +8513,36 @@
             "title": "OAuth outage",
             "priority": 1,
             "dueDate": "2026-08-26"
+          },
+          "get-user": {
+            "id": "user-me",
+            "name": "Alex Chen",
+            "email": "alex@example.com",
+            "isMe": true
           }
         },
         "expected": [
           {
-            "or": [
-              {
-                "callsTool": {
-                  "name": "save-issue",
-                  "arguments": {
-                    "title": "OAuth outage",
-                    "team": {
-                      "or": [
-                        "ENG",
-                        "team-eng"
-                      ]
-                    },
-                    "assignee": {
-                      "or": [
-                        "me",
-                        "user-me"
-                      ]
-                    },
-                    "priority": 1,
-                    "dueDate": "2026-08-26"
-                  }
-                }
-              },
-              {
-                "callsTool": "create-issue"
+            "callsTool": {
+              "name": "save-issue",
+              "arguments": {
+                "title": "OAuth outage",
+                "team": {
+                  "or": [
+                    "ENG",
+                    "team-eng"
+                  ]
+                },
+                "assignee": {
+                  "or": [
+                    "me",
+                    "user-me"
+                  ]
+                },
+                "priority": 1,
+                "dueDate": "2026-08-26"
               }
-            ]
+            }
           }
         ]
       },
@@ -5950,17 +8550,6 @@
         "input": "@linear append 'Reproduces on macOS 15.' to the description of issue ENG-42 and move it to In Progress",
         "usedAsExample": false,
         "mocks": {
-          "update-issue": {
-            "id": "issue-oauth",
-            "identifier": "ENG-42",
-            "title": "Flaky OAuth redirects",
-            "description": "Existing issue description. Reproduces on macOS 15.",
-            "state": {
-              "id": "status-progress",
-              "name": "In Progress",
-              "type": "started"
-            }
-          },
           "get-issue": {
             "id": "issue-oauth",
             "identifier": "ENG-42",
@@ -5989,13 +8578,6 @@
               }
             ]
           },
-          "get-teams": [
-            {
-              "id": "team-eng",
-              "key": "ENG",
-              "name": "Engineering"
-            }
-          ],
           "list-comments": {
             "nodes": []
           },
@@ -6021,13 +8603,6 @@
               }
             ]
           },
-          "get-issue-states": [
-            {
-              "id": "status-progress",
-              "name": "In Progress",
-              "type": "started"
-            }
-          ],
           "save-issue": {
             "id": "issue-oauth",
             "identifier": "ENG-42",
@@ -6043,8 +8618,18 @@
                 "callsTool": {
                   "name": "save-issue",
                   "arguments": {
-                    "id": "ENG-42",
-                    "state": "In Progress",
+                    "id": {
+                      "or": [
+                        "ENG-42",
+                        "issue-oauth"
+                      ]
+                    },
+                    "state": {
+                      "or": [
+                        "In Progress",
+                        "status-progress"
+                      ]
+                    },
                     "patch.0.op": "append",
                     "patch.0.text": {
                       "includes": "Reproduces on macOS 15"
@@ -6099,9 +8684,6 @@
                     }
                   }
                 }
-              },
-              {
-                "callsTool": "update-issue"
               }
             ]
           }
@@ -6272,13 +8854,6 @@
         "input": "@linear list all issue statuses for team ENG",
         "usedAsExample": false,
         "mocks": {
-          "get-teams": [
-            {
-              "id": "team-eng",
-              "key": "ENG",
-              "name": "Engineering"
-            }
-          ],
           "list-teams": {
             "nodes": [
               {
@@ -6346,13 +8921,6 @@
           "list-issues": {
             "nodes": []
           },
-          "get-teams": [
-            {
-              "id": "team-eng",
-              "key": "ENG",
-              "name": "Engineering"
-            }
-          ],
           "get-team": {
             "id": "team-eng",
             "key": "ENG",
@@ -6412,13 +8980,6 @@
         "input": "@linear list project status updates for mobile-redesign created since 2026-08-01",
         "usedAsExample": false,
         "mocks": {
-          "get-projects": [
-            {
-              "id": "project-mobile-redesign",
-              "name": "Mobile redesign",
-              "slugId": "mobile-redesign"
-            }
-          ],
           "list-projects": {
             "nodes": [
               {
@@ -6443,7 +9004,6 @@
             "callsTool": {
               "name": "get-status-updates",
               "arguments": {
-                "type": "project",
                 "project": "project-mobile-redesign",
                 "createdAt": {
                   "matches": "^2026-08-01"
@@ -6468,7 +9028,6 @@
             "callsTool": {
               "name": "get-status-updates",
               "arguments": {
-                "type": "initiative",
                 "id": "initiative-update-1"
               }
             }
@@ -6478,12 +9037,6 @@
       {
         "input": "@linear post an at-risk status update to project mobile-redesign saying 'Launch date may slip'",
         "mocks": {
-          "get-current-user": {
-            "id": "user-me",
-            "name": "Alex Chen",
-            "email": "alex@example.com",
-            "isMe": true
-          },
           "full-text-search-issues": {
             "issues": []
           },
@@ -6492,12 +9045,6 @@
             "name": "Mobile redesign",
             "slugId": "mobile-redesign"
           },
-          "get-project-statuses": [
-            {
-              "id": "project-status-started",
-              "name": "In Progress"
-            }
-          ],
           "list-projects": {
             "nodes": [
               {
@@ -6507,17 +9054,26 @@
               }
             ]
           },
-          "get-projects": [
-            {
-              "id": "project-mobile-redesign",
-              "name": "Mobile redesign",
-              "slugId": "mobile-redesign"
-            }
-          ],
           "save-status-update": {
             "id": "project-update-2",
             "body": "Launch date may slip",
             "health": "atRisk"
+          },
+          "get-user": {
+            "id": "user-me",
+            "name": "Alex Chen",
+            "email": "alex@example.com",
+            "isMe": true
+          },
+          "list-users": {
+            "nodes": [
+              {
+                "id": "user-me",
+                "name": "Alex Chen",
+                "email": "alex@example.com",
+                "isMe": true
+              }
+            ]
           }
         },
         "expected": [
@@ -6583,6 +9139,11 @@
         "mocks": {
           "delete-status-update": {
             "success": true
+          },
+          "get-status-updates": {
+            "id": "project-update-2",
+            "type": "project",
+            "body": "Launch is on track."
           }
         },
         "expected": [

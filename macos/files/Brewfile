@@ -19,9 +19,9 @@ brew "gh"
 # Distributed revision control system
 brew "git"
 # Open-source build automation tool based on the Groovy and Kotlin DSL
-brew "gradle", link: false
+brew "gradle"
 # Open-source build automation tool based on the Groovy and Kotlin DSL
-brew "gradle@8", link: true
+brew "gradle@8"
 # Client library for huggingface.co hub
 brew "hf"
 # Generic library support script
