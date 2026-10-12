@@ -2,7 +2,7 @@
 #
 # install.sh — fresh-Mac installer for ./macos/files/.
 #
-# What it does (no prompts, no macOS `defaults` changes):
+# What it does (no prompts):
 #   1. Installs Xcode Command Line Tools (if missing).
 #   2. Installs Homebrew (if missing).
 #   3. Installs packages from files/Brewfile
@@ -10,11 +10,16 @@
 #   4. Installs oh-my-zsh (if missing and the synced .zshrc needs it).
 #   5. Restores ~/.aerospace.toml and ~/.zshrc from files/.
 #   6. Restores ~/.config/* from files/.
+#   7. Applies macOS `defaults` tweaks: window corner radius, no floating
+#      sidebar, no menu action icons, all animations off, Dock and menu bar
+#      auto-hide.
 #
 # Existing files are backed up to ~/.dotfiles-backup-<timestamp>/ first.
 #
 # Usage:
 #   git clone <repo>; cd script/macos/; chmod +x install.sh; ./install.sh
+#   ./install.sh --no-defaults      # skip step 7
+#   ./install.sh --undo-defaults    # ONLY revert the step 7 tweaks, then exit
 #
 set -euo pipefail
 
@@ -30,9 +35,98 @@ HOME_DOTFILES=( ".aerospace.toml" ".zshrc" )
 # Repo files that are NOT ~/.config content — never restore into ~/.config.
 SKIP_NAMES=( "Brewfile" "formulae.txt" "casks.txt" ".aerospace.toml" ".zshrc" "files" ".git" )
 
+# ------------------------------------------------- macOS defaults list --------
+# Format: domain|key|type|value
+# Corner radius: 26 = Tahoe, 20 = Golden Gate default, 10 = pre-Tahoe.
+MACOS_DEFAULTS=(
+  # ---- Window shape / sidebar / menus ----
+  "NSGlobalDomain|NSConvolutionOverride1|float|10"
+  "NSGlobalDomain|NSSplitViewItemSidebarDefaultsToFloatingAppearance|bool|false"
+  "NSGlobalDomain|NSMenuEnableActionImages|bool|false"
+
+  # ---- Global window / UI animations ----
+  "NSGlobalDomain|NSAutomaticWindowAnimationsEnabled|bool|false"
+  "NSGlobalDomain|NSWindowResizeTime|float|0.001"
+  "NSGlobalDomain|NSScrollAnimationEnabled|bool|false"
+  "NSGlobalDomain|NSScrollViewRubberbanding|bool|false"
+  "NSGlobalDomain|NSUseAnimatedFocusRing|bool|false"
+  "NSGlobalDomain|NSDocumentRevisionsWindowTransformAnimation|bool|false"
+  "NSGlobalDomain|NSToolbarFullScreenAnimationDuration|float|0"
+  "NSGlobalDomain|NSBrowserColumnAnimationSpeed|float|0"
+  "NSGlobalDomain|QLPanelAnimationDuration|float|0"
+  "NSGlobalDomain|NSInitialToolTipDelay|int|0"
+
+  # ---- Dock animations ----
+  "com.apple.dock|launchanim|bool|false"
+  "com.apple.dock|no-bouncing|bool|true"
+  "com.apple.dock|mineffect|string|scale"
+  "com.apple.dock|expose-animation-duration|float|0"
+  "com.apple.dock|springboard-show-duration|float|0"
+  "com.apple.dock|springboard-hide-duration|float|0"
+  "com.apple.dock|springboard-page-duration|float|0"
+  "com.apple.dock|workspaces-edge-delay|float|0"
+
+  # ---- Dock auto-hide (no delay, no slide animation) ----
+  "com.apple.dock|autohide|bool|true"
+  "com.apple.dock|autohide-delay|float|0"
+  "com.apple.dock|autohide-time-modifier|float|0"
+
+  # ---- Menu bar auto-hide (always, not just in full screen) ----
+  "NSGlobalDomain|_HIHideMenuBar|bool|true"
+
+  # ---- Finder / app animations ----
+  "com.apple.finder|DisableAllAnimations|bool|true"
+  "com.apple.Mail|DisableReplyAnimations|bool|true"
+  "com.apple.Mail|DisableSendAnimations|bool|true"
+
+  # ---- Accessibility: Reduce Motion (may be blocked by privacy protections) ----
+  "com.apple.universalaccess|reduceMotion|bool|true"
+)
+
 log()  { printf '[install] %s\n' "$*"; }
 warn() { printf '[install] WARNING: %s\n' "$*" >&2; }
 die()  { printf '[install] ERROR: %s\n' "$*" >&2; exit 1; }
+
+apply_macos_defaults() {
+  log "Applying macOS defaults…"
+  local entry domain key type value
+  for entry in "${MACOS_DEFAULTS[@]}"; do
+    IFS='|' read -r domain key type value <<< "${entry}"
+    defaults write "${domain}" "${key}" "-${type}" "${value}" 2>/dev/null \
+      || warn "could not write ${domain} ${key}"
+  done
+  restart_ui
+  log "macOS defaults applied. Quit/reopen apps (or log out and in) to see all changes."
+  log "If Reduce Motion did not apply: System Settings > Accessibility > Display."
+}
+
+undo_macos_defaults() {
+  log "Reverting macOS defaults…"
+  local entry domain key type value
+  for entry in "${MACOS_DEFAULTS[@]}"; do
+    IFS='|' read -r domain key type value <<< "${entry}"
+    defaults delete "${domain}" "${key}" 2>/dev/null || true
+  done
+  restart_ui
+  log "Defaults reverted. Log out and back in to finish."
+}
+
+restart_ui() {
+  killall Dock 2>/dev/null || true
+  killall Finder 2>/dev/null || true
+  killall SystemUIServer 2>/dev/null || true
+}
+
+# ------------------------------------------------- args ----------------------
+
+APPLY_DEFAULTS=1
+for arg in "$@"; do
+  case "${arg}" in
+    --no-defaults)   APPLY_DEFAULTS=0 ;;
+    --undo-defaults) undo_macos_defaults; exit 0 ;;
+    *) die "Unknown option: ${arg}" ;;
+  esac
+done
 
 [ -d "${FILES_DIR}" ] || die "Missing ${FILES_DIR} — run from a repo checkout."
 
@@ -128,6 +222,14 @@ while IFS= read -r -d '' src; do
     log "Restored ~/.config/${name}"
   fi
 done < <(find "${FILES_DIR}" -mindepth 1 -maxdepth 1 -print0)
+
+# ------------------------------------------------- 7) macOS defaults ----------
+
+if [ "${APPLY_DEFAULTS}" -eq 1 ]; then
+  apply_macos_defaults
+else
+  log "Skipping macOS defaults (--no-defaults)."
+fi
 
 log "Done. Backups (if any) in ${BACKUP}."
 log "Restart your shell or run: source ~/.zshrc"

@@ -4,8 +4,8 @@
 # Bright Blue = 0xff000cff
 
 options=(
-	style=round
-	width=8.0
+	style=square
+	width=6.0
 	hidpi=off
 	active_color=0xffffffff
 )
