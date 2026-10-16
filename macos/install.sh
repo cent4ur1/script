@@ -40,7 +40,7 @@ SKIP_NAMES=( "Brewfile" "formulae.txt" "casks.txt" ".aerospace.toml" ".zshrc" "f
 # Corner radius: 26 = Tahoe, 20 = Golden Gate default, 10 = pre-Tahoe.
 MACOS_DEFAULTS=(
   # ---- Window shape / sidebar / menus ----
-  "NSGlobalDomain|NSConvolutionOverride1|float|10"
+  "NSGlobalDomain|NSConvolutionOverride1|float|0.01"
   "NSGlobalDomain|NSSplitViewItemSidebarDefaultsToFloatingAppearance|bool|false"
   "NSGlobalDomain|NSMenuEnableActionImages|bool|false"
 

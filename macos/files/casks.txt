@@ -1,9 +1,9 @@
 aerospace
-alacritty
 alt-tab
 audacity
 balenaetcher
 brave-browser
+crossover
 discord
 firefox
 font-hack-nerd-font

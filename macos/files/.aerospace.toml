@@ -166,7 +166,7 @@ automatically-unhide-macos-hidden-apps = true
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
     alt-shift-semicolon = 'mode service'
 
-    alt-enter = 'exec-and-forget open -n /Applications/Alacritty.app'
+    alt-enter = 'exec-and-forget open -n /Applications/kitty.app'
 
 
     alt-b = 'exec-and-forget open -n /Applications/Firefox.app'

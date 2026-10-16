@@ -1,7 +1,6 @@
 abseil
 adwaita-icon-theme
 aom
-appstream
 autoconf
 automake
 boost
@@ -64,7 +63,6 @@ libdatrie
 libde265
 libepoxy
 libevent
-libfyaml
 libgit2
 libheif
 libid3tag
@@ -82,7 +80,6 @@ libpng
 libpsl
 librsvg
 libsamplerate
-libsass
 libshout
 libsndfile
 libsoxr
@@ -103,7 +100,6 @@ libxau
 libxcb
 libxdmcp
 libxext
-libxmlb
 libxrender
 libyaml
 little-cms2

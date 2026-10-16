@@ -92,8 +92,6 @@ brew "asmvik/formulae/yabai", trusted: true
 brew "felixkratz/formulae/borders", trusted: true
 # AeroSpace is an i3-like tiling window manager for macOS
 cask "nikitabobko/tap/aerospace", trusted: true
-# GPU-accelerated terminal emulator
-cask "alacritty"
 # Enable Windows-like alt-tab
 cask "alt-tab"
 # Multi-track audio editor and recorder
@@ -102,6 +100,8 @@ cask "audacity"
 cask "balenaetcher"
 # Web browser focusing on privacy
 cask "brave-browser"
+# Tool to run Windows software
+cask "crossover"
 # Voice and text chat software
 cask "discord"
 # Web browser
