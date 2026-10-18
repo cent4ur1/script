@@ -8,7 +8,12 @@ exec-on-workspace-change = ['/bin/bash', '-c',
 
 
 # Focus follows mouse
-on-focus-changed = ['move-mouse window-lazy-center']
+on-focus-changed = [
+    'move-mouse window-lazy-center',
+    # Keep Sketchybar in sync when focus (and therefore workspace/monitor
+    # ownership) changes.
+    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+]
 # JANKY BORDERS
 #after-startup-command = [
 #  'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0'
@@ -72,12 +77,19 @@ automatically-unhide-macos-hidden-apps = true
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See:
 #                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
+#
+# The outer top gap reserves space for Sketchybar (32px tall, drawn on every
+# display). AeroSpace measures the gap from the top of the monitor's usable
+# area, so the value is chosen per monitor to keep the same 5px gap between the
+# bottom of the bar and the top of the windows as on the other sides:
+#   built-in display : usable area already starts 32px below the physical top -> 37-32 = 5
+#   any other display: usable area starts at the physical top                   -> 37
 [gaps]
     inner.horizontal = 5
     inner.vertical =   5
     outer.left =      5 
     outer.bottom =    5 
-    outer.top =  5
+    outer.top = [{ monitor."built-in" = 5 }, 37]
     outer.right =     5 
 
 # 'main' binding mode declaration
@@ -161,13 +173,12 @@ automatically-unhide-macos-hidden-apps = true
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
-    alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+    alt-shift-tab = ['move-workspace-to-monitor --wrap-around next', 'exec-and-forget sketchybar --trigger aerospace_workspace_change']
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
     alt-shift-semicolon = 'mode service'
 
-    alt-enter = 'exec-and-forget open -n /Applications/kitty.app'
-
+    alt-enter = 'exec-and-forget cd ~ && /Applications/kitty.app/Contents/MacOS/kitty --single-instance'
 
     alt-b = 'exec-and-forget open -n /Applications/Firefox.app'
 

@@ -1,7 +1,8 @@
 #!/bin/sh
 
-# The volume_change event supplies a $INFO variable in which the current volume
-# percentage is passed to the script.
+# Volume indicator. Uses only the native `volume_change` event (the new volume
+# is passed in $INFO), so no AppleScript / Automation permission is needed.
+# The value therefore only appears after the volume first changes.
 
 if [ "$SENDER" = "volume_change" ]; then
   VOLUME="$INFO"

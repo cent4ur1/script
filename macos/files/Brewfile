@@ -1,6 +1,4 @@
-tap "asmvik/formulae"
 tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae"
-tap "jstkdng/programs"
 tap "nikitabobko/tap"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
@@ -30,8 +28,12 @@ brew "libtool"
 brew "imagemagick"
 # CLI wrapper for basic network utilities on macOS - ip command
 brew "iproute2mac"
+# Command-line music player
+brew "kew"
 # Powerful, lightweight programming language
 brew "lua"
+# Deep clean and optimize your Mac
+brew "mole"
 # Implementation of the Vulkan graphics and compute API on top of Metal
 brew "molten-vk"
 # Music Player Daemon
@@ -44,6 +46,8 @@ brew "mpv"
 brew "mysql"
 # Netwide Assembler (NASM) is an 80x86 assembler
 brew "nasm"
+# Modern Music Server and Streamer compatible with Subsonic/Airsonic
+brew "navidrome"
 # Ncurses-based client for the Music Player Daemon
 brew "ncmpcpp"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -62,14 +66,14 @@ brew "opencode"
 brew "openjdk@17"
 # Development kit for the Java programming language
 brew "openjdk@25"
+# Utilities to encode, inspect, and decode .opus files
+brew "opus-tools"
 # 7-Zip (high compression file archiver) implementation
 brew "p7zip"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.13"
-# File browser
-brew "ranger"
 # Terminal based Media Player Client with album art support
 brew "rmpc"
 # Safe, concurrent, practical language
@@ -84,12 +88,10 @@ brew "transmission-cli"
 brew "yazi"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
-# Simple hotkey-daemon for macOS.
-brew "asmvik/formulae/skhd", trusted: true
-# A tiling window manager for macOS based on binary space partitioning.
-brew "asmvik/formulae/yabai", trusted: true
 # A window border system for macOS
 brew "felixkratz/formulae/borders", trusted: true
+# Custom macOS statusbar with shell plugin, interaction and graph support
+brew "felixkratz/formulae/sketchybar", trusted: true
 # AeroSpace is an i3-like tiling window manager for macOS
 cask "nikitabobko/tap/aerospace", trusted: true
 # Enable Windows-like alt-tab
@@ -100,8 +102,6 @@ cask "audacity"
 cask "balenaetcher"
 # Web browser focusing on privacy
 cask "brave-browser"
-# Tool to run Windows software
-cask "crossover"
 # Voice and text chat software
 cask "discord"
 # Web browser
@@ -111,12 +111,12 @@ cask "font-sf-mono"
 cask "font-sf-pro"
 # Free and open-source image editor
 cask "gimp"
+# Speech to text application
+cask "handy"
 # Keyboard customiser
 cask "karabiner-elements"
 # GPU-based terminal emulator
 cask "kitty"
-# Free cross-platform office suite, fresh version
-cask "libreoffice"
 # Web browser
 cask "librewolf"
 # Open-source cross-platform alternative to AirDrop
@@ -125,18 +125,20 @@ cask "localsend"
 cask "monitorcontrol"
 # Smooths scrolling and set mouse scroll directions independently
 cask "mos"
+# Tool for editing metadata of audio files including MP3, FLAC, OGG, and more
+cask "mp3tag"
 # VPN client
 cask "mullvad-vpn"
 # Open-source software for live streaming and screen recording
 cask "obs"
-# Knowledge base that works on top of a local folder of plain text Markdown files
-cask "obsidian"
 # Rhythm game
 cask "osu"
 # Minecraft launcher
 cask "prismlauncher"
 # Control your tools with a few keystrokes
 cask "raycast"
+# Online multiplayer game platform
+cask "roblox"
 # Tool that provides consistent, highly configurable symbols for apps
 cask "sf-symbols"
 # Video game digital distribution service
@@ -149,8 +151,4 @@ cask "temurin@8"
 cask "unsloth"
 # Virtual machines UI using QEMU
 cask "utm"
-# Menu bar toolkit with keep-awake, system monitor and volume mixer
-cask "vorssaint"
-# Video communication and virtual meeting platform
-cask "zoom"
 uv "browser-use"

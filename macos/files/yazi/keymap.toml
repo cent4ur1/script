@@ -4,6 +4,12 @@ run  = "cd ~/Documents"
 desc = "Go to ~/Documents"
 
 [[mgr.prepend_keymap]]
+on   = [ "g", "m" ]
+run  = "cd ~/Music"
+desc = "Go to ~/Music"
+
+
+[[mgr.prepend_keymap]]
 on   = [ "g", "u" ]
 run  = "cd /Users/macintosh/Documents/uni"
 desc = "Go to uni folder"
