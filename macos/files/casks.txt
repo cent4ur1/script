@@ -1,5 +1,4 @@
 aerospace
-alt-tab
 audacity
 balenaetcher
 brave-browser

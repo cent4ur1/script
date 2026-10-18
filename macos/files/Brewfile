@@ -94,8 +94,6 @@ brew "felixkratz/formulae/borders", trusted: true
 brew "felixkratz/formulae/sketchybar", trusted: true
 # AeroSpace is an i3-like tiling window manager for macOS
 cask "nikitabobko/tap/aerospace", trusted: true
-# Enable Windows-like alt-tab
-cask "alt-tab"
 # Multi-track audio editor and recorder
 cask "audacity"
 # Tool to flash OS images to SD cards & USB drives
