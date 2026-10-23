@@ -28,8 +28,6 @@ brew "libtool"
 brew "imagemagick"
 # CLI wrapper for basic network utilities on macOS - ip command
 brew "iproute2mac"
-# Command-line music player
-brew "kew"
 # Powerful, lightweight programming language
 brew "lua"
 # Deep clean and optimize your Mac
@@ -129,6 +127,8 @@ cask "mp3tag"
 cask "mullvad-vpn"
 # Open-source software for live streaming and screen recording
 cask "obs"
+# Tiling window manager
+cask "omniwm"
 # Rhythm game
 cask "osu"
 # Minecraft launcher

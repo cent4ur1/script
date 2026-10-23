@@ -11,34 +11,13 @@ tabRailAppIcons = false
 
 [borders]
 enabled = false
-width = 1.0
+width = 5.0
 
 [borders.color]
 alpha = 1.0
-blue = 1.0
+blue = 0.979300037944676
 green = 1.0
-red = 0.9999960065
-
-[borders.glow]
-enabled = false
-opacity = 0.6
-radius = 8.0
-
-[borders.gradient]
-direction = "topLeftToBottomRight"
-enabled = false
-
-[borders.gradient.end]
-alpha = 1.0
-blue = 0.7
-green = 1.0
-red = 0.0
-
-[borders.gradient.start]
-alpha = 1.0
-blue = 1.0
-green = 0.4
-red = 0.0
+red = 0.08458520228437894
 
 [clipboard]
 historyEnabled = false
@@ -56,30 +35,30 @@ splitWidthMultiplier = 1.0
 useGlobalGaps = true
 
 [focus]
-crossesMonitorAtEdge = true
-followsMouse = true
-followsWindowToMonitor = true
+crossesMonitorAtEdge = false
+followsMouse = false
+followsWindowToMonitor = false
 lockModifier = "off"
 moveCrossesMonitorAtEdge = false
-moveMouseToFocusedWindow = true
+moveMouseToFocusedWindow = false
 raiseOnMouseFocus = false
 
 [gaps]
 fullscreenUsesOuterGaps = false
-size = 2.0
+size = 16.0
 
 [gaps.outer]
-bottom = 0.0
-left = 0.0
-right = 0.0
-top = 0.0
+bottom = 10.0
+left = 10.0
+right = 10.0
+top = 10.0
 
 [general]
 animationSpeed = 1.0
-animationsEnabled = false
+animationsEnabled = true
 defaultLayoutType = "dwindle"
 hotkeysEnabled = true
-hyperKeyModifiers = "Control+Option+Shift"
+hyperKeyModifiers = "Control+Option+Shift+Command"
 ipcEnabled = false
 preventSleepEnabled = false
 systemHyperTrigger = "None"
@@ -106,7 +85,7 @@ workspaceSwipeEnabled = false
 workspaceSwipeFingerCount = 3
 
 [hiddenBar]
-enabled = true
+enabled = false
 hiddenBundleIDs = []
 rehideIntervalSeconds = 5.0
 
@@ -164,7 +143,7 @@ animationDuration = 0.2
 autoHide = false
 backgroundBlurRadius = 0
 backgroundEffect = "standardBlur"
-enabled = false
+enabled = true
 heightPercent = 50.0
 monitorMode = "focusedWindow"
 opacity = 1.0
@@ -180,29 +159,28 @@ mode = "macOS"
 [scratchpads.labels]
 
 [statusBar]
-showAppNames = true
-showIcon = false
-showWorkspaceName = true
+showAppNames = false
+showIcon = true
+showWorkspaceName = false
 useWorkspaceId = false
 
 [workspaceBar]
 autoHide = false
 autoHideHideDelayMilliseconds = 0.0
 autoHideRevealDelayMilliseconds = 0.0
-backgroundOpacity = 0.0
+backgroundOpacity = 0.1
 deduplicateAppIcons = false
 enabled = false
 excludedBundleIDs = []
-height = 40.0
+height = 24.0
 hideEmptyWorkspaces = false
 hideInNativeFullscreen = false
 hoverPreviewsEnabled = true
-inactiveIconOpacity = 1.0
 notchActiveZoneWidth = 180.0
-notchMode = "off"
+notchMode = "moveBelowMenuBar"
 notificationBadgeRefreshIntervalSeconds = 5.0
 notificationBadges = "off"
-position = "bottom"
+position = "overlappingMenuBar"
 reserveLayoutSpace = false
 revealHoldMilliseconds = 200.0
 revealModifier = "off"
@@ -212,8 +190,8 @@ showItemBackgrounds = true
 showLabels = true
 solidBlackBackground = false
 systemStatsButton = false
-transparentBackground = true
-windowLevel = "normal"
+transparentBackground = false
+windowLevel = "popup"
 xOffset = 0.0
 yOffset = 0.0
 
@@ -296,10 +274,6 @@ bundleId = "com.apple.MobileSMS"
 id = "552FB77D-BF0E-4737-90A6-B5BC6986C579"
 minHeight = 320.0
 minWidth = 660.0
-
-[[hotkeys]]
-binding = "Option+Return"
-id = "exec /Applications/kitty.app/Contents/MacOS/kitty"
 
 [[hotkeys]]
 binding = "Unassigned"
@@ -538,23 +512,23 @@ binding = "Unassigned"
 id = "switchWorkspace.previous"
 
 [[hotkeys]]
-binding = "Option+H"
+binding = "Option+h"
 id = "focus.left"
 
 [[hotkeys]]
-binding = "Option+J"
+binding = "Option+j"
 id = "focus.down"
 
 [[hotkeys]]
-binding = "Option+K"
+binding = "Option+k"
 id = "focus.up"
 
 [[hotkeys]]
-binding = "Option+L"
+binding = "Option+l"
 id = "focus.right"
 
 [[hotkeys]]
-binding = "Control+Shift+Tab"
+binding = "Option+Tab"
 id = "focusPrevious"
 
 [[hotkeys]]
@@ -598,19 +572,19 @@ binding = "Unassigned"
 id = "centerVisibleColumns"
 
 [[hotkeys]]
-binding = "Unassigned"
+binding = "Control+Option+Shift+Up Arrow"
 id = "moveWindowToWorkspaceUp"
 
 [[hotkeys]]
-binding = "Unassigned"
+binding = "Control+Option+Shift+Down Arrow"
 id = "moveWindowToWorkspaceDown"
 
 [[hotkeys]]
-binding = "Hyper+Page Up"
+binding = "Control+Option+Shift+Page Up"
 id = "moveColumnToWorkspaceUp"
 
 [[hotkeys]]
-binding = "Hyper+Page Down"
+binding = "Control+Option+Shift+Page Down"
 id = "moveColumnToWorkspaceDown"
 
 [[hotkeys]]
@@ -650,11 +624,11 @@ binding = "Unassigned"
 id = "moveColumnToWorkspace.8"
 
 [[hotkeys]]
-binding = "Option+Shift+H"
+binding = "Option+Shift+Left Arrow"
 id = "move.left"
 
 [[hotkeys]]
-binding = "Unassigned"
+binding = "Option+Shift+Down Arrow"
 id = "move.down"
 
 [[hotkeys]]
@@ -662,7 +636,7 @@ binding = "Option+Shift+Up Arrow"
 id = "move.up"
 
 [[hotkeys]]
-binding = "Option+Shift+L"
+binding = "Option+Shift+Right Arrow"
 id = "move.right"
 
 [[hotkeys]]
@@ -738,15 +712,15 @@ binding = "Option+F"
 id = "toggleFullscreen"
 
 [[hotkeys]]
-binding = "Option+Shift+F"
+binding = "Option+Shift+f"
 id = "toggleNativeFullscreen"
 
 [[hotkeys]]
-binding = "Hyper+Left Arrow"
+binding = "Control+Option+Shift+Left Arrow"
 id = "moveColumn.left"
 
 [[hotkeys]]
-binding = "Hyper+Right Arrow"
+binding = "Control+Option+Shift+Right Arrow"
 id = "moveColumn.right"
 
 [[hotkeys]]
@@ -910,12 +884,12 @@ binding = "Unassigned"
 id = "cycleWindowSecondarySpanBackward"
 
 [[hotkeys]]
-binding = "Hyper+F"
+binding = "Option+Shift+F"
 id = "toggleContainerFullPrimarySpan"
 
-[[hotkeys]]
-binding = "Control+Option+F"
-id = "expandContainerToAvailablePrimarySpan"
+#[[hotkeys]]
+#binding = "Control+Option+F"
+#id = "expandContainerToAvailablePrimarySpan"
 
 [[hotkeys]]
 binding = "Control+Option+R"
@@ -938,15 +912,15 @@ binding = "Unassigned"
 id = "setWindowPrimarySpan.increase10Percent"
 
 [[hotkeys]]
-binding = "Hyper+Minus"
+binding = "Option+Shift+Minus"
 id = "setWindowSecondarySpan.decrease10Percent"
 
 [[hotkeys]]
-binding = "Hyper+Equal"
+binding = "Option+Shift+Equal"
 id = "setWindowSecondarySpan.increase10Percent"
 
 [[hotkeys]]
-binding = "Hyper+B"
+binding = "Option+Shift+B"
 id = "balanceSizes"
 
 [[hotkeys]]
@@ -1010,7 +984,7 @@ binding = "Control+Option+Space"
 id = "openCommandPalette"
 
 [[hotkeys]]
-binding = "Hyper+R"
+binding = "Option+Shift+R"
 id = "raiseAllFloatingWindows"
 
 [[hotkeys]]
@@ -1026,7 +1000,7 @@ binding = "Unassigned"
 id = "toggleFocusedWindowFloating"
 
 [[hotkeys]]
-binding = "Option+Q"
+binding = "Option+q"
 id = "closeFocusedWindow"
 
 [[hotkeys]]
@@ -1050,15 +1024,15 @@ binding = "Unassigned"
 id = "toggleHiddenBarPanel"
 
 [[hotkeys]]
-binding = "Option+Grave"
+binding = "Unassigned"
 id = "toggleQuakeTerminal"
 
 [[hotkeys]]
-binding = "Hyper+L"
+binding = "Option+Shift+L"
 id = "toggleWorkspaceLayout"
 
 [[hotkeys]]
-binding = "Hyper+O"
+binding = "Option+Shift+O"
 id = "toggleOverview"
 
 [[hotkeys]]
@@ -1099,7 +1073,7 @@ type = "main"
 
 [[workspaces]]
 id = "8B8C45D6-CE9E-41D9-BD50-BE4989D5E3DE"
-layoutType = "niri"
+layoutType = "dwindle"
 name = "5"
 
 [workspaces.monitorAssignment]
@@ -1108,7 +1082,7 @@ type = "main"
 [[workspaces]]
 displayName = "❤️"
 id = "5953F2BF-A378-4266-91B2-287174C4FA4D"
-layoutType = "niri"
+layoutType = "dwindle"
 name = "6"
 
 [workspaces.monitorAssignment]
@@ -1117,7 +1091,7 @@ type = "secondary"
 [[workspaces]]
 displayName = "🚀"
 id = "A7D5E104-6985-4516-8ED5-07F144F2A33D"
-layoutType = "niri"
+layoutType = "dwindle"
 name = "7"
 
 [workspaces.monitorAssignment]
@@ -1125,7 +1099,7 @@ type = "secondary"
 
 [[workspaces]]
 id = "0E18F6B0-345A-4078-8B21-33641F07A861"
-layoutType = "niri"
+layoutType = "dwindle"
 name = "8"
 
 [workspaces.monitorAssignment]
@@ -1133,7 +1107,7 @@ type = "main"
 
 [[workspaces]]
 id = "8D4D711C-2B2F-4FEC-86BF-FA952037738A"
-layoutType = "niri"
+layoutType = "dwindle"
 name = "9"
 
 [workspaces.monitorAssignment]

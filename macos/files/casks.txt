@@ -18,6 +18,7 @@ mos
 mp3tag
 mullvad-vpn
 obs
+omniwm
 osu
 prismlauncher
 raycast
