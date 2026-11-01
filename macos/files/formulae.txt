@@ -30,11 +30,13 @@ fribidi
 game-music-emu
 gdk-pixbuf
 gettext
+ggml
 gh
 giflib
 git
 git-lfs
 glib
+glslang
 gmp
 gnutls
 gobject-introspection
@@ -48,6 +50,7 @@ harfbuzz
 hf
 hicolor-icon-theme
 icu4c@78
+icu4c@79
 imagemagick
 iproute2mac
 jpeg-turbo
@@ -104,6 +107,7 @@ libxext
 libxrender
 libyaml
 little-cms2
+llama.cpp
 llhttp
 llvm
 lpeg
@@ -114,8 +118,6 @@ lz4
 lzo
 m4
 miniupnpc
-mlx
-mlx-c
 mole
 molten-vk
 mpd
@@ -133,7 +135,6 @@ nettle
 nicotine-plus
 ninja
 nowplaying-cli
-ollama
 opencode
 openjdk
 openjdk@17
@@ -158,6 +159,7 @@ pygobject3
 python@3.12
 python@3.13
 python@3.14
+python@3.15
 readline
 ripgrep
 rmpc
@@ -169,6 +171,9 @@ sevenzip
 shaderc
 sketchybar
 speex
+spirv-cross
+spirv-headers
+spirv-tools
 sqlite
 svt-av1
 switchaudio-osx
@@ -188,6 +193,7 @@ wavpack
 webp
 x264
 x265
+xcodegen
 xorgproto
 xz
 yazi

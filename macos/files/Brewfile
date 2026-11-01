@@ -1,5 +1,7 @@
 tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae"
 tap "nikitabobko/tap"
+# Zstandard is a real-time compression algorithm
+brew "zstd"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
@@ -16,6 +18,8 @@ brew "fileicon"
 brew "gh"
 # Distributed revision control system
 brew "git"
+# OpenGL and OpenGL ES reference compiler for shading languages
+brew "glslang"
 # Open-source build automation tool based on the Groovy and Kotlin DSL
 brew "gradle"
 # Open-source build automation tool based on the Groovy and Kotlin DSL
@@ -28,6 +32,8 @@ brew "libtool"
 brew "imagemagick"
 # CLI wrapper for basic network utilities on macOS - ip command
 brew "iproute2mac"
+# LLM inference in C/C++
+brew "llama.cpp"
 # Powerful, lightweight programming language
 brew "lua"
 # Deep clean and optimize your Mac
@@ -56,8 +62,6 @@ brew "nicotine-plus"
 brew "ninja"
 # Retrieves currently playing media, and simulates media actions
 brew "nowplaying-cli"
-# Create, run, and share large language models (LLMs)
-brew "ollama"
 # AI coding agent, built for the terminal
 brew "opencode"
 # Development kit for the Java programming language
@@ -78,10 +82,14 @@ brew "rmpc"
 brew "rust"
 # 7-Zip is a file archiver with a high compression ratio
 brew "sevenzip"
+# Performing reflection and disassembling SPIR-V
+brew "spirv-cross"
 # Change macOS audio source from the command-line
 brew "switchaudio-osx"
 # Lightweight BitTorrent client
 brew "transmission-cli"
+# Generate your Xcode project from a spec file and your folder structure
+brew "xcodegen"
 # Blazing fast terminal file manager written in Rust, based on async I/O
 brew "yazi"
 # Fish-like fast/unobtrusive autosuggestions for zsh
@@ -100,6 +108,8 @@ cask "balenaetcher"
 cask "brave-browser"
 # Voice and text chat software
 cask "discord"
+# Developer platform
+cask "dotnet-sdk"
 # Web browser
 cask "firefox"
 cask "font-hack-nerd-font"
@@ -109,6 +119,8 @@ cask "font-sf-pro"
 cask "gimp"
 # Speech to text application
 cask "handy"
+# Media system
+cask "jellyfin"
 # Keyboard customiser
 cask "karabiner-elements"
 # GPU-based terminal emulator
@@ -127,8 +139,6 @@ cask "mp3tag"
 cask "mullvad-vpn"
 # Open-source software for live streaming and screen recording
 cask "obs"
-# Tiling window manager
-cask "omniwm"
 # Rhythm game
 cask "osu"
 # Minecraft launcher
@@ -147,6 +157,4 @@ cask "temurin@21"
 cask "temurin@8"
 # Desktop application for Unsloth Studio
 cask "unsloth"
-# Virtual machines UI using QEMU
-cask "utm"
 uv "browser-use"
