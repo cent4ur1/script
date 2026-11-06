@@ -35,7 +35,7 @@ CONF="/etc/single-gpu-passthrough.conf"
 LOG="/var/log/single-gpu-passthrough-setup.log"
 UA="Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
 WIN_PAGE="https://www.microsoft.com/en-us/software-download/windows11"
-TOTAL_STEPS=8
+TOTAL_STEPS=11
 BAR_W=40
 NEED_REBOOT=0
 
@@ -45,6 +45,7 @@ PACKAGES=(
   ovmf swtpm swtpm-tools
   dnsmasq-base iptables nftables
   git curl jq pciutils usbutils psmisc ca-certificates
+  samba
 )
 
 # ----------------------------------------------------------------------------
@@ -331,10 +332,33 @@ if (( ${#USB_LIST[@]} )); then
 fi
 (( ${#USB_IDS[@]} )) || warn "No USB devices selected. You will need another way (e.g. SSH) to control the VM."
 
+# Shared folder (Samba, reachable only from the VM network)
+SHARE_NAME="shared"
+SHARE_USER=${REAL_USER:-}
+if [[ -z $SHARE_USER ]]; then
+  while true; do
+    read -r -p "  Linux user who owns the shared folder: " SHARE_USER
+    if [[ $SHARE_USER != root ]] && id "$SHARE_USER" >/dev/null 2>&1; then break; fi
+    warn "That user does not exist (root is not allowed)."
+  done
+fi
+SHARE_HOME=$(getent passwd "$SHARE_USER" | cut -d: -f6)
+read -r -p "  Shared folder on Linux [$SHARE_HOME/WindowsShare]: " SHARE_DIR
+SHARE_DIR=${SHARE_DIR:-$SHARE_HOME/WindowsShare}
+[[ $SHARE_DIR == /* ]] || SHARE_DIR="$SHARE_HOME/$SHARE_DIR"
+info "Windows signs in to the share as '$SHARE_USER'. Choose a password for it (separate from your Linux password)."
+while true; do
+  read -r -s -p "  Share password: " SMB_PASS; printf '\n'
+  read -r -s -p "  Repeat password: " SMB_PASS2; printf '\n'
+  [[ -n $SMB_PASS && $SMB_PASS == "$SMB_PASS2" ]] && break
+  warn "Passwords are empty or do not match."
+done
+unset SMB_PASS2
+
 DEFAULT_LANG="${WIN_LANG:-English (United States)}"
 printf '\n  %sSummary%s\n' "$C_BOLD" "$C_RESET"
-printf '    VM name: %s\n    GPU:     %s (%s)\n    Disk:    %s GB   RAM: %s GB   vCPUs: %s\n    USB:     %s\n' \
-  "$VM_NAME" "$GPU_DESC" "${GPU_FUNCS[*]}" "$DISK_GB" "$RAM_GB" "$VCPUS" "${USB_IDS[*]:-none}"
+printf '    VM name: %s\n    GPU:     %s (%s)\n    Disk:    %s GB   RAM: %s GB   vCPUs: %s\n    USB:     %s\n    Share:   %s (user %s)\n' \
+  "$VM_NAME" "$GPU_DESC" "${GPU_FUNCS[*]}" "$DISK_GB" "$RAM_GB" "$VCPUS" "${USB_IDS[*]:-none}" "$SHARE_DIR" "$SHARE_USER"
 ask_yn "Proceed?" y || exit 0
 
 # ----------------------------------------------------------------------------
@@ -531,7 +555,88 @@ fi
 draw_bar 100 "libvirt configured"; printf '\n'
 
 # ----------------------------------------------------------------------------
-# Step 6: ISOs
+# Step 6: shared folder (Samba, bound to the VM network only)
+# ----------------------------------------------------------------------------
+step "Setting up the shared folder"
+
+VM_NET_IP=$(virsh net-dumpxml default 2>/dev/null | sed -n "s/.*<ip address='\([0-9.]*\)'.*/\1/p" | head -n1)
+VM_NET_IP=${VM_NET_IP:-192.168.122.1}
+
+install -d -o "$SHARE_USER" -g "$(id -gn "$SHARE_USER")" -m 775 "$SHARE_DIR" \
+  || die "Could not create $SHARE_DIR"
+draw_bar 20 "shared folder created"
+
+# Convenience script for Windows (CRLF line endings), maps the share as drive S:
+printf '@echo off\r\nnet use S: \\\\%s\\%s /user:%s * /persistent:yes\r\npause\r\n' \
+  "$VM_NET_IP" "$SHARE_NAME" "$SHARE_USER" >"$SHARE_DIR/Map-Shared-Drive.bat"
+chown "$SHARE_USER": "$SHARE_DIR/Map-Shared-Drive.bat"
+
+SMB_CONF=/etc/samba/smb.conf
+[[ -f $SMB_CONF ]] || printf '[global]\n   workgroup = WORKGROUP\n   server role = standalone server\n' >"$SMB_CONF"
+cp -a "$SMB_CONF" "$SMB_CONF.bak.$(date +%s)"
+sed -i '/^# BEGIN single-gpu-passthrough share/,/^# END single-gpu-passthrough share/d' "$SMB_CONF"
+
+# Only listen on the loopback and the VM network, not on your LAN
+if grep -Eq '^[[:space:]]*(bind interfaces only|interfaces)[[:space:]]*=' "$SMB_CONF"; then
+  warn "smb.conf already restricts interfaces. Make sure it includes 'virbr0' so Windows can connect."
+elif grep -q '^\[global\]' "$SMB_CONF"; then
+  sed -i "0,/^\[global\]/s//[global]\n   interfaces = lo virbr0\n   bind interfaces only = yes/" "$SMB_CONF"
+else
+  warn "No [global] section in smb.conf; could not restrict Samba to the VM network."
+fi
+
+cat >>"$SMB_CONF" <<EOF
+
+# BEGIN single-gpu-passthrough share
+[$SHARE_NAME]
+   comment = Shared folder between the Linux host and the Windows VM
+   path = $SHARE_DIR
+   browseable = yes
+   read only = no
+   guest ok = no
+   valid users = $SHARE_USER
+   force user = $SHARE_USER
+   hosts allow = ${VM_NET_IP%.*}. 127.0.0.1
+   hosts deny = ALL
+   create mask = 0664
+   directory mask = 0775
+# END single-gpu-passthrough share
+EOF
+
+if ! testparm -s "$SMB_CONF" >>"$LOG" 2>&1; then
+  latest=$(ls -t "$SMB_CONF".bak.* | head -n1); cp -a "$latest" "$SMB_CONF"
+  die "Generated Samba config was invalid; restored your previous smb.conf (see log)."
+fi
+draw_bar 60 "samba configured"
+
+printf '%s\n%s\n' "$SMB_PASS" "$SMB_PASS" | smbpasswd -s -a "$SHARE_USER" >>"$LOG" 2>&1 \
+  || die "Could not set the Samba password for $SHARE_USER (see log)."
+unset SMB_PASS
+
+# Start Samba after libvirt, so the virbr0 interface exists
+mkdir -p /etc/systemd/system/smbd.service.d
+cat >/etc/systemd/system/smbd.service.d/after-libvirt.conf <<'EOF'
+[Unit]
+After=libvirtd.service
+Wants=libvirtd.service
+EOF
+systemctl daemon-reload
+systemctl enable smbd.service >>"$LOG" 2>&1
+systemctl restart smbd.service >>"$LOG" 2>&1 || warn "smbd did not start; check 'systemctl status smbd'."
+draw_bar 90 "samba started"
+
+if command -v ufw >/dev/null 2>&1 && ufw status 2>/dev/null | grep -q 'Status: active'; then
+  ufw allow in on virbr0 to any port 445 proto tcp >>"$LOG" 2>&1 && ok "ufw: allowed SMB (445) on virbr0 only"
+fi
+
+draw_bar 100 "shared folder ready"; printf '\n'
+ss -ltn "sport = :445" 2>/dev/null | grep -q "$VM_NET_IP" \
+  && ok "Samba is listening on $VM_NET_IP" \
+  || warn "Samba is not listening on $VM_NET_IP yet; it will after the VM network is up (reboot or 'sudo systemctl restart smbd')."
+ok "Share '$SHARE_NAME' -> $SHARE_DIR (from Windows: \\\\$VM_NET_IP\\$SHARE_NAME)"
+
+# ----------------------------------------------------------------------------
+# Step 7: ISOs
 # ----------------------------------------------------------------------------
 step "Downloading virtio drivers"
 download "$VIRTIO_URL" "$VIRTIO_ISO" "virtio-win drivers" \
@@ -773,6 +878,15 @@ cat <<EOF
        (the PC restarts), then choose "I don't have internet".
     4. Inside Windows, run virtio-win-guest-tools.exe from the virtio-win CD,
        then install the ${GPU_VENDOR^^} graphics driver from the vendor's site.
+
+  ${C_BOLD}Shared folder${C_RESET}
+    Linux:   $SHARE_DIR   (paste files here from your file manager)
+    Windows: open File Explorer, type  \\\\$VM_NET_IP\\$SHARE_NAME  in the address bar,
+             sign in as '$SHARE_USER' with the share password and tick "Remember my credentials".
+             Right-click the share > "Map network drive" to get a permanent drive letter,
+             or run Map-Shared-Drive.bat from inside the share (maps it as S:).
+    Open files straight from the share, or copy them onto the Windows C: drive.
+    Samba only listens on the VM network (virbr0), not on your LAN.
 
   ${C_BOLD}Notes${C_RESET}
     - Older AMD cards (Vega, Navi 10) may suffer the "reset bug"; see the vendor-reset project.
