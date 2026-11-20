@@ -1,0 +1,7 @@
+login.live.com	FALSE	/	TRUE	1871153455	__Host-MSAAUTHP	11-M.C545_BL2.0.U.MsaArtifacts.CjVVZgRzVRGVj9DOuldh8PJt05l*dDEiqybcj9R!Mhh6neQ9xP6TuvXHvWnOamQqKhuNQbaF29GtLIx*P6GbiVn10GnssO4L8Rz17MeV!hI2M3a1RbkTozEwa4bH9i2YNbvCE4ObbHXMyTqY5e78WSoyVIdbjvrNzmoqee8cXuvIUKlEzhRkUwH1n8KQGKbBc26lSRCbr4CndxgL8L1T4Too0lVWjr*rdwpyZh715lpyKlsN8UMoHOQTx6ezQ7Uxqqxo8wZdQhSts2VwDkNOxQnH2doJ!EzxQ19aoC7JOMytbeunEwxDHk50cTprWl0KjHMq5znglPdlQqhaaVYBJBr0p7Mo3kpo85WnlOV2MFWKwAqcVgmW*Mo9t2kcUulJccY9UFEM936vhDkwx7z9an4$
+.login.live.com	TRUE	/	TRUE	1871153455	MSPPre	gui.marquesreis%40gmail.com%7ca8ab78806e1d078b%7c%7c
+.login.live.com	TRUE	/	TRUE	1871153455	MSCC	199.19.162.214-US
+.login.live.com	TRUE	/	TRUE	1871153455	MSPSoftVis	@98514993738828745@:@
+.login.live.com	TRUE	/	TRUE	1871153455	SDIDC	9t7RTg4C0336eyyhoQ!d82SDG5NZa*myFnD8dJ*dLxJJbDYDs0LraMeO9lINuxsrzytqrDH7AjuzbgxV2MPhoWSYGixH$
+.login.live.com	TRUE	/	TRUE	1871153455	JSHP	3$gui.marquesreis%40gmail.com$Gui$Marquesreis$$2$0$0$11192563125685448995$1
+.login.live.com	TRUE	/	TRUE	1871153455	MSPCID	a8ab78806e1d078b
