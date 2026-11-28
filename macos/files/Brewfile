@@ -1,25 +1,45 @@
 tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae"
 tap "nikitabobko/tap"
+# Library for manipulating PNG images
+brew "libpng"
+# Software library to render fonts
+brew "freetype"
+# XML-based font configuration API for X Windows
+brew "fontconfig"
+# JPEG image codec that aids compression and decompression
+brew "jpeg-turbo"
 # Zstandard is a real-time compression algorithm
 brew "zstd"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
+# Audio codec
+brew "opus"
+# SDL2 compatibility layer that uses SDL3 behind the scenes
+brew "sdl2-compat"
 # Cross-platform make
 brew "cmake"
 # .NET Core
 brew "dotnet"
+# Modern, maintained replacement for ls
+brew "eza"
 # Like neofetch, but much faster because written mostly in C
 brew "fastfetch"
 # macOS CLI for managing custom icons for files and folders
 brew "fileicon"
+# Disk usage analyzer with console interface written in Go
+brew "gdu"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
 brew "git"
 # OpenGL and OpenGL ES reference compiler for shading languages
 brew "glslang"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.15"
 # Open-source build automation tool based on the Groovy and Kotlin DSL
 brew "gradle"
 # Open-source build automation tool based on the Groovy and Kotlin DSL
@@ -32,6 +52,10 @@ brew "libtool"
 brew "imagemagick"
 # CLI wrapper for basic network utilities on macOS - ip command
 brew "iproute2mac"
+# Image manipulation library
+brew "jpeg"
+# BSD-style licensed readline alternative
+brew "libedit"
 # LLM inference in C/C++
 brew "llama.cpp"
 # Powerful, lightweight programming language
@@ -88,6 +112,8 @@ brew "spirv-cross"
 brew "switchaudio-osx"
 # Lightweight BitTorrent client
 brew "transmission-cli"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
 # Generate your Xcode project from a spec file and your folder structure
 brew "xcodegen"
 # Blazing fast terminal file manager written in Rust, based on async I/O
@@ -112,11 +138,14 @@ cask "discord"
 cask "dotnet-sdk"
 # Web browser
 cask "firefox"
+cask "font-hack"
 cask "font-hack-nerd-font"
 cask "font-sf-mono"
 cask "font-sf-pro"
 # Free and open-source image editor
 cask "gimp"
+# N64 emulator
+cask "gopher64"
 # Speech to text application
 cask "handy"
 # Media system
@@ -141,8 +170,6 @@ cask "mullvad-vpn"
 cask "obs"
 # Rhythm game
 cask "osu"
-# Minecraft launcher
-cask "prismlauncher"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Online multiplayer game platform
@@ -155,6 +182,6 @@ cask "steam"
 cask "temurin@21"
 # JDK from the Eclipse Foundation (Adoptium)
 cask "temurin@8"
-# Desktop application for Unsloth Studio
-cask "unsloth"
+# OpenJDK distribution from Azul
+cask "zulu@8"
 uv "browser-use"

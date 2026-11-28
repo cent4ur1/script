@@ -120,19 +120,25 @@ alias fs="clear;fastfetch"
 alias tr="cd $HOME/.Trash"
 alias b="btop"
 alias 64brew='arch -x86_64 /usr/local/bin/brew'
-
+alias gdu='gdu-go'
 
 # Download youtube videos as opus
 #alias ytopus='yt-dlp -x --audio-format opus'
 ytopus() {
+    local target="$*"
+    [[ "$target" =~ ^https?:// ]] || target="ytsearch:$target"
+
     yt-dlp \
         -f "bestaudio/best" \
         -x --audio-format opus --audio-quality 0 \
         --embed-metadata --embed-thumbnail \
-        "ytsearch:$*"
+        "$target"
 }
 
 ytmkv() {
+    local target="$*"
+    [[ "$target" =~ ^https?:// ]] || target="ytsearch:$target"
+
     yt-dlp \
         --sponsorblock-mark poi_highlight \
         --sponsorblock-remove sponsor \
@@ -141,12 +147,20 @@ ytmkv() {
         --embed-metadata \
         -f "bv[height=1080]+ba/b[height=1080]" \
         --merge-output-format mkv \
-        "ytsearch:$*"
+        "$target"
 }
 
-alias mkv='yt-dlp --sponsorblock-mark poi_highlight --sponsorblock-remove sponsor --write-auto-subs --embed-thumbnail --embed-metadata -t mkv'
+ytplaylist() {
+    yt-dlp \
+        --yes-playlist \
+        -f "bestaudio/best" \
+        -x --audio-format opus --audio-quality 0 \
+        --embed-metadata --embed-thumbnail \
+        --download-archive ~/.yt-opus-archive.txt \
+        -o "%(playlist_title)s/%(playlist_index)02d - %(title)s.%(ext)s" \
+        "$@"
+}
 
-alias dup='$HOME/dotfilesupdate.sh'
 
 alias py3='python3'
 
@@ -156,7 +170,6 @@ alias pyvenv='source $HOME/Documents/dev/python-arm/bin/activate'
 
 alias gitupdate='git add .;git commit -m "update"; git push'
 
-alias gdu='gdu-go'
 alias m='rmpc'
 alias n='nvim'
 

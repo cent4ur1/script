@@ -13,9 +13,11 @@ certifi
 cffi
 chromaprint
 cmake
+curl-impersonate
 dav1d
 deno
 dotnet
+eza
 faad2
 fastfetch
 ffmpeg
@@ -29,6 +31,7 @@ freetype
 fribidi
 game-music-emu
 gdk-pixbuf
+gdu
 gettext
 ggml
 gh
@@ -49,10 +52,10 @@ gtk4
 harfbuzz
 hf
 hicolor-icon-theme
-icu4c@78
 icu4c@79
 imagemagick
 iproute2mac
+jpeg
 jpeg-turbo
 json-c
 lame
@@ -64,6 +67,7 @@ libb2
 libbluray
 libdatrie
 libde265
+libedit
 libepoxy
 libevent
 libgit2
@@ -74,7 +78,6 @@ libmicrohttpd
 libmikmod
 libmpdclient
 libnfs
-libnghttp2
 libnpupnp
 libogg
 libomp
@@ -158,7 +161,6 @@ pycparser
 pygobject3
 python@3.12
 python@3.13
-python@3.14
 python@3.15
 readline
 ripgrep
@@ -182,10 +184,10 @@ theora
 transmission-cli
 tree-sitter
 uchardet
-unbound
 unibilium
 utf8cpp
 utf8proc
+uv
 vapoursynth
 vulkan-headers
 vulkan-loader
